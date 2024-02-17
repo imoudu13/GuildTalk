@@ -6,7 +6,7 @@ Admins of channels will be able to manage them, including tasks such as removing
 Messaging: All users can send messages, either privately to another user or in a channel that they are a part of. <br>
 Users: Users can update their personal information, such as their name, last name, bio, email address, etc. <br>
 <br>
-**#Functional & Non-Functional requirements** <br>
+#**Functional & Non-Functional requirements** <br>
 **Functional requirements** <br>
 Authentication: Users will be able to enter their personal information, the system will then store the information in the database for later use. <br>
 The user can only be registered if their username is unique. That will serve as their key for other processes. <br>
@@ -22,7 +22,7 @@ Messages: All message history will be stored in the database <br>
 Users: A user's personal information will be stored in the database, there will be code that connects to the database and updates a user's information if they choose to. <br>
 The keys of the channels this user is a part of will also be stored in the database. <br>
 <br>
-**#Non-Functional requirements** <br>
+#**Non-Functional requirements** <br>
 **Product requirement:** <br>
 -There will be help menus to help users who are lost or new to the system. <br>
 -System will be reliable; no crashing or wait times over a second. <br>
