@@ -15,15 +15,16 @@ CREATE TABLE User (
 
 --Channel Table
 CREATE TABLE Channel(
-    channelID PRIMARY KEY IDENTITY,
-    channelName,
-    creatorUsername (Foreign Key references User.username)
+    channelID PRIMARY KEY,
+    channelName VARCHAR(50),
+    creatorUsername VARCHAR(50),
+    Foreign Key (creatorUsername) references User(username)
 );
 
 -- UserChannel Table (Many-to-Many Relationship)
 -- This is used for tracking which users are in which channels
 CREATE TABLE UserChannel (
-    UserID INT REFERENCES User(username),
+    username INT REFERENCES User(username),
     ChannelID INT REFERENCES Channel(channelID),
     IsAdmin BOOLEAN,
     PRIMARY KEY (username, ChannelID) 
