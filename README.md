@@ -43,4 +43,6 @@ External requirement: <br>
 
 **Design** <br>
 This is the design for the user profile page, users can view their current information then and make changes if necessary.<br> 
+![img.png](DesignImages/img.png) <br>
+This is the design for the channel page. All functionality is explained in the following annotations can be better viewd through the following figma link [Figma design](https://www.figma.com/file/4kqgvEGAlwl8flLkyg1dJc/Untitled?type=design&node-id=0%3A1&mode=design&t=niq2g2iKaLOAK5XK-1). <br> 
 ![img.png](DesignImages/img.png)
