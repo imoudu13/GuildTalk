@@ -1,7 +1,7 @@
 **Colors** <br>
 ![img_1.png](DesignImages/img_1.png) <br>
 Here are the hex codes from the left to the right: <br>
-#020412 Use these as accents<br>
+#020412 Use this as the main background color<br>
 #1d0515 Use this for the background of the sidebar<br>
 #370617 Use this for the main background of channel messages<br>
 #510513 Use these as accents<br>
