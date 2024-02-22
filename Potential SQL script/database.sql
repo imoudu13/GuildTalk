@@ -1,3 +1,8 @@
+DROP TABLE IF EXISTS User;
+DROP TABLE IF EXISTS Channel;
+DROP TABLE IF EXISTS UserChannel;
+DROP TABLE IF EXISTS Message;
+
 --User Table
 CREATE TABLE User (
     username            VARCHAR(30),
@@ -15,7 +20,7 @@ CREATE TABLE User (
 
 --Channel Table
 CREATE TABLE Channel(
-    channelID PRIMARY KEY,
+    channelID PRIMARY KEY UNIQUE,
     channelName VARCHAR(50),
     creatorUsername VARCHAR(50),
     Foreign Key (creatorUsername) references User(username)
@@ -24,18 +29,23 @@ CREATE TABLE Channel(
 -- UserChannel Table (Many-to-Many Relationship)
 -- This is used for tracking which users are in which channels
 CREATE TABLE UserChannel (
-    username INT REFERENCES User(username),
+    username VARCHAR(30) REFERENCES User(username),
     ChannelID INT REFERENCES Channel(channelID),
     IsAdmin BOOLEAN,
-    PRIMARY KEY (username, ChannelID) 
+    PRIMARY KEY (username, ChannelID)
 );
 
 -- Message Table
 CREATE TABLE Message (
-    messageID INT PRIMARY KEY,
-    senderUsername INT REFERENCES User(username),
+    messageID INT PRIMARY KEY UNIQUE,
+    senderUsername VARCHAR(30) REFERENCES User(username),
     channelID INT REFERENCES Channel(channelID),
-    receiverUsername INT REFERENCES User(username),
+    receiverUsername VARCHAR(30) REFERENCES User(username),
     content TEXT,
     timeSent TIMESTAMP  -- the time this message was sent
 );
+
+INSERT INTO User(username, password, firstname, lastname) VALUES('imoudu', 'guildtalk24', 'Imoudu', 'Ibrahim');
+INSERT INTO User(username, password, firstname, lastname) VALUES('gavin', 'guildtalk24', 'Gavin', 'Ashworth');
+INSERT INTO User(username, password, firstname, lastname) VALUES('nick', 'guildtalk24', 'Nicholas', 'Haydu');
+INSERT INTO User(username, password, firstname, lastname) VALUES('preston', 'guildtalk24', 'Preston', 'Melvin');
