@@ -45,5 +45,7 @@ External requirement: <br>
 This is the design for the user profile page, users can view their current information then and make changes if necessary.<br> 
 ![img.png](DesignImages/img.png) <br>
 This is the design for the channel page. All functionality is explained in the following annotations can be better viewd through the following figma link [Figma design](https://www.figma.com/file/4kqgvEGAlwl8flLkyg1dJc/Untitled?type=design&node-id=0%3A1&mode=design&t=niq2g2iKaLOAK5XK-1). <br> 
-![image](https://github.com/imoudu13/GuildTalk/assets/111312815/fbfbf679-766c-494e-bcab-7a8013cbe986)
+![image](https://github.com/imoudu13/GuildTalk/assets/111312815/fbfbf679-766c-494e-bcab-7a8013cbe986) <br>
+![image](https://github.com/imoudu13/GuildTalk/assets/111312815/430fd48e-31c8-4bf3-a8cd-12c7f55ac7a1)
+
 
