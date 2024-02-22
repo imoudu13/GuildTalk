@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5df0f1ee-6183-4c2f-9ca8-c98312dda369" name="Changes" comment="I added the image for the user profile page.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="5df0f1ee-6183-4c2f-9ca8-c98312dda369" name="Changes" comment="Minor change in read me" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -83,7 +80,7 @@
       <workItem from="1708480050381" duration="562000" />
       <workItem from="1708562788101" duration="1291000" />
       <workItem from="1708567163210" duration="3640000" />
-      <workItem from="1708642102157" duration="57000" />
+      <workItem from="1708642102157" duration="517000" />
     </task>
     <task id="LOCAL-00001" summary="Flask has been installed in the app.">
       <option name="closed" value="true" />
@@ -133,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708571312131</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Minor change in read me">
+      <option name="closed" value="true" />
+      <created>1708642184476</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708642184476</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +150,7 @@
     <MESSAGE value="There were some errors with the data types in some of the tables for the database. I fixed these issues. Database works as expected." />
     <MESSAGE value="I added an image for a color palette in the read me and some descriptions for the which colors to use and where." />
     <MESSAGE value="I added the image for the user profile page." />
-    <option name="LAST_COMMIT_MESSAGE" value="I added the image for the user profile page." />
+    <MESSAGE value="Minor change in read me" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor change in read me" />
   </component>
 </project>
