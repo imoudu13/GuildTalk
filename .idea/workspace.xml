@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df0f1ee-6183-4c2f-9ca8-c98312dda369" name="Changes" comment="There were some errors with the data types in some of the tables for the database. I fixed these issues. Database works as expected.">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/ca68b168-dea7-47fc-8191-bb554a7aeff1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/ca68b168-dea7-47fc-8191-bb554a7aeff1/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Potential SQL script/database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Potential SQL script/database.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +77,8 @@
       <workItem from="1708407751110" duration="175000" />
       <workItem from="1708479927377" duration="95000" />
       <workItem from="1708480050381" duration="562000" />
-      <workItem from="1708562788101" duration="1235000" />
+      <workItem from="1708562788101" duration="1291000" />
+      <workItem from="1708567163210" duration="1462000" />
     </task>
     <task id="LOCAL-00001" summary="Flask has been installed in the app.">
       <option name="closed" value="true" />
@@ -106,7 +104,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708564029729</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="There were some errors with the data types in some of the tables for the database. I fixed these issues. Database works as expected.">
+      <option name="closed" value="true" />
+      <created>1708564079042</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708564079042</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -1,3 +1,12 @@
+**Colors** <br>
+![img_1.png](img_1.png) <br>
+Here are the hex codes from the left to the right: <br>
+#020412 Use these as accents<br>
+#1d0515 Use this for the background of the sidebar<br>
+#370617 Use this for the main background of channel messages<br>
+#510513 Use these as accents<br>
+#6a040f Use these as accents<br>
+<br>
 **User requirements** <br>
 Authentication: New users can register, returning users can log in. <br>
 Channel: Users can create channels and invite others to join them. <br>
