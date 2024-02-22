@@ -1,5 +1,5 @@
 **Colors** <br>
-![img_1.png](DesignImages/img_1.png) <br>
+![img_1.png](DesignImages/ColorPalette.png) <br>
 Here are the hex codes from the left to the right: <br>
 #020412 Use this as the main background color<br>
 #1d0515 Use this for the background of the sidebar<br>
@@ -43,4 +43,7 @@ External requirement: <br>
 
 **Design** <br>
 This is the design for the user profile page, users can view their current information then and make changes if necessary.<br> 
-![img.png](DesignImages/img.png)
+![img.png](DesignImages/UserProfilePage.png) <br>
+<br>
+This is the design for the channel page, you can see the messages in the channel, the members, and the channels you are a part of. <br>
+![img.png](DesignImages/ChannelPage.png)
