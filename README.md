@@ -1,11 +1,12 @@
 **Colors** <br>
-![img_1.png](img_1.png) <br>
+![img_1.png](DesignImages/img_1.png) <br>
 Here are the hex codes from the left to the right: <br>
 #020412 Use these as accents<br>
 #1d0515 Use this for the background of the sidebar<br>
 #370617 Use this for the main background of channel messages<br>
 #510513 Use these as accents<br>
 #6a040f Use these as accents<br>
+#ffffff This one is white <br>
 <br>
 **User requirements** <br>
 Authentication: New users can register, returning users can log in. <br>
@@ -39,3 +40,7 @@ The keys of the channels this user is a part of will also be stored in the datab
 External requirement: <br>
 -This web app will run on all major browsers on desktop <br>
 -We will implement some safety features to protect users personal information in accordance to the levels of privacy expected by regulatory bodies. <br>
+
+**Design** <br>
+This is the design for the user profile page, users can view their current information then and make changes if necessary.<br> 
+![img.png](DesignImages/img.png)
