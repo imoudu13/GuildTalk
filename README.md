@@ -49,5 +49,5 @@ This is the design for the channel page. All functionality is explained in the f
 ![image](https://github.com/imoudu13/GuildTalk/assets/111312815/430fd48e-31c8-4bf3-a8cd-12c7f55ac7a1)
 
 This is the design for the login and registration page where users can either sign into their GuildTalk account, or new users can create a new account.
-![image](DesignImages\guildtalk-login.png)
-![image](DesignImages\guildtalk-register.png)
+![image](https://github.com/imoudu13/GuildTalk/blob/main/DesignImages/guildtalk-login.png)
+![image](https://github.com/imoudu13/GuildTalk/blob/main/DesignImages/guildtalk-register.png)
