@@ -1,4 +1,4 @@
-###Code Reviewer Checklist:
+Code Reviewer Checklist:
 
 When commiting code make sure you write clear, concise and descriptive commit messages. <br>
 Your reviewer should always be able to tell what the code is supposed to do from the commit message. <br>
