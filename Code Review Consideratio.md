@@ -1,6 +1,14 @@
-### General Considerations:
+###**Code Reviewer Checklist:**
+
+When commiting code make sure you write clear, concise and descriptive commit messages. <br>
+Your reviewer should always be able to tell what the code is supposed to do from the commit message. <br>
+
+Make sure you make changes to the code in your branch before commiting changes. <br>
+
+Make sure you consider these coding standards and guidelines when reviewing pull requests. When you finish your review provide constructive feedback if necessary. <br>
+
 1. **Readability:**
-   - Code is well-formatted and follows a consistent coding style.
+   - Code is well-formatted.
    - Variable and function names are descriptive and follow naming conventions.
    - Adequate comments are present for complex sections or where clarification is needed.
 
@@ -11,7 +19,7 @@
 
 3. **Modularity:**
    - Code is organized into logical and modular components or functions.
-   - Functions/methods are not overly long or complex.
+   - Functions are not overly long or complex.
 
 ### Code Structure:
 4. **Imports and Dependencies:**
@@ -28,43 +36,25 @@
 
 ### Performance:
 7. **Time and Space Complexity:**
-   - Code is optimized for time and space complexity where necessary.
-   - No unnecessary resource consumption.
-
-### Security:
-8. **Input Validation:**
-   - User inputs are validated to prevent security vulnerabilities.
-   - Sensitive data is handled securely.
+   - Code is optimized for time and space complexity where necessary/possible.
 
 ### Testing:
-9. **Unit Tests:**
+8. **Unit Tests:**
    - Unit tests cover critical parts of the code.
    - Tests are meaningful and cover various scenarios.
 
-10. **Integration Tests:**
+9. **Integration Tests:**
     - Integration tests verify interactions between components.
 
 ### Documentation:
-11. **Code Comments:**
+10. **Code Comments:**
     - Sufficient inline comments explain complex or non-intuitive sections.
     - Comments are up-to-date with the code changes.
 
-12. **Documentation Files:**
+11. **Documentation Files:**
     - README or documentation files are updated to reflect changes.
     - API documentation is accurate and complete.
 
-### Version Control:
-13. **Commit Messages:**
-    - Commit messages are clear, concise, and describe the purpose of the change.
-
-14. **Branch Management:**
-    - Code changes are appropriately branched and merged.
-    - No unnecessary or stale branches.
-
 ### Best Practices:
-15. **Code Reviewer Checklist:**
-    - Follows the project's coding standards and guidelines.
-    - Provides constructive feedback.
-
-16. **Code Duplication:**
+12. **Code Duplication:**
     - Check for duplicated code and suggest refactoring if needed.
