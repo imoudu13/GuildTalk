@@ -42,10 +42,12 @@ External requirement: <br>
 -We will implement some safety features to protect users personal information in accordance to the levels of privacy expected by regulatory bodies. <br>
 
 **Design** <br>
-This is the design for the user profile page, users can view their current information then and make changes if necessary.<br> 
+This is the design for the user profile page, users can view their current information then and make changes if necessary.<br>
 ![img.png](DesignImages/UserProfilePage.png) <br>
-This is the design for the channel page. All functionality is explained in the following annotations which can be better viewed through the following figma link [Figma design](https://www.figma.com/file/4kqgvEGAlwl8flLkyg1dJc/Untitled?type=design&node-id=0%3A1&mode=design&t=niq2g2iKaLOAK5XK-1). <br> 
+This is the design for the channel page. All functionality is explained in the following annotations which can be better viewed through the following figma link [Figma design](https://www.figma.com/file/4kqgvEGAlwl8flLkyg1dJc/Untitled?type=design&node-id=0%3A1&mode=design&t=niq2g2iKaLOAK5XK-1). <br>
 ![image](https://github.com/imoudu13/GuildTalk/assets/111312815/fbfbf679-766c-494e-bcab-7a8013cbe986) <br>
 ![image](https://github.com/imoudu13/GuildTalk/assets/111312815/430fd48e-31c8-4bf3-a8cd-12c7f55ac7a1)
 
-
+This is the design for the login and registration page where users can either sign into their GuildTalk account, or new users can create a new account.
+![image](https://github.com/imoudu13/GuildTalk/blob/main/DesignImages/guildtalk-login.png)
+![image](https://github.com/imoudu13/GuildTalk/blob/main/DesignImages/guildtalk-register.png)
