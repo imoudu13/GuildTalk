@@ -54,3 +54,4 @@ The design for the direct messaging between friends <br>
 This is the design for the login and registration page where users can either sign into their GuildTalk account, or new users can create a new account.
 ![image](https://github.com/imoudu13/GuildTalk/blob/main/DesignImages/guildtalk-login.png)
 ![image](https://github.com/imoudu13/GuildTalk/blob/main/DesignImages/guildtalk-register.png)
+![image](https://github.com/imoudu13/GuildTalk/blob/main/DesignImages/guildtalk-reset-password.png)
