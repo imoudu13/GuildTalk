@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5df0f1ee-6183-4c2f-9ca8-c98312dda369" name="Changes" comment="My branch is up to date">
+    <list default="true" id="5df0f1ee-6183-4c2f-9ca8-c98312dda369" name="Changes" comment="Created a folder called FrontEnd. Make sure you put any html, css, and JS files in there">
+      <change afterPath="$PROJECT_DIR$/FrontEnd/css/ProfilePage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FrontEnd/images/black.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FrontEnd/images/exit_button.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/ProfilePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/ProfilePage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,25 +47,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/imoud/Documents/School/COSC_310/GuildTalk&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "create-profile-page",
+    "last_opened_file_path": "C:/Users/imoud/Documents/School/COSC_310/GuildTalk",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\imoud\Documents\School\COSC_310\GuildTalk\FrontEnd\images" />
       <recent name="C:\Users\imoud\Documents\School\COSC_310\GuildTalk\DesignImages" />
     </key>
   </component>
@@ -170,7 +175,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708643714026</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Created a folder called FrontEnd. Make sure you put any html, css, and JS files in there">
+      <option name="closed" value="true" />
+      <created>1709339903325</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1709339903325</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,6 +212,7 @@
     <MESSAGE value="Fixed read me" />
     <MESSAGE value="My branch is up to date" />
     <MESSAGE value="Updating main" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updating main" />
+    <MESSAGE value="Created a folder called FrontEnd. Make sure you put any html, css, and JS files in there" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created a folder called FrontEnd. Make sure you put any html, css, and JS files in there" />
   </component>
 </project>

@@ -1,0 +1,125 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #370617;
+}
+main{
+    margin-top: 2em;
+    height: 100%;
+    width: 100%;
+}
+/*This is for the stuff in the header*/
+#myaccount {
+    position: relative;
+    text-align: center;
+    margin: 0 auto 0 auto;
+    width: 10em;
+    font-size: 3em;
+    color: white;
+}
+#exit_div{
+    position: relative;
+    left: 2em;
+    top: 2em;
+    width: 12em;
+}
+#exit_div img{
+    width: 4em;
+    height: 4em;
+    margin: auto;
+}
+#exit_div p{
+    color: white;
+    margin: auto;
+}
+/* This is for the pad in the middle that displays the user information */
+#banner {
+    text-align: center; /* Center the inline content inside #banner */
+    margin: 0 auto; /* Center #banner itself horizontally */
+    display: block; /* Make the image a block element for margin auto to work */
+    height: 10em;
+    width: 70em;
+    background-color: white;
+    /* This is for rounding the top two corners of the div that will eventually hold an image for a users banner*/
+    border-radius: 2em 2em 0 0;
+}
+#profile_pic{
+    position: relative;
+    float: left;
+    margin-top: 2em;
+    margin-left: 4em;
+    height: 6em;
+    width: 6em;
+    border-radius: 6em;
+}
+#information{
+    border-top: solid;
+    border-color: #370617;
+    border-radius: 0 0 2em 2em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10em;
+    width: 70em;
+    height: 35em;
+    background-color: white;
+}
+/*This is for the users name and button */
+#name{
+    background-color: #ffff;
+    margin: 0 5em;
+    height: 5em;
+    border-bottom-color: #1d0515;
+    border-bottom: solid;
+}
+#information #name p{
+    position: relative;
+    width: 100%;
+    float: left;
+    font-size: 2em;
+}
+#information #name button{
+    position: relative;
+    float: right;
+    height: 3em;
+    width: 8em;
+    background-color: #370617;
+    border: 0;
+    border-radius: 3em 3em 3em 3em;
+    color: white;
+}
+/* This is for the purple pad in the middle containing the users email, username etc.*/
+#more_info{
+    border-top-color: #1d0515;
+    position: absolute;
+    background-color: #370617;
+    height: 25em;
+    width: 50em;
+    margin: 2em 10em 0 10em;
+    border-radius: 1em 1em 1em 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.user_information:first-child{
+    margin-top: 3em;
+}
+.user_information:last-child{
+    margin-bottom: 3em;
+}
+.user_information{
+    background-color: #1d0515;
+    height: 3em;
+    padding: .25em 1em;
+    margin-bottom: 2em;
+    border-radius: 1em 1em 1em 1em;
+}
+.user_information p{
+    color: white;
+}
+.user_information button{
+    width: 4em;
+    height: 1.5em;
+    float: right;
+    background-color: white;
+    border: 0;
+    border-radius: 1em 1em 1em 1em;
+}
