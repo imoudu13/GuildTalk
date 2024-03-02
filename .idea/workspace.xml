@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df0f1ee-6183-4c2f-9ca8-c98312dda369" name="Changes" comment="Created a folder called FrontEnd. Make sure you put any html, css, and JS files in there">
-      <change afterPath="$PROJECT_DIR$/FrontEnd/css/ProfilePage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontEnd/images/black.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontEnd/images/exit_button.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/ProfilePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/ProfilePage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
