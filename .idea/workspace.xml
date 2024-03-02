@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df0f1ee-6183-4c2f-9ca8-c98312dda369" name="Changes" comment="My branch is up to date">
-      <change afterPath="$PROJECT_DIR$/FrontendDocs/ProfilePage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontendDocs/css/ProfilePage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontendDocs/images/Exit-button-icon-png-1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ca68b168-dea7-47fc-8191-bb554a7aeff1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ca68b168-dea7-47fc-8191-bb554a7aeff1/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ca68b168-dea7-47fc-8191-bb554a7aeff1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ca68b168-dea7-47fc-8191-bb554a7aeff1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Mo" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,28 +45,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;create-profile-page&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/imoud/Documents/School/COSC_310/GuildTalk&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/imoud/Documents/School/COSC_310/GuildTalk",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\imoud\Documents\School\COSC_310\GuildTalk\FrontendDocs" />
-      <recent name="C:\Users\imoud\Documents\School\COSC_310\GuildTalk\templates\images" />
       <recent name="C:\Users\imoud\Documents\School\COSC_310\GuildTalk\DesignImages" />
     </key>
   </component>
@@ -105,13 +99,6 @@
       <workItem from="1708567163210" duration="3640000" />
       <workItem from="1708642102157" duration="517000" />
       <workItem from="1708741760044" duration="2125000" />
-      <workItem from="1709200622612" duration="819000" />
-      <workItem from="1709172848279" duration="763000" />
-      <workItem from="1709178042062" duration="6767000" />
-      <workItem from="1709252935041" duration="5759000" />
-      <workItem from="1709260703726" duration="10000" />
-      <workItem from="1709260722640" duration="2000" />
-      <workItem from="1709337918221" duration="607000" />
     </task>
     <task id="LOCAL-00001" summary="Flask has been installed in the app.">
       <option name="closed" value="true" />
