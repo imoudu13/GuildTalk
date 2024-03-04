@@ -10,17 +10,12 @@ CREATE TABLE User (
     firstname           VARCHAR(50),
     lastname            VARCHAR(50),
     email               VARCHAR(50),
-    address             VARCHAR(50),
-    city                VARCHAR(40),
-    state               VARCHAR(20),
-    postalCode          VARCHAR(20),
-    country             VARCHAR(40),
     PRIMARY KEY (username)
 );
 
 --Channel Table
 CREATE TABLE Channel(
-    channelID INT PRIMARY KEY,
+    channelID INT UNIQUE,
     channelName VARCHAR(50),
     creatorUsername VARCHAR(50),
     Foreign Key (creatorUsername) references User(username)
@@ -51,38 +46,38 @@ INSERT INTO User(username, password, firstname, lastname) VALUES('nick', 'guildt
 INSERT INTO User(username, password, firstname, lastname) VALUES('preston', 'guildtalk24', 'Preston', 'Melvin');
 
 -- Inserting 30 users with common names and diverse email providers
-INSERT INTO User(username, password, firstname, lastname, email, address, city, state, postalCode, country)
+INSERT INTO User(username, password, firstname, lastname, email)
 VALUES
-('john_doe', 'pass123', 'John', 'Doe', 'john.doe@gmail.com', '123 Main Street', 'Cityville', 'Stateville', '12345', 'USA'),
-('jane_smith', 'ilovecoding', 'Jane', 'Smith', 'jane.smith@yahoo.com', '456 Oak Avenue', 'Townsville', 'Stateville', '54321', 'USA'),
-('michael_jones', 'musiclover', 'Michael', 'Jones', 'michael.jones@hotmail.com', '789 Pine Lane', 'Villageville', 'Stateville', '67890', 'USA'),
-('emily_brown', 'bookworm', 'Emily', 'Brown', 'emily.brown@gmail.com', '101 Elm Street', 'Hamletville', 'Stateville', '09876', 'USA'),
-('ryan_taylor', 'sportsfanatic', 'Ryan', 'Taylor', 'ryan.taylor@yahoo.com', '234 Maple Avenue', 'Suburbville', 'Stateville', '13579', 'USA'),
-('samantha_martin', 'adventuretime', 'Samantha', 'Martin', 'samantha.martin@gmail.com', '567 Birch Lane', 'Countryside', 'Stateville', '24680', 'USA'),
-('david_wilson', 'gamingmaster', 'David', 'Wilson', 'david.wilson@hotmail.com', '890 Cedar Street', 'Ruralville', 'Stateville', '11223', 'USA'),
-('amy_hall', 'artisticmind', 'Amy', 'Hall', 'amy.hall@yahoo.com', '121 Fir Avenue', 'Outskirts', 'Stateville', '33445', 'USA'),
-('brian_miller', 'techie', 'Brian', 'Miller', 'brian.miller@gmail.com', '345 Pinecone Lane', 'Techtown', 'Stateville', '55667', 'USA'),
-('laura_jackson', 'naturelover', 'Laura', 'Jackson', 'laura.jackson@hotmail.com', '678 Oaktree Street', 'Greenvale', 'Stateville', '77889', 'USA'),
-('kevin_white', 'fitnessfreak', 'Kevin', 'White', 'kevin.white@yahoo.com', '910 Redwood Avenue', 'Fitville', 'Stateville', '99000', 'USA'),
-('jessica_adams', 'musiclover', 'Jessica', 'Adams', 'jessica.adams@gmail.com', '232 Sycamore Lane', 'Harmonyville', 'Stateville', '11234', 'USA'),
-('andrew_morris', 'bookworm', 'Andrew', 'Morris', 'andrew.morris@yahoo.com', '454 Oak Lane', 'Knowledgeville', 'Stateville', '44556', 'USA'),
-('olivia_clark', 'artsy', 'Olivia', 'Clark', 'olivia.clark@gmail.com', '676 Maple Street', 'Artsville', 'Stateville', '66778', 'USA'),
-('nathan_wright', 'sciencegeek', 'Nathan', 'Wright', 'nathan.wright@hotmail.com', '898 Pinecone Avenue', 'Sciencetown', 'Stateville', '88999', 'USA'),
-('amanda_cook', 'foodie', 'Amanda', 'Cook', 'amanda.cook@yahoo.com', '121 Birch Street', 'Culinaryville', 'Stateville', '00111', 'USA'),
-('justin_miller', 'movielover', 'Justin', 'Miller', 'justin.miller@gmail.com', '345 Cedar Avenue', 'Cinematown', 'Stateville', '22333', 'USA'),
-('katie_adams', 'animallover', 'Katie', 'Adams', 'katie.adams@yahoo.com', '567 Pinecone Street', 'Petville', 'Stateville', '44455', 'USA'),
-('bryan_roberts', 'gamer', 'Bryan', 'Roberts', 'bryan.roberts@hotmail.com', '789 Oaktree Lane', 'Gamingtown', 'Stateville', '66556', 'USA'),
-('megan_carter', 'traveler', 'Megan', 'Carter', 'megan.carter@gmail.com', '910 Maple Street', 'Explorationville', 'Stateville', '88777', 'USA'),
-('eric_nelson', 'musican', 'Eric', 'Nelson', 'eric.nelson@yahoo.com', '121 Birch Avenue', 'Musicville', 'Stateville', '00900', 'USA'),
-('sarah_hall', 'naturelover', 'Sarah', 'Hall', 'sarah.hall@hotmail.com', '232 Pine Street', 'Greeneryville', 'Stateville', '22111', 'USA'),
-('jason_turner', 'fitnessfreak', 'Jason', 'Turner', 'jason.turner@gmail.com', '454 Elm Lane', 'Fitnesstown', 'Stateville', '44333', 'USA'),
-('lily_thompson', 'artist', 'Lily', 'Thompson', 'lily.thompson@yahoo.com', '676 Oaktree Avenue', 'Artistryville', 'Stateville', '66555', 'USA'),
-('brent_cook', 'foodie', 'Brent', 'Cook', 'brent.cook@hotmail.com', '898 Cedar Street', 'Gourmetville', 'Stateville', '88777', 'USA'),
-('haley_martin', 'traveler', 'Haley', 'Martin', 'haley.martin@gmail.com', '121 Pine Avenue', 'Wanderlustville', 'Stateville', '00999', 'USA'),
-('derek_richards', 'techwhiz', 'Derek', 'Richards', 'derek.richards@yahoo.com', '232 Birch Lane', 'Techietown', 'Stateville', '22111', 'USA'),
-('emma_cole', 'gamer', 'Emma', 'Cole', 'emma.cole@hotmail.com', '454 Cedar Street', 'Gamertown', 'Stateville', '44333', 'USA'),
-('ryan_murray', 'movielover', 'Ryan', 'Murray', 'ryan.murray@gmail.com', '676 Oak Lane', 'Cinemaville', 'Stateville', '66555', 'USA'),
-('sophia_riley', 'animallover', 'Sophia', 'Riley', 'sophia.riley@yahoo.com', '898 Pine Avenue', 'Petcity', 'Stateville', '88777', 'USA');
+('john_doe', 'pass123', 'John', 'Doe', 'john.doe@gmail.com'),
+('jane_smith', 'ilovecoding', 'Jane', 'Smith', 'jane.smith@yahoo.com'),
+('michael_jones', 'musiclover', 'Michael', 'Jones', 'michael.jones@hotmail.com'),
+('emily_brown', 'bookworm', 'Emily', 'Brown', 'emily.brown@gmail.com'),
+('ryan_taylor', 'sportsfanatic', 'Ryan', 'Taylor', 'ryan.taylor@yahoo.com'),
+('samantha_martin', 'adventuretime', 'Samantha', 'Martin', 'samantha.martin@gmail.com'),
+('david_wilson', 'gamingmaster', 'David', 'Wilson', 'david.wilson@hotmail.com'),
+('amy_hall', 'artisticmind', 'Amy', 'Hall', 'amy.hall@yahoo.com'),
+('brian_miller', 'techie', 'Brian', 'Miller', 'brian.miller@gmail.com'),
+('laura_jackson', 'naturelover', 'Laura', 'Jackson', 'laura.jackson@hotmail.com'),
+('kevin_white', 'fitnessfreak', 'Kevin', 'White', 'kevin.white@yahoo.com'),
+('jessica_adams', 'musiclover', 'Jessica', 'Adams', 'jessica.adams@gmail.com'),
+('andrew_morris', 'bookworm', 'Andrew', 'Morris', 'andrew.morris@yahoo.com'),
+('olivia_clark', 'artsy', 'Olivia', 'Clark', 'olivia.clark@gmail.com'),
+('nathan_wright', 'sciencegeek', 'Nathan', 'Wright', 'nathan.wright@hotmail.com'),
+('amanda_cook', 'foodie', 'Amanda', 'Cook', 'amanda.cook@yahoo.com'),
+('justin_miller', 'movielover', 'Justin', 'Miller', 'justin.miller@gmail.com'),
+('katie_adams', 'animallover', 'Katie', 'Adams', 'katie.adams@yahoo.com'),
+('bryan_roberts', 'gamer', 'Bryan', 'Roberts', 'bryan.roberts@hotmail.com'),
+('megan_carter', 'traveler', 'Megan', 'Carter', 'megan.carter@gmail.com'),
+('eric_nelson', 'musican', 'Eric', 'Nelson', 'eric.nelson@yahoo.com'),
+('sarah_hall', 'naturelover', 'Sarah', 'Hall', 'sarah.hall@hotmail.com'),
+('jason_turner', 'fitnessfreak', 'Jason', 'Turner', 'jason.turner@gmail.com'),
+('lily_thompson', 'artist', 'Lily', 'Thompson', 'lily.thompson@yahoo.com'),
+('brent_cook', 'foodie', 'Brent', 'Cook', 'brent.cook@hotmail.com'),
+('haley_martin', 'traveler', 'Haley', 'Martin', 'haley.martin@gmail.com'),
+('derek_richards', 'techwhiz', 'Derek', 'Richards', 'derek.richards@yahoo.com'),
+('emma_cole', 'gamer', 'Emma', 'Cole', 'emma.cole@hotmail.com'),
+('ryan_murray', 'movielover', 'Ryan', 'Murray', 'ryan.murray@gmail.com'),
+('sophia_riley', 'animallover', 'Sophia', 'Riley', 'sophia.riley@yahoo.com');
 
 -- Creating 8 channels with specified creators
 INSERT INTO Channel(channelID, channelName, creatorUsername)
