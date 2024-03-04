@@ -1,0 +1,125 @@
+*{
+    box-sizing: border-box;
+}
+body, html {
+    font-family: Arial, sans-serif;
+}
+body{
+    height: 100vh;
+}
+
+header {
+    background-color: #7289da;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+header div{
+    margin: 0 1em;
+}
+#header-logo{
+    width: 50px;
+    height: 50px;
+}
+main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: calc(100vh - 62.4px);
+}
+.column {
+    height: 100%;
+}
+.column.channel-column {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    background-color: #f2f3f5;
+    padding: 10px;
+}
+.column.message-board {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 10px;
+}
+.column.members-column {
+    width: 150px;
+    background-color: #f2f3f5;
+    padding: 10px;
+}
+
+.search-bar{
+    flex: 1;
+}
+
+.create-channel-button, .invite-button, .channel-button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.create-channel-container{
+    border-bottom: 1px solid black;
+}
+.select-channel-container{
+    flex: 1;
+    overflow-y: auto;
+    margin: 1em 0;
+}
+.channel-button{
+    width: 90%;
+    margin-right: 2px;
+}
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+/*To style the scroll bars and make them thinner than normal*/
+::-webkit-scrollbar {
+    width: 5px; /* Width of the scrollbar */
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5); /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Roundness of the scrollbar thumb */
+
+}
+
+.profile-container img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: black;
+}
+.profile-container > *{
+    margin: 0.125em;
+}
+
+.member-list {
+    list-style: none;
+    padding: 0;
+}
+
+.member-list li {
+    margin-bottom: 5px;
+}
+
+#message-search-bar{
+    width: 100%;
+}
+.message {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.message-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+}
