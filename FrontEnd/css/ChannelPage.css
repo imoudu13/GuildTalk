@@ -78,11 +78,11 @@ main{
 }
 /*To style the scroll bars and make them thinner than normal*/
 ::-webkit-scrollbar {
-    width: 5px; /* Width of the scrollbar */
+    width: 5px;
 }
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.5); /* Color of the scrollbar thumb */
-    border-radius: 10px; /* Roundness of the scrollbar thumb */
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
 
 }
 
@@ -108,12 +108,23 @@ main{
 #message-search-bar{
     width: 100%;
 }
+
+.message-board{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.message-container{
+    flex: 1;
+    overflow-y: auto;
+}
 .message {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
+    margin-right: 10px;
 }
 
 .message-input {

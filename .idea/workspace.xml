@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5df0f1ee-6183-4c2f-9ca8-c98312dda369" name="Changes" comment="Went over the feedback from the code review.">
-      <change afterPath="$PROJECT_DIR$/FrontEnd/ChannelPage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontEnd/css/ChannelPage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontEnd/css/Reset.css" afterDir="false" />
+    <list default="true" id="5df0f1ee-6183-4c2f-9ca8-c98312dda369" name="Changes" comment="Added a reset.css file. Make sure to link this to all html pages before linking other style sheets">
+      <change afterPath="$PROJECT_DIR$/FrontEnd/js/ChannelPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_26_2024_2_58_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_26_2024_2_58_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/ChannelPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/ChannelPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/css/ChannelPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/css/ChannelPage.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +23,7 @@
         <option value="CSS File" />
         <option value="Python Script" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -183,7 +186,23 @@
       <option name="project" value="LOCAL" />
       <updated>1709339903325</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Working on main channel page. Almost finished just need to add final styling and some minor positioning tweaks">
+      <option name="closed" value="true" />
+      <created>1709520665369</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1709520665369</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added a reset.css file. Make sure to link this to all html pages before linking other style sheets">
+      <option name="closed" value="true" />
+      <created>1709520697463</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1709520697463</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,6 +232,8 @@
     <MESSAGE value="My branch is up to date" />
     <MESSAGE value="Updating main" />
     <MESSAGE value="Created a folder called FrontEnd. Make sure you put any html, css, and JS files in there" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created a folder called FrontEnd. Make sure you put any html, css, and JS files in there" />
+    <MESSAGE value="Working on main channel page. Almost finished just need to add final styling and some minor positioning tweaks" />
+    <MESSAGE value="Added a reset.css file. Make sure to link this to all html pages before linking other style sheets" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a reset.css file. Make sure to link this to all html pages before linking other style sheets" />
   </component>
 </project>
