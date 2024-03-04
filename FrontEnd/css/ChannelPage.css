@@ -50,6 +50,9 @@ main{
     padding: 10px;
     overflow-y: auto;
 }
+.members-column p{
+    margin-bottom: 0.25em;
+}
 .member{
     margin-bottom: 0.25em;
     width: 100%;
@@ -57,7 +60,6 @@ main{
 .search-bar{
     flex: 1;
 }
-
 .create-channel-button, .invite-button, .channel-button {
     display: block;
     width: 100%;
@@ -129,5 +131,7 @@ main{
     resize: none;
     margin-top: .5em;
 }
-
+.small-text{
+    font-size: small;
+}
 
