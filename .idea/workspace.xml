@@ -15,8 +15,18 @@
       <list>
         <option value="Flask Main" />
         <option value="HTML File" />
-
       </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
     </option>
   </component>
   <component name="Git.Settings">
@@ -41,16 +51,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\imoud\Documents\School\COSC_310\GuildTalk" />
+      <recent name="C:\Users\imoud\Documents\School\COSC_310\GuildTalk\Tests" />
+      <recent name="C:\Users\imoud\Documents\School\COSC_310\GuildTalk\Utility\Tests" />
+      <recent name="C:\Users\imoud\Documents\School\COSC_310\GuildTalk\Utility" />
       <recent name="C:\Users\imoud\Documents\School\COSC_310\GuildTalk\FrontEnd\images" />
-      <recent name="C:\Users\imoud\Documents\School\COSC_310\GuildTalk\DesignImages" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python tests.Python tests for UtilityTest.TestUserFunctions">
     <configuration name="GuildTalk" type="Python.FlaskServer">
       <module name="GuildTalk" />
       <option name="target" value="$PROJECT_DIR$/app.py" />
@@ -66,6 +78,120 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for Tests.Utility" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="GuildTalk" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Database script/DatabaseTest" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;Tests.Utility&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for Tests.Utility" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="GuildTalk" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Database script/DatabaseTest" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;Tests.Utility&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for Tests.Utility" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="GuildTalk" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Database script/DatabaseTest" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;Tests.Utility&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for Tests.UtilityTest.TestUserFunctions" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="GuildTalk" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Python Scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;Tests.UtilityTest.TestUserFunctions&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for UtilityTest.TestUserFunctions" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="GuildTalk" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Python Scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;UtilityTest.TestUserFunctions&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for Utility.Tests.User_Channel_Test.TestUserFunctions" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="GuildTalk" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Database script/DatabaseTest" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;Utility.Tests.User_Channel_Test.TestUserFunctions&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for Utility.Tests.User_Channel_Test.TestUserFunctions.test_insert_into_User_successful" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="GuildTalk" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Database script/DatabaseTest" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;Utility.Tests.User_Channel_Test.TestUserFunctions.test_insert_into_User_successful&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Python tests for UtilityTest.TestUserFunctions" />
+        <item itemvalue="Python tests.Python tests for Tests.UtilityTest.TestUserFunctions" />
+        <item itemvalue="Python tests.Python tests for Tests.Utility" />
+        <item itemvalue="Python tests.Python tests for Tests.Utility" />
+        <item itemvalue="Python tests.Python tests for Tests.Utility" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -82,6 +208,8 @@
       <workItem from="1708567163210" duration="3640000" />
       <workItem from="1708642102157" duration="517000" />
       <workItem from="1708741760044" duration="2125000" />
+      <workItem from="1709531633566" duration="722000" />
+      <workItem from="1709571650562" duration="446000" />
     </task>
     <task id="LOCAL-00001" summary="Flask has been installed in the app.">
       <option name="closed" value="true" />
@@ -163,47 +291,6 @@
       <option name="project" value="LOCAL" />
       <updated>1709339903325</updated>
     </task>
-    <task id="LOCAL-00011" summary="Working on main channel page. Almost finished just need to add final styling and some minor positioning tweaks">
-      <option name="closed" value="true" />
-      <created>1709520665369</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1709520665369</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Added a reset.css file. Make sure to link this to all html pages before linking other style sheets">
-      <option name="closed" value="true" />
-      <created>1709520697463</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1709520697463</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Reversed scroll direction on message board on main channel page. Now when page loads it scrolls similar to how a message app should, newest messages are seen first">
-      <option name="closed" value="true" />
-      <created>1709521439584</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1709521439584</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Added changes to member collumn. Basic styling and made it scrollable">
-      <option name="closed" value="true" />
-      <created>1709522244356</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1709522244356</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Basic styling changes with colors and some small fixes of padding and margins">
-      <option name="closed" value="true" />
-      <created>1709526440939</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1709526440939</updated>
-    </task>
-    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,11 +320,6 @@
     <MESSAGE value="My branch is up to date" />
     <MESSAGE value="Updating main" />
     <MESSAGE value="Created a folder called FrontEnd. Make sure you put any html, css, and JS files in there" />
-    <MESSAGE value="Working on main channel page. Almost finished just need to add final styling and some minor positioning tweaks" />
-    <MESSAGE value="Added a reset.css file. Make sure to link this to all html pages before linking other style sheets" />
-    <MESSAGE value="Reversed scroll direction on message board on main channel page. Now when page loads it scrolls similar to how a message app should, newest messages are seen first" />
-    <MESSAGE value="Added changes to member collumn. Basic styling and made it scrollable" />
-    <MESSAGE value="Basic styling changes with colors and some small fixes of padding and margins" />
-    <option name="LAST_COMMIT_MESSAGE" value="Basic styling changes with colors and some small fixes of padding and margins" />
+
   </component>
 </project>
