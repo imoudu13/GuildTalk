@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5df0f1ee-6183-4c2f-9ca8-c98312dda369" name="Changes" comment="Added a reset.css file. Make sure to link this to all html pages before linking other style sheets">
-      <change afterPath="$PROJECT_DIR$/FrontEnd/js/ChannelPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_26_2024_2_58_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_26_2024_2_58_PM__Changes_.xml" afterDir="false" />
+    <list default="true" id="5df0f1ee-6183-4c2f-9ca8-c98312dda369" name="Changes" comment="Reversed scroll direction on message board on main channel page. Now when page loads it scrolls similar to how a message app should, newest messages are seen first">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/ChannelPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/ChannelPage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/css/ChannelPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/css/ChannelPage.css" afterDir="false" />
@@ -202,7 +200,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709520697463</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Reversed scroll direction on message board on main channel page. Now when page loads it scrolls similar to how a message app should, newest messages are seen first">
+      <option name="closed" value="true" />
+      <created>1709521439584</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1709521439584</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,6 +240,7 @@
     <MESSAGE value="Created a folder called FrontEnd. Make sure you put any html, css, and JS files in there" />
     <MESSAGE value="Working on main channel page. Almost finished just need to add final styling and some minor positioning tweaks" />
     <MESSAGE value="Added a reset.css file. Make sure to link this to all html pages before linking other style sheets" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a reset.css file. Make sure to link this to all html pages before linking other style sheets" />
+    <MESSAGE value="Reversed scroll direction on message board on main channel page. Now when page loads it scrolls similar to how a message app should, newest messages are seen first" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reversed scroll direction on message board on main channel page. Now when page loads it scrolls similar to how a message app should, newest messages are seen first" />
   </component>
 </project>

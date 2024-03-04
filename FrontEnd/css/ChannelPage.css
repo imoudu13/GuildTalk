@@ -45,11 +45,15 @@ main{
     padding: 10px;
 }
 .column.members-column {
-    width: 150px;
+    width: 250px;
     background-color: #f2f3f5;
     padding: 10px;
+    overflow-y: auto;
 }
-
+.member{
+    margin-bottom: 0.25em;
+    width: 100%;
+}
 .search-bar{
     flex: 1;
 }
@@ -74,7 +78,6 @@ main{
 .profile-container {
     display: flex;
     align-items: center;
-    justify-content: space-around;
 }
 /*To style the scroll bars and make them thinner than normal*/
 ::-webkit-scrollbar {
@@ -94,15 +97,6 @@ main{
 }
 .profile-container > *{
     margin: 0.125em;
-}
-
-.member-list {
-    list-style: none;
-    padding: 0;
-}
-
-.member-list li {
-    margin-bottom: 5px;
 }
 
 #message-search-bar{
@@ -133,4 +127,7 @@ main{
     border: 1px solid #ddd;
     border-radius: 5px;
     resize: none;
+    margin-top: .5em;
 }
+
+
