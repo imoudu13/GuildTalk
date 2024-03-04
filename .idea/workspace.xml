@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5df0f1ee-6183-4c2f-9ca8-c98312dda369" name="Changes" comment="Created a folder called FrontEnd. Make sure you put any html, css, and JS files in there">
+    <list default="true" id="5df0f1ee-6183-4c2f-9ca8-c98312dda369" name="Changes" comment="Went over the feedback from the code review.">
+      <change afterPath="$PROJECT_DIR$/Scripts/UserProfile.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/ProfilePage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/GuildTalk.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GuildTalk.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/ProfilePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/ProfilePage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GuildTalkDB" beforeDir="false" afterPath="$PROJECT_DIR$/GuildTalkDB" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,15 +22,16 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Flask Main" />
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Mo" />
+        <entry key="$PROJECT_DIR$" value="create-profile-page" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,23 +50,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "create-profile-page",
-    "last_opened_file_path": "C:/Users/imoud/Documents/School/COSC_310/GuildTalk",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/imoud/Documents/School/COSC_310/GuildTalk&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\imoud\Documents\School\COSC_310\GuildTalk\FrontEnd\images" />
@@ -98,6 +105,7 @@
       <workItem from="1708567163210" duration="3640000" />
       <workItem from="1708642102157" duration="517000" />
       <workItem from="1708741760044" duration="2125000" />
+      <workItem from="1709516218762" duration="2935000" />
     </task>
     <task id="LOCAL-00001" summary="Flask has been installed in the app.">
       <option name="closed" value="true" />
