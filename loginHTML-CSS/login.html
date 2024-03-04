@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="utf-8" />
+    <title>GuildTalk - Login</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link rel="stylesheet" href="login.css" />
+  </head>
+
+  <body>
+    <header id="masthead">
+      <img src="GuildTalkLogoClearBackground.png" alt="GuildTalk logo" />
+    </header>
+    <div id="login-container">
+      <form
+        method="post"
+        action="http://www.randyconnolly.com/tests/process.php"
+      >
+        <h2>Welcome Back!</h2>
+        <h3>Sign in to your account</h3>
+        <p>
+          <input type="text" name="username" placeholder="Username" />
+        </p>
+        <input type="password" name="password" placeholder="Password" />
+        <p>
+          <input type="submit" value="Login" />
+        </p>
+        <div id="forget-button">
+          <a href="reset.html">I forgot my password. Click here to reset</a>
+        </div>
+        <div id="register-button">
+          <a href="register.html">Register New Account</a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
