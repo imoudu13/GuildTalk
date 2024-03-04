@@ -19,7 +19,7 @@
         <label for="message-search-bar"></label><input type="text" id = "message-search-bar" placeholder="Search messages">
     </div>
     <!-- Button for help, will redirect to something?? -->
-    <button class="help-button" onclick="redirectToPage()">help button</button>
+    <button class="help-button" onclick="redirectToPage('https://stackoverflow.com/')">help button</button>
 </header>
 <main>
     <!-- First Column For Channel Selection -->
@@ -54,9 +54,11 @@
         </div>
 
         <div class="profile-container">
-            <img src="images/GuildTalkLogoNoTextClear.png" alt="Profile Picture">
-            <div class="username">Username</div>
-            <button class="settings-button">S</button>
+            <div class = profile-username-wrapper onclick="redirectToPage('ProfilePage.html')">
+                <img src="images/GuildTalkLogoNoTextClear.png" alt="Profile Picture">
+                <div class="username">Username</div>
+            </div>
+            <button class="settings-button"></button>
         </div>
     </div>
     <!-- Second Column For Messages-->

@@ -89,6 +89,16 @@ main{
     display: flex;
     align-items: center;
 }
+.profile-username-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 20px;
+    padding: 5px;
+}
+.profile-username-wrapper:hover{
+    background-color: #979C9F;
+}
 /*To style the scroll bars and make them thinner than normal*/
 ::-webkit-scrollbar {
     width: 5px;
@@ -145,5 +155,9 @@ main{
 }
 .settings-button, .help-button{
     background-color: var(--darkMaroon);
+}
+.settings-button{
+    background-color: white;
+    padding: 5px;
 }
 
