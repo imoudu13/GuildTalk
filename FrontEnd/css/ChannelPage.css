@@ -1,5 +1,11 @@
 *{
     box-sizing: border-box;
+    color: white;
+}
+:root{
+    --darkMaroon: #370617;
+    --darkPurple: #1d0515;
+    --darkGrey:#979C9F;
 }
 body, html {
     font-family: Arial, sans-serif;
@@ -9,8 +15,7 @@ body{
 }
 
 header {
-    background-color: #7289da;
-    color: white;
+    background-color: var(--darkMaroon);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,26 +41,27 @@ main{
     display: flex;
     flex-direction: column;
     width: 150px;
-    background-color: #f2f3f5;
+    background-color: var(--darkPurple);
     padding: 10px;
 }
 .column.message-board {
     flex: 1;
-    background-color: #ffffff;
+    background-color: var(--darkGrey);
     padding: 10px;
 }
 .column.members-column {
     width: 250px;
-    background-color: #f2f3f5;
     padding: 10px;
     overflow-y: auto;
+    background-color: var(--darkPurple);
 }
 .members-column p{
-    margin-bottom: 0.25em;
+    margin-bottom: 0.5em;
 }
 .member{
     margin-bottom: 0.25em;
     width: 100%;
+    background-color: var(--darkMaroon);
 }
 .search-bar{
     flex: 1;
@@ -64,14 +70,16 @@ main{
     display: block;
     width: 100%;
     margin-bottom: 10px;
+    background-color: var(--darkMaroon);
 }
 .create-channel-container{
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
 }
 .select-channel-container{
     flex: 1;
     overflow-y: auto;
     margin: 1em 0;
+
 }
 .channel-button{
     width: 90%;
@@ -84,9 +92,10 @@ main{
 /*To style the scroll bars and make them thinner than normal*/
 ::-webkit-scrollbar {
     width: 5px;
+    background-color: black;
 }
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: white;
     border-radius: 10px;
 
 }
@@ -115,7 +124,7 @@ main{
     overflow-y: auto;
 }
 .message {
-    background-color: #f9f9f9;
+    background-color: var(--darkMaroon);
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 10px;
@@ -133,5 +142,8 @@ main{
 }
 .small-text{
     font-size: small;
+}
+.settings-button, .help-button{
+    background-color: var(--darkMaroon);
 }
 
