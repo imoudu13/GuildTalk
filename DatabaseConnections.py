@@ -1,7 +1,7 @@
 import sqlite3
 
 
-def insert_into_User(data):
+def insertIntoUser(data):
     try:
         # Attempt to connect to the SQLite database
         connection = sqlite3.connect('GuildTalkDB')
@@ -21,7 +21,7 @@ def insert_into_User(data):
         return False  # returns false meaning there's some problem
 
 
-def retrieve_from_user(username):
+def retrieveFromUser(username):
     try:
         # Attempt to connect to the SQLite database
         connection = sqlite3.connect('GuildTalkDB')
