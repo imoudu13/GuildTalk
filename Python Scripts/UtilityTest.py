@@ -1,6 +1,5 @@
 import unittest
 from Utility import insert_into_User, retrieve_from_user
-import sqlite3
 
 
 class TestUserFunctions(unittest.TestCase):
