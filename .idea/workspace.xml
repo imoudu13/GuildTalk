@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5df0f1ee-6183-4c2f-9ca8-c98312dda369" name="Changes" comment="Created a folder called FrontEnd. Make sure you put any html, css, and JS files in there">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,7 +15,7 @@
       <list>
         <option value="Flask Main" />
         <option value="HTML File" />
-        <option value="CSS File" />
+
       </list>
     </option>
   </component>
@@ -43,21 +41,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "create-profile-page",
-    "last_opened_file_path": "C:/Users/imoud/Documents/School/COSC_310/GuildTalk",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+
   }
 }]]></component>
   <component name="RecentsManager">
@@ -179,7 +163,47 @@
       <option name="project" value="LOCAL" />
       <updated>1709339903325</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Working on main channel page. Almost finished just need to add final styling and some minor positioning tweaks">
+      <option name="closed" value="true" />
+      <created>1709520665369</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1709520665369</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added a reset.css file. Make sure to link this to all html pages before linking other style sheets">
+      <option name="closed" value="true" />
+      <created>1709520697463</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1709520697463</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Reversed scroll direction on message board on main channel page. Now when page loads it scrolls similar to how a message app should, newest messages are seen first">
+      <option name="closed" value="true" />
+      <created>1709521439584</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1709521439584</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added changes to member collumn. Basic styling and made it scrollable">
+      <option name="closed" value="true" />
+      <created>1709522244356</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1709522244356</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Basic styling changes with colors and some small fixes of padding and margins">
+      <option name="closed" value="true" />
+      <created>1709526440939</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1709526440939</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,6 +233,11 @@
     <MESSAGE value="My branch is up to date" />
     <MESSAGE value="Updating main" />
     <MESSAGE value="Created a folder called FrontEnd. Make sure you put any html, css, and JS files in there" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created a folder called FrontEnd. Make sure you put any html, css, and JS files in there" />
+    <MESSAGE value="Working on main channel page. Almost finished just need to add final styling and some minor positioning tweaks" />
+    <MESSAGE value="Added a reset.css file. Make sure to link this to all html pages before linking other style sheets" />
+    <MESSAGE value="Reversed scroll direction on message board on main channel page. Now when page loads it scrolls similar to how a message app should, newest messages are seen first" />
+    <MESSAGE value="Added changes to member collumn. Basic styling and made it scrollable" />
+    <MESSAGE value="Basic styling changes with colors and some small fixes of padding and margins" />
+    <option name="LAST_COMMIT_MESSAGE" value="Basic styling changes with colors and some small fixes of padding and margins" />
   </component>
 </project>
