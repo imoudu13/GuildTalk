@@ -1,5 +1,5 @@
 import unittest
-from Utility import insert_into_User, retrieve_from_user
+from DatabaseConnections import insert_into_User, retrieve_from_user
 
 
 class TestUserFunctions(unittest.TestCase):
