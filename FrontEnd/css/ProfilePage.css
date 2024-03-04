@@ -1,7 +1,11 @@
+:root{
+    --darkMaroon: #370617;
+    --darkPurple: #1d0515;
+}
 body{
     margin: 0;
     padding: 0;
-    background-color: #370617;
+    background-color: var(--darkMaroon);
 }
 main{
     margin-top: 2em;
@@ -53,8 +57,7 @@ main{
     border-radius: 6em;
 }
 #information{
-    border-top: solid;
-    border-color: #370617;
+    border-top: solid var(--darkMaroon);
     border-radius: 0 0 2em 2em;
     margin-left: auto;
     margin-right: auto;
@@ -68,7 +71,7 @@ main{
     background-color: #ffff;
     margin: 0 5em;
     height: 5em;
-    border-bottom-color: #1d0515;
+    border-bottom-color: var(--darkPurple);
     border-bottom: solid;
 }
 #information #name p{
@@ -82,16 +85,16 @@ main{
     float: right;
     height: 3em;
     width: 8em;
-    background-color: #370617;
+    background-color: var(--darkMaroon);
     border: 0;
     border-radius: 3em 3em 3em 3em;
     color: white;
 }
 /* This is for the purple pad in the middle containing the users email, username etc.*/
 #more_info{
-    border-top-color: #1d0515;
+    border-top-color: var(--darkPurple);
     position: absolute;
-    background-color: #370617;
+    background-color: var(--darkMaroon);
     height: 25em;
     width: 50em;
     margin: 2em 10em 0 10em;
@@ -106,7 +109,7 @@ main{
     margin-bottom: 3em;
 }
 .user_information{
-    background-color: #1d0515;
+    background-color: var(--darkPurple);
     height: 3em;
     padding: .25em 1em;
     margin-bottom: 2em;
