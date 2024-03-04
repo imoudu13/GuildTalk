@@ -3,4 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const messageContainer = document.querySelector('.message-container');
     messageContainer.scrollTop = messageContainer.scrollHeight;
     //
+
 });
+
+//function to redirect buttons to pages based on url
+function redirectToPage(url) {
+    window.location.href = url;
+}
