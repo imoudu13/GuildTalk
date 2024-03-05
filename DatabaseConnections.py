@@ -97,18 +97,25 @@ def retrieveMessage(username):
         select_query = f"SELECT messageID, senderUsername, channelID, content, timeSent FROM Message WHERE senderUsername = '{username}';"
         cursor.execute(select_query)
 
-        result = cursor.fetchone()
+        result = cursor.fetchall()
 
-        if result is None:
+        if not result:
             return None
 
-        messageID, senderUsername, channelID, content, timeSent = map(str, result)
+        result_list = []
 
-        return {"channel_id": int(channelID),
-                "message_id": int(messageID),
-                "sender": senderUsername,
-                "content": content,
-                'time': timeSent}
+        for row in result:
+            messageID, senderUsername, channelID, content, timeSent = map(str, row)
+
+            record = {"channel_id": int(channelID),
+                      "message_id": int(messageID),
+                      "sender": senderUsername,
+                      "content": content,
+                      'time': timeSent}
+
+            result_list.append(record)
+
+        return result_list
 
     except sqlite3.Error as e:
         print(e)
@@ -129,6 +136,25 @@ def insertIntoMessage(information):
 
         return True
 
+    except sqlite3.Error as e:
+        print(e)
+        return False
+
+
+def insertIntoUserChannel(information):
+    try:
+        connection = sqlite3.connect('GuildTalkDB')
+
+        cursor = connection.cursor()
+
+        # Insert data into the User table
+        select_query = "INSERT INTO UserChannel (username, ChannelID, IsAdmin) VALUES (?, ?, ?);"
+        cursor.execute(select_query, information)
+
+        # If no exception occurred, commit the changes (if any)
+        connection.commit()
+
+        return True
     except sqlite3.Error as e:
         print(e)
         return False

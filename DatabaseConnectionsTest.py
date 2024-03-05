@@ -53,7 +53,7 @@ class TestUserFunctions(unittest.TestCase):
         result = DatabaseConnections.retrieveMessage(username)
         expected_result = {"channel_id": 1, "message_id": 1, "sender": "john_doe", "content": "Hey, how is everyone doing?",
                            'time': '2024-03-03 09:15:00'}
-        self.assertEqual(result, expected_result)
+        self.assertEqual(result[0], expected_result)
 
     def test_retrieve_message_nonexistent_channel(self):
         channel_id = 9999  # Assuming an invalid channel ID
@@ -70,3 +70,8 @@ class TestUserFunctions(unittest.TestCase):
         data = ('test_user', 1, 'receiver_user', 'Hello!')  # Missing timeSent
         result = DatabaseConnections.insertIntoMessage(data)
         self.assertFalse(result)
+
+    def insert_into_User_Channel(self):
+        data = ('john_doe', 3, 'FALSE')
+        result = DatabaseConnections.insertIntoUserChannel(data)
+        self.assertTrue(result)
