@@ -15,7 +15,7 @@ CREATE TABLE User (
 
 --Channel Table
 CREATE TABLE Channel(
-    channelID INT UNIQUE,
+    channelID INTEGER PRIMARY KEY,
     channelName VARCHAR(50),
     creatorUsername VARCHAR(50),
     Foreign Key (creatorUsername) references User(username)
@@ -25,16 +25,16 @@ CREATE TABLE Channel(
 -- This is used for tracking which users are in which channels
 CREATE TABLE UserChannel (
     username VARCHAR(30) REFERENCES User(username),
-    ChannelID INT REFERENCES Channel(channelID),
+    ChannelID INTEGER REFERENCES Channel(channelID),
     IsAdmin BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (username, ChannelID)
 );
 
 -- Message Table
 CREATE TABLE Message (
-    messageID INT UNIQUE,
+    messageID INTEGER PRIMARY KEY,
     senderUsername VARCHAR(30) REFERENCES User(username),
-    channelID INT REFERENCES Channel(channelID),
+    channelID INTEGER REFERENCES Channel(channelID),
     receiverUsername VARCHAR(30) REFERENCES User(username),
     content TEXT,
     timeSent TIMESTAMP  -- the time this message was sent
