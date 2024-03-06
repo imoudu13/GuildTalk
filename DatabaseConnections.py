@@ -87,14 +87,14 @@ def insertIntoChannel(information):
         return False
 
 
-def retrieveMessage(username):
+def retrieveMessage(channelId):
     try:
         connection = sqlite3.connect('GuildTalkDB')
 
         cursor = connection.cursor()
 
         # Insert data into the User table
-        select_query = f"SELECT messageID, senderUsername, channelID, content, timeSent FROM Message WHERE senderUsername = '{username}';"
+        select_query = f"SELECT messageID, senderUsername, content, timeSent FROM Message WHERE channelID = {channelId};"
         cursor.execute(select_query)
 
         result = cursor.fetchall()
@@ -105,13 +105,45 @@ def retrieveMessage(username):
         result_list = []
 
         for row in result:
-            messageID, senderUsername, channelID, content, timeSent = map(str, row)
+            messageID, senderUsername, content, timeSent = map(str, row)
 
-            record = {"channel_id": int(channelID),
+            record = {"channel_id": channelId,
                       "message_id": int(messageID),
                       "sender": senderUsername,
                       "content": content,
                       'time': timeSent}
+
+            result_list.append(record)
+
+        return result_list
+
+    except sqlite3.Error as e:
+        print(e)
+
+
+def retrieveMessagesBetweenUsers(sender, receiver):
+    try:
+        connection = sqlite3.connect('GuildTalkDB')
+
+        cursor = connection.cursor()
+
+        # Insert data into the User table
+        select_query = f"SELECT messageID, content, timeSent FROM Message WHERE senderUsername = '{sender}' AND receiverUsername = '{receiver}';"
+        cursor.execute(select_query)
+
+        result = cursor.fetchall()
+
+        if not result:
+            return None
+
+        result_list = []
+
+        for row in result:
+            messageID, senderUsername, content, timeSent = map(str, row)
+
+            record = {"message_id": int(messageID),
+                      "content": content,
+                      "time": timeSent}
 
             result_list.append(record)
 
