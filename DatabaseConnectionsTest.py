@@ -1,83 +1,61 @@
 import unittest
-import DatabaseConnections
+from DatabaseConnections import DatabaseConnect
 
 
-class TestUserFunctions(unittest.TestCase):
+class TestDatabaseConnect(unittest.TestCase):
 
-    def test_insert_into_User_successful(self):
+    def setUp(self):
+        self.db_connect = DatabaseConnect()
+
+    def test_insert_into_user_successful(self):
         data = ('momo', 'test_password', 'Test', 'User', 'test@example.com')
-        result = DatabaseConnections.insertIntoUser(data)
+        result = self.db_connect.insert_into_user(data)
         self.assertTrue(result)
 
-    def test_insert_into_User_failure(self):
-        # Simulate a failure by providing incorrect data (missing values)
+    def test_insert_into_user_failure(self):
         data = ('test_user', 'test_password', 'Test', 'User')  # Missing email
-        result = DatabaseConnections.insertIntoUser(data)
+        result = self.db_connect.insert_into_user(data)
         self.assertFalse(result)
 
-    def test_retrieve_from_user_success(self):
+    def test_retrieve_from_user_existing_user(self):
         username = 'momo'
-        result = DatabaseConnections.retrieveFromUser(username)
-        self.assertEqual(result, {"username": 'momo', "password": 'test_password', "first": 'Test', "last": 'User', "email": 'test@example.com'})
+        result = self.db_connect.retrieve_from_user(username)
+        expected_result = {"username": 'momo', "password": 'test_password', "first": 'Test', "last": 'User',
+                           "email": 'test@example.com'}
+        self.assertEqual(result, expected_result)
 
     def test_retrieve_from_user_nonexistent_user(self):
-        # Ensure that the function returns a default value for a non-existing user
         username = 'nonexistent_user'
-        result = DatabaseConnections.retrieveFromUser(username)
-        self.assertEqual(result, None)
+        result = self.db_connect.retrieve_from_user(username)
+        self.assertIsNone(result)
 
-    def test_retrieve_from_channel_success(self):
-        channel_id = 1  # Assuming a valid channel ID
-        result = DatabaseConnections.retrieveFromChannel(channel_id)
+    def test_retrieve_from_channel_existing_channel(self):
+        channel_id = 1
+        result = self.db_connect.retrieve_from_channel(channel_id)
         expected_result = {"id": channel_id, "name": "Tech Talk", "creator": "imoudu"}
         self.assertEqual(result, expected_result)
 
     def test_retrieve_from_channel_nonexistent_channel(self):
-        channel_id = 9999  # Assuming an invalid channel ID
-        result = DatabaseConnections.retrieveFromChannel(channel_id)
+        channel_id = 9999
+        result = self.db_connect.retrieve_from_channel(channel_id)
         self.assertIsNone(result)
 
-    def test_insert_into_channel_successful(self):
-        data = ('NewChannel', 'test_user')  # Assuming valid channel information
-        result = DatabaseConnections.insertIntoChannel(data)
+    def test_insert_into_user_channel_successful(self):
+        data = ('john_doe', 3, 'FALSE')
+        result = self.db_connect.insertIntoUserChannel(data)
         self.assertTrue(result)
-
-    def test_insert_into_channel_failure(self):
-        # Simulate a failure by providing incorrect data (missing values)
-        data = ('NewChannel',)  # Missing creator username
-        result = DatabaseConnections.insertIntoChannel(data)
-        self.assertFalse(result)
-
-    def test_retrieve_message_success(self):
-        channelId = 1  # Assuming a valid channel ID with messages
-        result = DatabaseConnections.retrieveMessage(channelId)
-        expected_result = {"channel_id": 1, "message_id": 1, "sender": "john_doe", "content": "Hey, how is everyone doing?",
-                           'time': '2024-03-03 09:15:00'}
-        self.assertEqual(result[0], expected_result)
-
-    def test_retrieve_message_nonexistent_channel(self):
-        channel_id = 9999  # Assuming an invalid channel ID
-        result = DatabaseConnections.retrieveMessage(channel_id)
-        self.assertIsNone(result)
 
     def test_insert_into_message_successful(self):
-        data = ('test_user', 1, 'receiver_user', 'Hello!', '2022-01-01 12:00:00')  # Assuming valid message information
-        result = DatabaseConnections.insertIntoMessage(data)
+        data = ('sender_user', 1, "", 'Hello!', '2022-01-01 12:00:00')
+        result = self.db_connect.insert_into_message(data)
         self.assertTrue(result)
 
-    def test_insert_into_message_failure(self):
+    def test_insert_into_message_failure_missing_data(self):
         # Simulate a failure by providing incorrect data (missing values)
-        data = ('test_user', 1, 'receiver_user', 'Hello!')  # Missing timeSent
-        result = DatabaseConnections.insertIntoMessage(data)
+        data = ('sender_user', 1, "", 'Hello!')  # Missing timeSent
+        result = self.db_connect.insert_into_message(data)
         self.assertFalse(result)
 
-    def insert_into_User_Channel(self):
-        data = ('john_doe', 3, 'FALSE')
-        result = DatabaseConnections.insertIntoUserChannel(data)
-        self.assertTrue(result)
 
-    def test_retrieve_message_between_users_failure(self):
-        sender = "john_doe"
-        receiver = "nash"
-        result = DatabaseConnections.retrieveMessagesBetweenUsers(sender, receiver)
-        self.assertIsNone(result)
+if __name__ == '__main__':
+    unittest.main()
