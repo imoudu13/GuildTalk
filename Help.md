@@ -1,12 +1,93 @@
-# Jinja2 <br>
-Jinja 2 is a template engine that's used for embedding python code into you html document<br>
+# Flask and Jinja2<br>
+Flask is our micro frame work. It will allow us to send/retrieve data from html pages, as well as render those html pages and add routes to the pages. <br>
 
-Install it by entering this in your terminal for your ide:
-```commandline
-pip3 install jinja2
+Jinja 2 is a template engine that's used for embedding python code into your html document<br> <br>
+Jijna 2 should come installed with flask. <br>
+### Rendering pages <br>
+This is how you add a route and render a page in flask: <br>
+```python
+from flask import Flask, render_template  #import the necessary functions
+@app.route('/')  #this is the route to the page
+
+#now create a function that renders the page
+def home():
+  return render_template("Home.hmtl")
 ```
 
+### Sending data from python to html <br>
+Fortunately most of this is done in the app.py file. <br>
+We'll need to pass some data to files for flask to render them. Here's how: <br>
+```python
+def home():
+  nameOfList = "Favorite fruits"
+  fruitList = ["Apple", "Pineapple", "Pear", "Banana", "Watermelon"]
 
+  #send it to whatever page you want to render like so
+  return render_template("RandomPage.html", name = nameOfList, fruits = fruitList)
+```
+### Embedding using Jinja 2 <br>
+That will send the string and the list to the html page, in the html page the names for those variables will be name and fruits <br>
+Go to that page and display the data like so: <br>
+```html
+<!-- This creates an ordered list and displays each item in the list -->
+<h1> {{ name }} </h1> <!-- Use double parentheses for variables, put them in between html tags -->
+<ol>
+  <!-- Put for loops inside parentheses with percentages like so -->
+  {% for fruit in fruits %}
+      <li> {{ fruit }} </li>  
+  {% endfor %}  <!-- end for loops like so -->
+</ol>
+```
+
+All of that is the same thing as this: <br>
+```html
+<h1>Favorite fruits</h1>
+
+    <ol>
+        <li>Apple</li>
+        <li>Pineapple</li>
+        <li>Pear</li>
+        <li>Banana</li>
+        <li>Watermelon</li>
+    </ol>
+```
+
+### Sending data to a python file <br>
+
+This is how you send data to a python file: <br>
+
+```html
+<h1>Registration Form</h1>
+
+    <form method="POST" action="/process_form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <input type="submit" value="Submit">
+    </form>
+```
+```python
+from flask import Flask, render_template, request  #first import the request function
+
+
+# declare the path to the function, and its action methods, POST or GET or both
+@app.route('/process_form', methods=['POST'])
+def process_form():
+    username = request.form['username']  it will return a dictionary so you can get the data using the keys
+    email = request.form['email']
+
+    # Process the data or save it to a database
+    # For now, let's just print the values
+    print(f"Received data: Username - {username}, Email - {email}")
+
+    # Redirect to a success page or render a new template
+    return render_template('success_page.html', username=username, email=email)
+```
+
+In the action attribute of the html page you must the same path that you have in the '@app.route' function. That way the form will send the data directly to that function.<br>
 #  Database Connection <br>
 This class contains some functions for connecting to the sql database and inserting/retrieving data. <br>
 
@@ -161,6 +242,3 @@ isAdmin = 'TRUE'
 # put them in a tuple in this order:
 information = (username, channelID, isAdmin)
 
-#insert like so
-db.insertIntoUserChannel(information)
-```
