@@ -49,8 +49,8 @@ class TestUserFunctions(unittest.TestCase):
         self.assertFalse(result)
 
     def test_retrieve_message_success(self):
-        username = 'john_doe'  # Assuming a valid channel ID with messages
-        result = DatabaseConnections.retrieveMessage(username)
+        channelId = 1  # Assuming a valid channel ID with messages
+        result = DatabaseConnections.retrieveMessage(channelId)
         expected_result = {"channel_id": 1, "message_id": 1, "sender": "john_doe", "content": "Hey, how is everyone doing?",
                            'time': '2024-03-03 09:15:00'}
         self.assertEqual(result[0], expected_result)
@@ -75,3 +75,9 @@ class TestUserFunctions(unittest.TestCase):
         data = ('john_doe', 3, 'FALSE')
         result = DatabaseConnections.insertIntoUserChannel(data)
         self.assertTrue(result)
+
+    def test_retrieve_message_between_users_failure(self):
+        sender = "john_doe"
+        receiver = "nash"
+        result = DatabaseConnections.retrieveMessagesBetweenUsers(sender, receiver)
+        self.assertIsNone(result)

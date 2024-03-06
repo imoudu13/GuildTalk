@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="utf-8" />
+    <title>GuildTalk - Reset</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link rel="stylesheet" href="css/ResetPassword.css" />
+  </head>
+
+  <body>
+    <header id="masthead">
+      <img src="images/GuildTalkLogoClearBackground.png" alt="GuildTalk logo" />
+    </header>
+    <div id="reset-container">
+      <form
+        method="post"
+        acttion="http://www.randyconnolly.com/tests/process.php"
+      >
+        <h2>Forgot your password</h2>
+        <h3>
+          Please enter the email address you'd like your<br />
+          password reset information sent to
+        </h3>
+        <p>
+          <input type="email" name="email" placeholder="Email" />
+        </p>
+        <input type="submit" value="Request reset link" />
+        <div id="login-button">
+          <a href="login.html">Back To Login</a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
