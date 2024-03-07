@@ -1,0 +1,148 @@
+*{
+    box-sizing: border-box;
+    color: white;
+}
+:root{
+    --darkMaroon: #370617;
+    --darkPurple: #1d0515;
+    --darkGrey:#979C9F;
+}
+body, html {
+    font-family: Arial, sans-serif;
+}
+body{
+    height: 100vh;
+}
+
+header {
+    background-color: var(--darkMaroon);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+header div{
+    margin: 0 1em;
+}
+#header-logo{
+    width: 50px;
+    height: 50px;
+}
+main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: calc(100vh - 62.4px);
+}
+.column {
+    height: 100%;
+}
+.column.channel-column {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    background-color: var(--darkPurple);
+    padding: 10px;
+}
+.column.message-board {
+    flex: 1;
+    background-color: var(--darkGrey);
+    padding: 10px;
+}
+.column.members-column {
+    width: 250px;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: var(--darkPurple);
+}
+.members-column p{
+    margin-bottom: 0.5em;
+}
+.member{
+    margin-bottom: 0.25em;
+    width: 100%;
+    background-color: var(--darkMaroon);
+}
+.search-bar{
+    flex: 1;
+}
+.create-channel-button, .invite-button, .channel-button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: var(--darkMaroon);
+}
+.create-channel-container{
+    border-bottom: 1px solid white;
+}
+.select-channel-container{
+    flex: 1;
+    overflow-y: auto;
+    margin: 1em 0;
+
+}
+.channel-button{
+    width: 90%;
+    margin-right: 2px;
+}
+.profile-container {
+    display: flex;
+    align-items: center;
+}
+/*To style the scroll bars and make them thinner than normal*/
+::-webkit-scrollbar {
+    width: 5px;
+    background-color: black;
+}
+::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 10px;
+
+}
+
+.profile-container img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: black;
+}
+.profile-container > *{
+    margin: 0.125em;
+}
+
+#message-search-bar{
+    width: 100%;
+}
+
+.message-board{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.message-container{
+    flex: 1;
+    overflow-y: auto;
+}
+.message {
+    background-color: var(--darkMaroon);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.message-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+    margin-top: .5em;
+}
+.small-text{
+    font-size: small;
+}
+.settings-button, .help-button{
+    background-color: var(--darkMaroon);
+}
