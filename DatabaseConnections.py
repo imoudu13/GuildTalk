@@ -146,7 +146,7 @@ class DatabaseConnect:
                 print(f"Error during insert_into_user: {e}")
 
     def retrieve_from_user_channel(self, username):
-        query = "SELECT channelName, channelID FROM UserChannel JOIN Channel WHERE username = ?;"
+        query = "SELECT channelName, channelID FROM UserChannel JOIN Channel ON UserChannel.ChannelID = Channel.channelID WHERE username = ?;"
         # This function retrieves a tuple matching the username form the User table
         # If the username isn't in the db it returns None
         # Otherwise it puts the information in a dictionary
