@@ -1,4 +1,7 @@
 from flask import Flask, render_template
+from DatabaseConnections import DatabaseConnect
+
+db = DatabaseConnect()
 
 app = Flask(__name__)
 
