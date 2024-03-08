@@ -39,7 +39,7 @@ function createChannel(){
                 console.error("Failed to create channel.");
             }
         };
-        xhr.send(JSON.stringify({name: channelName}));
+        xhr.send(JSON.stringify({channelName: channelName}));
         }
         else{
             alert("Channel name too long");

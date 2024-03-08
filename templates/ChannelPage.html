@@ -29,28 +29,10 @@
             <button class="invite-button">Invite</button>
         </div>
         <div class="select-channel-container">
-            <button class="channel-button">COSC 322</button>
-            <button class="channel-button">BIO 422</button>
-            <button class="channel-button">ECON 111</button>
-            <button class="channel-button">COSC 123</button>
-            <button class="channel-button">COSC 222</button>
-            <button class="channel-button">COSC 221</button>
-            <button class="channel-button">COSC 440</button>
-            <button class="channel-button">COSC 322</button>
-            <button class="channel-button">BIO 422</button>
-            <button class="channel-button">ECON 111</button>
-            <button class="channel-button">COSC 123</button>
-            <button class="channel-button">COSC 222</button>
-            <button class="channel-button">COSC 221</button>
-            <button class="channel-button">COSC 440</button>
-            <button class="channel-button">COSC 322</button>
-            <button class="channel-button">BIO 422</button>
-            <button class="channel-button">ECON 111</button>
-            <button class="channel-button">COSC 123</button>
-            <button class="channel-button">COSC 222</button>
-            <button class="channel-button">COSC 221</button>
-            <button class="channel-button">COSC 440</button>
-
+        {#This container will be filled by the following for loop.         #}
+          {% for channel in channels %}
+                <button class="channel-button">{{ channel.channelName }}</button>
+          {% endfor %}
         </div>
 
         <div class="profile-container">

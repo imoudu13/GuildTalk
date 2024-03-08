@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify, redirect
 from DatabaseConnections import DatabaseConnect
+from PythonScripts.createChannel import get_channels, add_channel
 
 db = DatabaseConnect()
 
@@ -16,17 +17,21 @@ def login(): #This is the default page. Below we will have other pages
 @app.route('/channel', methods=['GET', 'POST'])
 def channel(): #This is the ChannelPage we will send variabls and stuff here to configure
     if request.method == 'POST':
-        # Extract the channel name from the POST request data
+        # Extracting the data from the post request
         data = request.get_json()
-        channel_name = data.get('name')
+        #channel name that we will add to db
+        channel_name = data.get('channelName')
 
-        # Perform any necessary actions, such as creating a new channel in the database
+
         # For simplicity, let's assume we just want to return the channel name as JSON data
         response_data = {'name': channel_name}
 
         # Return a JSON response with the new channel data
         return jsonify(response_data)
-    return render_template("ChannelPage.html")
+    else:
+        #on page load get the list of channels the user is in and send it to the channel page so we can load them
+        channels = get_channels('john_doe')
+    return render_template("ChannelPage.html", channels=channels)
 
 
 @app.route('/profile')
