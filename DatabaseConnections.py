@@ -53,7 +53,7 @@ class DatabaseConnect:
 
     def insert_into_user(self, data):
         query = "INSERT INTO User (username, password, firstname, lastname, email) VALUES (?, ?, ?, ?, ?);"
-        with self.db_handler as db:         # This calls the enter function in the DatabaseHandler class, it's responsible for opening the connection
+        with self.db_handler as db:  # This calls the enter function in the DatabaseHandler class, it's responsible for opening the connection
             try:
                 return db.execute_query(query, data)
             except Exception as e:
@@ -145,10 +145,18 @@ class DatabaseConnect:
             except Exception as e:
                 print(f"Error during insert_into_user: {e}")
 
-    def insertIntoUserChannel(self, information):
+    def insert_into_user_channel(self, information):
         with self.db_handler as db:
             try:
                 query = "INSERT INTO UserChannel (username, ChannelID, IsAdmin) VALUES (?, ?, ?);"
+                return db.execute_query(query, information)
+            except Exception as e:
+                print(f"Error during insert_into_user: {e}")
+
+    def update_user(self, information):
+        with self.db_handler as db:
+            try:
+                query = "UPDATE User SET username = ?, firstname = ?, lastname = ?, email = ?, password = ? WHERE username  = ?"
                 return db.execute_query(query, information)
             except Exception as e:
                 print(f"Error during insert_into_user: {e}")

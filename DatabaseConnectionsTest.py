@@ -42,7 +42,7 @@ class TestDatabaseConnect(unittest.TestCase):
 
     def test_insert_into_user_channel_successful(self):
         data = ('john_doe', 3, 'FALSE')
-        result = self.db_connect.insertIntoUserChannel(data)
+        result = self.db_connect.insert_into_user_channel(data)
         self.assertTrue(result)
 
     def test_insert_into_message_successful(self):
@@ -54,6 +54,17 @@ class TestDatabaseConnect(unittest.TestCase):
         # Simulate a failure by providing incorrect data (missing values)
         data = ('sender_user', 1, "", 'Hello!')  # Missing timeSent
         result = self.db_connect.insert_into_message(data)
+        self.assertFalse(result)
+
+    def test_update_user_success(self):
+        data = information = ('imoudu', 'Imoudu', 'Ibrahim', 'imoudu@gmail.com', 'guildtalk24', 'imoudu')
+        result = self.db_connect.update_user(information)
+        self.assertTrue(result)
+
+    def test_update_user_failure(self):
+        data = information = (
+            'imoudu', 'Imoudu', 'Ibrahim', 'imoudu@gmail.com', 'guildtalk24')  # missing original username
+        result = self.db_connect.update_user(information)
         self.assertFalse(result)
 
 
