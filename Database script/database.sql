@@ -39,10 +39,10 @@ CREATE TABLE Message (
     timeSent TIMESTAMP  -- the time this message was sent
 );
 
-INSERT INTO User(username, password, firstname, lastname) VALUES('imoudu', 'guildtalk24', 'Imoudu', 'Ibrahim');
-INSERT INTO User(username, password, firstname, lastname) VALUES('gavin', 'guildtalk24', 'Gavin', 'Ashworth');
-INSERT INTO User(username, password, firstname, lastname) VALUES('nick', 'guildtalk24', 'Nicholas', 'Haydu');
-INSERT INTO User(username, password, firstname, lastname) VALUES('preston', 'guildtalk24', 'Preston', 'Melvin');
+INSERT INTO User(username, password, firstname, lastname, email) VALUES('imoudu', 'guildtalk24', 'Imoudu', 'Ibrahim', 'imoudu@gmail.com');
+INSERT INTO User(username, password, firstname, lastname, email) VALUES('gavin', 'guildtalk24', 'Gavin', 'Ashworth', 'gavin@gmail.com');
+INSERT INTO User(username, password, firstname, lastname, email) VALUES('nick', 'guildtalk24', 'Nicholas', 'Haydu', 'nick@gmail.com');
+INSERT INTO User(username, password, firstname, lastname, email) VALUES('preston', 'guildtalk24', 'Preston', 'Melvin', 'preston@gmail.com');
 
 -- Inserting 30 users with common names and diverse email providers
 INSERT INTO User(username, password, firstname, lastname, email)
