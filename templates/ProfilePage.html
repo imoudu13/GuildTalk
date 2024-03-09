@@ -19,19 +19,19 @@
     <div id="myModal">
         <form method="POST" action="{{ url_for('update') }}">
             <label>
-                <input type="text" name="username" placeholder="username" value={{ userInformation["username"] }} />
+                <input type="text" name="username" placeholder="username" value="{{ userInformation["username"] }}" />
             </label>
             <label>
-                <input type="text" name="first" placeholder="first name"  value={{ userInformation["first"] }} />
+                <input type="text" name="first" placeholder="first name"  value="{{ userInformation["first"] }}" />
             </label>
             <label>
-                <input type="text" name="last" placeholder="last name" value={{ userInformation["last"] }} />
+                <input type="text" name="last" placeholder="last name" value="{{ userInformation["last"] }}" />
             </label>
             <label>
-                <input type="text" name="email" placeholder="email" value={{ userInformation["email"] }} />
+                <input type="text" name="email" placeholder="email" value="{{ userInformation["email"] }}" />
             </label>
             <label>
-                <input type="text" name="password" placeholder="password" value={{ userInformation["password"] }} />
+                <input type="text" name="password" placeholder="password" value="{{ userInformation["password"] }}" />
             </label>
             <input type="submit" id="close_button"/>
         </form>
