@@ -145,6 +145,14 @@ class DatabaseConnect:
             except Exception as e:
                 print(f"Error during insert_into_user: {e}")
 
+    def insertIntoUserChannel(self, information):
+        with self.db_handler as db:
+            try:
+                query = "INSERT INTO UserChannel (username, ChannelID, IsAdmin) VALUES (?, ?, ?);"
+                return db.execute_query(query, information)
+            except Exception as e:
+                print(f"Error during insert_into_user: {e}")
+
     def retrieve_from_user_channel(self, username):
         query = "SELECT channelName, UserChannel.channelID FROM UserChannel JOIN Channel ON UserChannel.ChannelID = Channel.channelID WHERE username = ?;"
         # This function retrieves a tuple matching the username form the User table
@@ -170,10 +178,10 @@ class DatabaseConnect:
             except Exception as e:
                 print(f"Error during insert_into_user: {e}")
 
-    def insertIntoUserChannel(self, information):
+    def update_user(self, information):
         with self.db_handler as db:
             try:
-                query = "INSERT INTO UserChannel (username, ChannelID, IsAdmin) VALUES (?, ?, ?);"
+                query = "UPDATE User SET username = ?, firstname = ?, lastname = ?, email = ?, password = ? WHERE username  = ?"
                 return db.execute_query(query, information)
             except Exception as e:
                 print(f"Error during insert_into_user: {e}")
