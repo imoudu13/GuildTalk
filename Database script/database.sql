@@ -26,8 +26,7 @@ CREATE TABLE Channel(
 CREATE TABLE UserChannel (
     username VARCHAR(30) REFERENCES User(username),
     ChannelID INTEGER REFERENCES Channel(channelID),
-    IsAdmin BOOLEAN DEFAULT FALSE,
-    PRIMARY KEY (username, ChannelID)
+    IsAdmin BOOLEAN DEFAULT FALSE
 );
 
 -- Message Table
@@ -90,6 +89,9 @@ VALUES
 -- Inserting users into channels
 INSERT INTO UserChannel(username, ChannelID, IsAdmin) VALUES
 ('john_doe', 1, FALSE),
+('john_doe', 2, FALSE),
+('john_doe', 3, FALSE),
+('john_doe', 4, FALSE),
 ('jane_smith', 1, FALSE),
 ('michael_jones', 1, FALSE),
 ('ryan_taylor', 1, FALSE),

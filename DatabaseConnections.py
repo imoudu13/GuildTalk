@@ -53,7 +53,7 @@ class DatabaseConnect:
 
     def insert_into_user(self, data):
         query = "INSERT INTO User (username, password, firstname, lastname, email) VALUES (?, ?, ?, ?, ?);"
-        with self.db_handler as db:  # This calls the enter function in the DatabaseHandler class, it's responsible for opening the connection
+        with self.db_handler as db:         # This calls the enter function in the DatabaseHandler class, it's responsible for opening the connection
             try:
                 return db.execute_query(query, data)
             except Exception as e:
@@ -145,11 +145,36 @@ class DatabaseConnect:
             except Exception as e:
                 print(f"Error during insert_into_user: {e}")
 
-    def insert_into_user_channel(self, information):
+    def insertIntoUserChannel(self, information):
         with self.db_handler as db:
             try:
                 query = "INSERT INTO UserChannel (username, ChannelID, IsAdmin) VALUES (?, ?, ?);"
                 return db.execute_query(query, information)
+            except Exception as e:
+                print(f"Error during insert_into_user: {e}")
+
+    def retrieve_from_user_channel(self, username):
+        query = "SELECT channelName, UserChannel.channelID FROM UserChannel JOIN Channel ON UserChannel.ChannelID = Channel.channelID WHERE username = ?;"
+        # This function retrieves a tuple matching the username form the User table
+        # If the username isn't in the db it returns None
+        # Otherwise it puts the information in a dictionary
+        with self.db_handler as db:
+            try:
+                result = db.fetch_all(query, (username,))
+
+                if not result:
+                    return None
+
+                result_list = []
+
+                for row in result:
+                    channelName, channelID = map(str, row)
+
+                    channel_dict = {"channelName": channelName, "id": int(channelID)}
+
+                    result_list.append(channel_dict)
+
+                return result_list
             except Exception as e:
                 print(f"Error during insert_into_user: {e}")
 
