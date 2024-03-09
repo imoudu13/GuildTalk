@@ -58,6 +58,7 @@ class DatabaseConnect:
     def insert_into_user(self, data):
         collection_name = "User"
         with self.db_handler as db:
+
             try:
                 return db.execute_insert(collection_name, data)
             except Exception as e:
@@ -169,6 +170,7 @@ class DatabaseConnect:
 
     def insert_into_user_channel(self, information):
         collection_name = "UserChannel"
+
         with self.db_handler as db:
             try:
                 return db.execute_insert(collection_name, information)

@@ -25,36 +25,18 @@
     <!-- First Column For Channel Selection -->
     <div class="column channel-column">
         <div class = "create-channel-container">
-            <button class="create-channel-button">Create Channel</button>
+            <button class="create-channel-button" onclick="createChannel()">Create Channel</button>
             <button class="invite-button">Invite</button>
         </div>
         <div class="select-channel-container">
-            <button class="channel-button">COSC 322</button>
-            <button class="channel-button">BIO 422</button>
-            <button class="channel-button">ECON 111</button>
-            <button class="channel-button">COSC 123</button>
-            <button class="channel-button">COSC 222</button>
-            <button class="channel-button">COSC 221</button>
-            <button class="channel-button">COSC 440</button>
-            <button class="channel-button">COSC 322</button>
-            <button class="channel-button">BIO 422</button>
-            <button class="channel-button">ECON 111</button>
-            <button class="channel-button">COSC 123</button>
-            <button class="channel-button">COSC 222</button>
-            <button class="channel-button">COSC 221</button>
-            <button class="channel-button">COSC 440</button>
-            <button class="channel-button">COSC 322</button>
-            <button class="channel-button">BIO 422</button>
-            <button class="channel-button">ECON 111</button>
-            <button class="channel-button">COSC 123</button>
-            <button class="channel-button">COSC 222</button>
-            <button class="channel-button">COSC 221</button>
-            <button class="channel-button">COSC 440</button>
-
+        {#This container will be filled by the following for loop.         #}
+          {% for channel in channels %}
+                <button class="channel-button">{{ channel.channelName }}</button>
+          {% endfor %}
         </div>
 
         <div class="profile-container">
-            <div class = profile-username-wrapper onclick="redirectToPage('\Profile')">
+            <div class = profile-username-wrapper onclick="redirectToPage('\profile')">
                 <img src="../static/images/GuildTalkLogoNoTextClear.png" alt="Profile Picture">
                 <div class="username">Username</div>
             </div>
