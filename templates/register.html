@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="utf-8" />
+    <title>GuildTalk - Registration</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link rel="stylesheet" href="../static/css/register.css" />
+  </head>
+
+  <body>
+    <header id="masthead">
+      <img
+        src="../static/images/GuildTalkLogoClearBackground.png"
+        alt="GuildTalk logo"
+      />
+    </header>
+    <div id="register-container">
+      <form
+        method="post"
+        action="http://www.randyconnolly.com/tests/process.php"
+      >
+        <h2>Hello New User!</h2>
+        <h3>Create a new account</h3>
+        <div id="left-column">
+          <p>
+            <input type="text" name="firstname" placeholder="Firstname" />
+          </p>
+          <p>
+            <input type="text" name="lastname" placeholder="Lastname" />
+          </p>
+          <p>
+            <input type="email" name="email" placeholder="Email" />
+          </p>
+          <p>
+            <input type="text" name="username" placeholder="Username" />
+          </p>
+        </div>
+        <div id="right-column">
+          <p>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              id="password-input"
+            />
+          </p>
+          <p>
+            <input
+              type="password"
+              name="confirm_password"
+              placeholder="Confirm Password"
+            />
+          </p>
+          <p>
+            <input type="submit" value="Register" />
+          </p>
+          <div id="login-button">
+            <a href="login.html">Log in to existing account</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
