@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify, redirect
 from DatabaseConnections import DatabaseConnect
 from PythonScripts.createChannel import get_channels, add_channel
 
+# singleton instantiation of the database
 db = DatabaseConnect()
 
 app = Flask(__name__)
