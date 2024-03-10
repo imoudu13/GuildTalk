@@ -18,17 +18,26 @@ def login(): #This is the default page. Below we will have other pages
 @app.route('/channel', methods=['GET', 'POST'])
 def channel(): #This is the ChannelPage we will send variabls and stuff here to configure
     if request.method == 'POST':
-        # Extracting the data from the post request
+        #get the data from the json request
         data = request.get_json()
-        #channel name that we will add to db
-        channel_name = data.get('channelName')
+        #Check if channel add request
+        if 'channelName' in data:
+            channel_name = data['channelName']
+            add_channel(channel_name)
+            response_data = {'status': 'Channel added successfully'}
+            return jsonify(response_data)
 
+            # Check if the request contains data for adding a message
+        elif 'message' in data:
+            message = data['message']
+            # Here we will do something with the messages later
+            response_data = {'status': 'Message added successfully'}
+            return jsonify(response_data)
 
-        # For simplicity, let's assume we just want to return the channel name as JSON data
-        response_data = {'name': channel_name}
-
-        # Return a JSON response with the new channel data
-        return jsonify(response_data)
+            # If the request is invalid/doesnt match what we expect
+        else:
+            response_data = {'status': 'Invalid request'}
+            return jsonify(response_data)
     else:
         #on page load get the list of channels the user is in and send it to the channel page so we can load them
         channels = get_channels('test_user')
