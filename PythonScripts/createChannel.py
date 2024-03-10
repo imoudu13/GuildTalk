@@ -4,8 +4,11 @@ from flask import jsonify
 def get_channels(username):
     from app import db
     # Fetch channels from the database
-    channels = db.retrieve_from_user_channel(username)
-    return channels
+    channels = db.retrieve_from_user(username)
+    return channels["channels"]
+
+
+print(get_channels("test_user"))
 
 
 def add_channel(channel_name):

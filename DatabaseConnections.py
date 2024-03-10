@@ -1,3 +1,5 @@
+import ssl
+
 from pymongo import MongoClient, errors
 from pymongo.server_api import ServerApi
 
@@ -11,7 +13,8 @@ class DatabaseHandler:
 
     def __enter__(self):
         try:
-            self.client = MongoClient(self.uri, server_api=ServerApi('1'))
+            ssl_options = {'tls': True, 'tlsInsecure': True}
+            self.client = MongoClient(self.uri, server_api=ServerApi('1'), **ssl_options)
             self.db = self.client.get_database("GuildTalk")
         except errors.ConnectionFailure as e:
             print(f"Failed to connect to MongoDB: {e}")
@@ -81,7 +84,8 @@ class DatabaseConnect:
                     "password": result["password"],
                     "first": result["firstname"],
                     "last": result["lastname"],
-                    "email": result["email"]
+                    "email": result["email"],
+                    "channels": result["channels"]
                 }
             except Exception as e:
                 print(f"Error during retrieve_from_user: {e}")
