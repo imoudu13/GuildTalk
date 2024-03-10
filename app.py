@@ -31,7 +31,7 @@ def channel(): #This is the ChannelPage we will send variabls and stuff here to 
         return jsonify(response_data)
     else:
         #on page load get the list of channels the user is in and send it to the channel page so we can load them
-        channels = get_channels('john_doe')
+        channels = get_channels('test_user')
     return render_template("ChannelPage.html", channels=channels)
 
 
