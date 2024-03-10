@@ -51,9 +51,8 @@ class DatabaseHandler:
 
 # This is the class that handles the results returned from the database
 class DatabaseConnect:
-    def __init__(self, database_name):
+    def __init__(self):
         self.db_handler = DatabaseHandler()
-        self.database_name = database_name
 
     def insert_into_user(self, data):
         collection_name = "User"
