@@ -56,6 +56,9 @@ class DatabaseConnect:
 
     def insert_into_user(self, data):
         collection_name = "User"
+
+        data.setdefault("channels", [])
+
         with self.db_handler as db:
 
             try:
@@ -84,46 +87,14 @@ class DatabaseConnect:
                 print(f"Error during retrieve_from_user: {e}")
                 return None
 
-    # Add similar modifications for other functions...
-
-    def update_user(self, information):
-        collection_name = "User"
-        with self.db_handler as db:
-            try:
-                query_params = {"username": information[0]}
-                update_data = {
-                    "$set": {
-                        "firstname": information[1],
-                        "lastname": information[2],
-                        "email": information[3],
-                        "password": information[4]
-                    }
-                }
-                return db.update_one(collection_name, query_params, update_data)
-            except Exception as e:
-                print(f"Error during update_user: {e}")
-                return False
-
-    def retrieve_from_channel(self, channel_id):
-        collection_name = "Channel"
-        with self.db_handler as db:
-            try:
-                result = db.fetch_one(collection_name, {"channelID": channel_id})
-
-                if result is None:
-                    return None
-
-                return {
-                    "id": result["channelID"],
-                    "name": result["channelName"],
-                    "creator": result["creatorUsername"]
-                }
-            except Exception as e:
-                print(f"Error during retrieve_from_channel: {e}")
-                return None
-
     def insert_into_channel(self, information):
         collection_name = "Channel"
+
+        # adds the creator to the list of admins and list of users
+        # also add an empty list of messages
+        information.setdefault("admins", [information["creator"]])
+        information.setdefault("users", [information["creator"]])
+        information.setdefault("messages", [])
         with self.db_handler as db:
             try:
                 return db.execute_insert(collection_name, information)
@@ -131,48 +102,42 @@ class DatabaseConnect:
                 print(f"Error during insert_into_channel: {e}")
                 return False
 
-    def retrieve_messages(self, channel_id):
-        collection_name = "Message"
+    def retrieve_from_channel(self, channelName):
+        collection_name = "Channel"
         with self.db_handler as db:
             try:
-                result = db.fetch_all(collection_name, {"channelID": channel_id})
+                result = db.fetch_one(collection_name, {"_id": channelName})
 
-                if not result:
+                if result is None:
                     return None
 
-                result_list = []
-
-                for message in result:
-                    record = {
-                            "channel_id": message["channelID"],
-                            "message_id": message["messageID"],
-                            "sender": message["senderUsername"],
-                            "content": message["content"],
-                            'time': message["timeSent"]
-                        }
-
-                    result_list.append(record)
-
-                return result_list
+                return {
+                    "_id": result["_id"],
+                    "admins": result["admins"],
+                    "users": result["users"],
+                    "messages": result["messages"]
+                }
             except Exception as e:
-                print(f"Error during retrieve_messages: {e}")
+                print(f"Error during retrieve_from_user: {e}")
                 return None
 
-    def insert_into_message(self, information):
-        collection_name = "Message"
+    def update_user(self, update_data):
+        collection_name = "User"
         with self.db_handler as db:
             try:
-                return db.execute_insert(collection_name, information)
+                db.update_one(collection_name, {"_id": update_data["_id"]}, {"$set": update_data})
+                return True
             except Exception as e:
-                print(f"Error during insert_into_message: {e}")
+                print(f"Error during update_user: {e}")
                 return False
 
-    def insert_into_user_channel(self, information):
-        collection_name = "UserChannel"
-
+    def update_channel(self, channel_name, update_dict):
+        collection_name = "Channel"
         with self.db_handler as db:
             try:
-                return db.execute_insert(collection_name, information)
+                # Use the $set operator to update specific fields
+                db.update_one(collection_name, {"_id": channel_name}, {"$set": update_dict})
+                return True
             except Exception as e:
-                print(f"Error during insert_into_user_channel: {e}")
+                print(f"Error during update_channel: {e}")
                 return False

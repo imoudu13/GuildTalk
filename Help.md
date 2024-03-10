@@ -1,3 +1,168 @@
+#  Database Connection <br>
+This class contains some functions for connecting to the MongoDB and inserting/retrieving/updating data. <br>
+
+Note, all insertion functions will return true if it was inserted with no errors, and false otherwise
+```python
+# This will allow you to use all the functions in the class 
+from DatabaseConnections import DatabaseConnect 
+
+
+# We create only one instance of the class like so
+db = DatabaseConnect()
+# anytime we need a function we'll call it like so: db.insert_into_user(data)
+```
+### User Table
+
+To insert into the User table put the data in a dictionary with keys:
+"_id", this is the username <br>
+"firstname", this is the firstname <br>
+"lastname", last name <br>
+"email", email <br>
+"password", password <br>
+<br>
+Then pass the dictionary into the function like so:<br>
+
+Data must be passed in that format otherwise it will cause errors later. <br>
+
+In addition, that function adds an empty list that will hold the channels that user is a part of.
+
+The "_id" is vital, it will be used to retrieve that users information later. <br>
+```python
+from DatabaseConnections import DatabaseConnect 
+
+db = DatabaseConnect()
+
+user_data = {
+            "_id": "test_user",
+            "firstname": "John",
+            "lastname": "Doe",
+            "email": "john.doe@example.com",
+            "password": "password123"
+        }
+
+# insert into table like so
+db.insert_into_user(user_data)
+
+#if there are no errors it will return true, otherwise it will return false
+```
+Here is what a document in the User Collection looks like on Mongo: <br>
+![image](/DesignImages/UserCollection.png) <br>
+To retrieve from the User table pass the username into the function like so: <br>
+If the username is valid the function will return a dictionary with keys: 
+"_id" <br>
+"firstname" <br>
+"lastname" <br>
+"email" <br>
+"password" <br>
+"channels" <br>
+The value at "channels" is a list that has the names of all the channels this user is a part of <br>
+So if you want to get all the channels for the user, retrieve the user, collect their list then do what you want <br>
+The values in that list are the names of the channels.
+```python
+from DatabaseConnections import DatabaseConnect 
+
+db = DatabaseConnect()
+
+user_information1  = db.retrieve_from_user("user")
+
+# access them like so
+username = user_information1["_id"]
+```
+
+### Channel Table
+The
+To insert into the channel table put the data in a dictionary with keys: <br>
+"_id", this is the name of the channel
+"creator", this is the name of the user who created the Channel
+
+Then pass the dictionary into the function:
+```python
+from DatabaseConnections import DatabaseConnect 
+
+db = DatabaseConnect()
+
+channel_info = {
+            "_id": "test_channel",
+            "creator": "test_user"
+        }
+
+# insert into table like so
+db.insert_into_channel(channel_info)
+```
+That function will also add a list of users, a list of admins. For both of those lists it will put the creator in them <br>
+Lastly, it creates a list of messages that are empty to start. <br>
+
+Here is what a document in the Channel Collection looks like on Mongo: <br>
+
+![image](/DesignImages/ChannelCollection.png) <br>
+
+So anytime a message is sent, user is added, need to check if someone is a admin, retrieve from the Channel Collection. <br>
+To retrieve from the channel table pass the channel id into the function like so: <br>
+These are the keys when the dictionary is returned:<br>
+"_id", the name of the channel <br>
+"admins", list of admins <br>
+"users", list of users <br>
+"messages", list of message dictionaries<br>
+```python
+from DatabaseConnections import DatabaseConnect 
+
+db = DatabaseConnect()
+
+channel_information1  = db.retrieve_from_channel("test_channel")
+
+
+# if the channel id is valid the function will return a dictionary with keys: 
+# "id", "name", "creator"
+
+# access them like so
+channel_admins = channel_information1["admins"]
+```
+
+If you want to insert a message, add a new user or admin, retrieve from the channel using its id, then do one of these <br>
+
+```python
+from DatabaseConnections import DatabaseConnect 
+
+db = DatabaseConnect()
+
+channel_information1  = db.retrieve_from_channel("test_channel")
+
+
+# if the channel id is valid the function will return a dictionary with keys: 
+# "id", "name", "creator"
+
+# You don't need to get all of these lists of you only want to add to one
+# Just doing this for example
+messages = channel_information1["messages"]
+admins = channel_information1["admins"]
+users = channel_information1["users"]
+name_channel = channel_information1["_id"]
+# Do this for creating a message
+message = {
+    "sender": "user",
+    "content": "some_string",
+    "timestamp": "time_goes_here"
+}
+
+messages.append(message)
+
+# make sure to append new admins to admin list and user list
+admins.append("new_admin")
+users.append("new_admin")
+
+# Now put those lists back into the channel infromation dictionary
+channel_information1["users"] = users
+channel_information1["admins"] = admins
+channel_information1["messages"] = messages
+
+# Then call the update channel function from the database3 
+# You'll need to pass the name of the channel in there as well.
+db.update_channel(name_channel, channel_information1)
+# Do this for adding a
+```
+
+Note if you need to update a user document you'll need to do something along those lines then call the update user function
+
 # Flask and Jinja2<br>
 Flask is our micro frame work. It will allow us to send/retrieve data from html pages, as well as render those html pages and add routes to the pages. <br>
 
@@ -7,6 +172,8 @@ Jijna 2 should come installed with flask. <br>
 This is how you add a route and render a page in flask: <br>
 ```python
 from flask import Flask, render_template  #import the necessary functions
+app = Flask(__name__)
+
 @app.route('/')  #this is the route to the page
 
 #now create a function that renders the page
@@ -18,6 +185,8 @@ def home():
 Fortunately most of this is done in the app.py file. <br>
 We'll need to pass some data to files for flask to render them. Here's how: <br>
 ```python
+from flask import Flask, render_template  #import the necessary functions
+app = Flask(__name__)
 def home():
   nameOfList = "Favorite fruits"
   fruitList = ["Apple", "Pineapple", "Pear", "Banana", "Watermelon"]
@@ -71,12 +240,12 @@ This is how you send data to a python file: <br>
 ```
 ```python
 from flask import Flask, render_template, request  #first import the request function
-
+app = Flask(__name__)
 
 # declare the path to the function, and its action methods, POST or GET or both
 @app.route('/process_form', methods=['POST'])
 def process_form():
-    username = request.form['username']  it will return a dictionary so you can get the data using the keys
+    username = request.form['username']  # it will return a dictionary so you can get the data using the keys
     email = request.form['email']
 
     # Process the data or save it to a database
@@ -88,157 +257,3 @@ def process_form():
 ```
 
 In the action attribute of the html page you must the same path that you have in the '@app.route' function. That way the form will send the data directly to that function.<br>
-#  Database Connection <br>
-This class contains some functions for connecting to the sql database and inserting/retrieving data. <br>
-
-Note, all insertion functions will return true if it was inserted with no errors, and false otherwise
-```python
-# This will allow you to use all the functions in the class 
-from DatabaseConnections import DatabaseConnect 
-
-
-# We create only one instance of the class like so
-db = DatabaseConnect()
-# anytime we need a function we'll call it like so: db.insert_into_user(data)
-```
-### User Table
-
-To insert into the User table put the data in a tuple in the form: (username, password, firstname, lastname, email)<br>
-Then pass the tuple in the function like so:
-
-```python
-from DatabaseConnections import DatabaseConnect 
-
-db = DatabaseConnect()
-
-username = "user"
-password = "pass"
-firstname = "first"
-lastname = "last"
-email = "email@gmail.com"
-
-# put them in a tuple in this order:
-information = (username, password, firstname, lastname, email)
-
-# insert into table like so
-db.insert_into_user(information)
-
-#if there are no errors it will return true, otherwise it will return false
-```
-
-To retrieve from the User table pass the username into the function like so: <br>
-```python
-from DatabaseConnections import DatabaseConnect 
-
-db = DatabaseConnect()
-
-user_information1  = db.retrieve_from_user("user")
-
-# if the username is valid the function will return a dictionary with keys: 
-# "username", "password", "first", "last", and "email"
-
-# access them like so
-username = user_information1["username"]
-```
-
-### Channel Table
-
-To insert into the channel table put the data in a tuple with the form: (channelName, creatorUsername)
-Then pass the tuple into the function:
-```python
-from DatabaseConnections import DatabaseConnect 
-
-db = DatabaseConnect()
-
-channelName = "name"
-creatorUsername = "username"
-
-
-# put them in a tuple in this order:
-information = (channelName, creatorUsername)
-
-# insert into table like so
-db.insert_into_channel(information)
-
-
-```
-
-To retrieve from the channel table pass the channel id into the function like so: <br>
-```python
-from DatabaseConnections import DatabaseConnect 
-
-db = DatabaseConnect()
-
-channel_information1  = db.retrieve_from_channel(1)
-
-
-# if the channel id is valid the function will return a dictionary with keys: 
-# "id", "name", "creator"
-
-# access them like so
-username = channel_information1["id"]
-```
-
-### Message Table
-
-To insert into the Message table put the data in a tuple with the form: (senderUsername, channelID, receiverUsername, content, timeSent)
-If the message is in a channel then put the receiver username as a blank string
-If the message is being sent to a different user then assign the channel id a 0
-
-Then pass the tuple into the function:
-```python
-from DatabaseConnections import DatabaseConnect 
-
-db = DatabaseConnect()
-
-senderUsername = "sender"
-channelID = 1
-receiverUsername = ""
-content = "Wasup shorty"
-timeSent = '2024-03-04 18:00:00'
-
-# put them in a tuple in this order:
-information = (senderUsername, channelID, receiverUsername, content, timeSent)
-
-# insert into table like so
-db.insert_into_message(information)
-```
-
-To retrieve messages that have been sent in a channel use the retrieve message method <br>
-```python
-from DatabaseConnections import DatabaseConnect 
-
-db = DatabaseConnect()
-
-# the between_users function will return a dict with the keys "message_id", "content", and "time"
-
-# or this if you're retrieving messages from a channel, pass the channel id into the function
-from_channel  = db.retrieve_messages(1)
-
-# if the channel id is valid the function will return a list of dictionaries with keys: 
-# "channel_id", "message_id", "sender", "content", "time"
-#use address 0 to get the first dict representing a message and then the "content" key to get the
-content = from_channel[0]["content"]
-```
-
-### User Channel
-
-After creating the channel and inserting it into the Channel table. <br>
-Put the data in a tuple like so: (username, ChannelID, IsAdmin)
-Insert the channel and the creator into the UserChannel Table.
-For the creator of the channel their isAdmin property should be true.
-For people who are invited to the channel update add them to the User Channel table as well with their isAdmin property as False
-If they are given admin privileges make their isAdmin property True
-
-```python
-from DatabaseConnections import DatabaseConnect 
-
-db = DatabaseConnect()
-
-username = "username"
-channelID = 1
-isAdmin = 'TRUE'
-
-# put them in a tuple in this order:
-information = (username, channelID, isAdmin)
-
