@@ -32,7 +32,7 @@ function createChannel(){
                 var channelContainer = document.querySelector('.select-channel-container');
                 var newElement = document.createElement("button");
                 newElement.classList.add('channel-button');
-                newElement.textContent = newChannel.name;
+                newElement.textContent = channelName;
                 channelContainer.appendChild(newElement);
             } else {
                 // Error handling
