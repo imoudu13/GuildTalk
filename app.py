@@ -20,7 +20,7 @@ def channel(): #This is the ChannelPage we will send variabls and stuff here to 
     if request.method == 'POST':
         #get the data from the json request
         data = request.get_json()
-        #Check if channel add request
+        #Check if it is channel add request
         if 'channelName' in data:
             channel_name = data['channelName']
             add_channel(channel_name)
@@ -34,7 +34,7 @@ def channel(): #This is the ChannelPage we will send variabls and stuff here to 
             response_data = {'status': 'Message added successfully'}
             return jsonify(response_data)
 
-            # If the request is invalid/doesnt match what we expect
+            # If the request is invalid/does not match what we expect
         else:
             response_data = {'status': 'Invalid request'}
             return jsonify(response_data)
