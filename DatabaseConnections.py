@@ -75,7 +75,7 @@ class DatabaseConnect:
                     return None
 
                 return {
-                    "_id": result["username"],
+                    "_id": result["_id"],
                     "password": result["password"],
                     "first": result["firstname"],
                     "last": result["lastname"],
