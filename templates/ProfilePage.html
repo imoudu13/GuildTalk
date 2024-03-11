@@ -18,9 +18,7 @@
 
     <div id="myModal">
         <form method="POST" action="{{ url_for('update') }}">
-            <label>
-                <input type="text" name="username" placeholder="username" value="{{ userInformation["username"] }}" />
-            </label>
+            <input type="hidden" name="_id" value="{{ userInformation["_id"] }}">
             <label>
                 <input type="text" name="first" placeholder="first name"  value="{{ userInformation["first"] }}" />
             </label>
@@ -46,7 +44,7 @@
         <!-- This is for showing the actual information-->
             <div id="more_info">
                 <div class="user_information">
-                    <p><b>DISPLAY NAME AND USERNAME: </b> {{ userInformation["username"] }} </p>
+                    <p><b>DISPLAY NAME AND USERNAME: </b> {{ userInformation["_id"] }} </p>
                 </div>
                 <div class="user_information">
                     <p><b>EMAIL: </b> {{ userInformation["email"] }} </p>

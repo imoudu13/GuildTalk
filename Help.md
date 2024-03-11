@@ -34,8 +34,8 @@ db = DatabaseConnect()
 
 user_data = {
             "_id": "test_user",
-            "firstname": "John",
-            "lastname": "Doe",
+            "first": "John",
+            "last": "Doe",
             "email": "john.doe@example.com",
             "password": "password123"
         }
