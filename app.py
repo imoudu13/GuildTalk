@@ -11,16 +11,16 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/Home')
 @app.route('/login')
-def login(): #This is the default page. Below we will have other pages
+def login():  # This is the default page. Below we will have other pages
     return render_template("login.html")
 
 
 @app.route('/channel', methods=['GET', 'POST'])
-def channel(): #This is the ChannelPage we will send variabls and stuff here to configure
+def channel():  # This is the ChannelPage we will send variabls and stuff here to configure
     if request.method == 'POST':
-        #get the data from the json request
+        # get the data from the json request
         data = request.get_json()
-        #Check if it is channel add request
+        # Check if it is channel add request
         if 'channelName' in data:
             channel_name = data['channelName']
             add_channel(channel_name)
@@ -39,14 +39,14 @@ def channel(): #This is the ChannelPage we will send variabls and stuff here to 
             response_data = {'status': 'Invalid request'}
             return jsonify(response_data)
     else:
-        #on page load get the list of channels the user is in and send it to the channel page so we can load them
+        # on page load get the list of channels the user is in and send it to the channel page so we can load them
         channels = get_channels('test_user')
     return render_template("ChannelPage.html", channels=channels)
 
 
-@app.route('/Profile')
+@app.route('/profile')
 def profile():  # This is the profile page we will send variables and stuff here to configure
-    username = 'imoudu'
+    username = 'test_user'
 
     user_information = db.retrieve_from_user(username)
 
@@ -54,27 +54,24 @@ def profile():  # This is the profile page we will send variables and stuff here
 
 
 # This function handles
-@app.route('/Update', methods=['POST', 'GET'])
+@app.route('/update', methods=['POST', 'GET'])
 def update():
-    original = request.form['original_username']
+    # Get username of the user from the form
+    original_username = request.form["_id"]
 
-    # get the original information
-    user_information = db.retrieve_from_user(original)
+    # get the users original information
+    user_information = db.retrieve_from_user(original_username)
 
-    # the html form is formatted in a way such that the default text is the original information
-    # So if nothing was changed then all the information will remain the same
-    user_information["username"] = request.form['username']
-    user_information["first"] = request.form['first']
-    user_information["last"] = request.form['last']
-    user_information["email"] = request.form['email']
-    user_information["password"] = request.form['password']
+    # update the dictionary of the original users information with the new information entered by the user
+    user_information["first"] = request.form["first"]
+    user_information["last"] = request.form["last"]
+    user_information["email"] = request.form["email"]
+    user_information["password"] = request.form["password"]
 
-    # create the tuple for updating
-    # "UPDATE User SET username = ?, firstname = ?, lastname = ?, email = ?, password = ? WHERE username  = ?"
-    information = (user_information["username"], user_information["first"], user_information["last"], user_information["email"], user_information["password"], original)
+    # use the user_information dict to update the database
+    db.update_user(user_information)
 
-    db.update_user(information)
-
+    # render the page with the new info
     return render_template("ProfilePage.html", userInformation=user_information)
 
 
