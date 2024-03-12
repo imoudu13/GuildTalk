@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from DatabaseConnections import DatabaseConnect
 from PythonScripts.createChannel import get_channels, add_channel
+from PythonScripts.sendMessage import send_message
 
 # singleton instantiation of the database
 db = DatabaseConnect()
@@ -28,9 +29,14 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
             return jsonify(response_data)
 
             # Check if the request contains data for adding a message
-        elif 'message' in data:
-            message = data['message']
-            # Here we will do something with the messages later
+        elif 'text' in data:
+            #get the data from the post request
+            text = data['text']
+            username = "test_user"
+            time = "12:01pm"
+            curr_channel = data['channelName']
+            # Here we call our send message function to put the new message in the database
+            send_message(text,username,time,curr_channel)
             response_data = {'status': 'Message added successfully'}
             return jsonify(response_data)
 
@@ -39,7 +45,7 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
             response_data = {'status': 'Invalid request'}
             return jsonify(response_data)
     else:
-        # on page load get the list of channels the user is in and send it to the channel page so we can load them
+        # on page load get the list of channels the user is in and send it to the channel page, so we can load them
         channels = get_channels('test_user')
     return render_template("ChannelPage.html", channels=channels)
 

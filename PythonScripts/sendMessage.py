@@ -15,10 +15,10 @@ def send_message(text, username, time, curr_channel):
         "content": text,
         "timestamp": time
     }
-    #append new message to messages
+    # append new message to messages
     messages.append(message)
 
-    # Now put those lists back into the channel infromation dictionary
+    # Now put those lists back into the channel information dictionary
     channel_information1["messages"] = messages
 
     # Then call the update channel function from the database3
