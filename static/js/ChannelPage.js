@@ -3,8 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const messageContainer = document.querySelector('.message-container');
     messageContainer.scrollTop = messageContainer.scrollHeight;
     //
+    // Add an event listener to the textarea for the keypress event
+    document.getElementById("message-input-id").addEventListener("keypress", handleKeyPress);
 
-
+});
 //function to redirect buttons to pages based on url
 function redirectToPage(url) {
     window.location.href = url;
@@ -87,12 +89,10 @@ function handleKeyPress(event) {
         };
         xhr.send(JSON.stringify({text: message, user_name: user_name, time: time, curr_channel:curr_channel }));
         // Clear the textarea after user submission
-        document.getElementById("message").value = "";
+        document.getElementById("message-input-id").value = "";
 
     }
 }
 
-// Add an event listener to the textarea for the keypress event
-document.getElementById("message-input-id").addEventListener("keypress", handleKeyPress);
 
-});
+
