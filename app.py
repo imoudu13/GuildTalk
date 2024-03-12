@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, redirect
+from flask import Flask, render_template, request, jsonify
 from DatabaseConnections import DatabaseConnect
 from PythonScripts.createChannel import get_channels, add_channel
 
