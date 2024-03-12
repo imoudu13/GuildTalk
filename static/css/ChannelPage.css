@@ -149,6 +149,7 @@ main{
     border-radius: 5px;
     resize: none;
     margin-top: .5em;
+    color: black;
 }
 .small-text{
     font-size: small;
