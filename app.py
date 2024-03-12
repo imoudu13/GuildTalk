@@ -34,7 +34,7 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
             text = data['text']
             username = "test_user"
             time = "12:01pm"
-            curr_channel = data['channelName']
+            curr_channel = 'test_channel'
             # Here we call our send message function to put the new message in the database
             send_message(text,username,time,curr_channel)
             response_data = {'status': 'Message added successfully'}
