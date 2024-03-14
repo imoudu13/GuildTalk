@@ -16,7 +16,7 @@ function redirectToPage(url) {
 //Function to set current channel and load messages
 function setChannel(channel){
     current_channel = channel;
-    alert(current_channel)
+    document.querySelector(".channel-title").innerText = current_channel;
     loadMessages();
 }
 function loadMessages(){
