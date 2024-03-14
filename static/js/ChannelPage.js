@@ -1,9 +1,6 @@
 
 let current_channel = ""
 document.addEventListener('DOMContentLoaded', function() {
-    //This is code to reverse the scroll direction of the message board
-    const messageContainer = document.querySelector('.message-container');
-    messageContainer.scrollTop = messageContainer.scrollHeight;
     //
     // Add an event listener to the textarea for the keypress event
     document.getElementById("message-input-id").addEventListener("keypress", handleKeyPress);
@@ -38,6 +35,9 @@ function loadMessages(){
                 messageDiv.classList.add('message');
                 messageDiv.textContent = message.sender + "||" + message.content;
                 messageContainer.appendChild(messageDiv);
+                //This is code to reverse the scroll direction of the message board
+                const messageContainer1 = document.querySelector('.message-container');
+                messageContainer1.scrollTop = messageContainer1.scrollHeight;
             });
                 //parses JSON response from server into js object(newChannel)
             } else {
