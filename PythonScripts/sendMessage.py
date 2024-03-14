@@ -34,13 +34,11 @@ def send_message(text, username, time, curr_channel):
     app.db.update_channel(curr_channel, channel_information1)
     return jsonify({'success': True})  # Return a success response
 
+
 def load_messages(channel):
     # Fetch channels from the database
     selected_channel = app.db.retrieve_from_channel(channel)
     if selected_channel is None:
         return []
     messages = selected_channel["messages"]
-    print(messages)
-    if messages is None:
-        return []
     return messages
