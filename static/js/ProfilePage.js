@@ -15,10 +15,19 @@ document.addEventListener('DOMContentLoaded', function(){
         document.querySelector('.overlay').style.display = 'block';
     });
 
-    let closeButton = document.getElementById("close_button");
+    //These buttons are for the close and submit buttons.
+    //These remove the modal from the display.
+    let close = document.getElementById("close");
 
-    closeButton.addEventListener('click', function (){
-        document.getElementById('myModal').style.display = 'none';
-        document.querySelector('.overlay').style.display = 'none';
+    close.addEventListener('click', function (){
+            document.getElementById('myModal').style.display = 'none';
+            document.querySelector('.overlay').style.display = 'none';
+    });
+
+    let submit = document.getElementById("submit");
+
+    submit.addEventListener('click', function (){
+            document.getElementById('myModal').style.display = 'none';
+            document.querySelector('.overlay').style.display = 'none';
     });
 });

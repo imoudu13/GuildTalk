@@ -16,22 +16,24 @@
 
     <div id="myaccount"> <p>My Account</p> </div>
 
+    <!-- This is the modal that appears when the user clicks edit profile button -->
     <div id="myModal">
+        <button class="button" id="close"> Close </button>
         <form method="POST" action="{{ url_for('update') }}">
             <input type="hidden" name="_id" value="{{ userInformation["_id"] }}">
             <label>
-                <input type="text" name="first" placeholder="first name"  value="{{ userInformation["first"] }}" />
+                <input type="text" name="first" placeholder="first name"  class="input_box" value="{{ userInformation["first"] }}" />
             </label>
             <label>
-                <input type="text" name="last" placeholder="last name" value="{{ userInformation["last"] }}" />
+                <input type="text" name="last" placeholder="last name" class="input_box" value="{{ userInformation["last"] }}" />
             </label>
             <label>
-                <input type="text" name="email" placeholder="email" value="{{ userInformation["email"] }}" />
+                <input type="text" name="email" placeholder="email" class="input_box" value="{{ userInformation["email"] }}" />
             </label>
             <label>
-                <input type="text" name="password" placeholder="password" value="{{ userInformation["password"] }}" />
+                <input type="text" name="password" placeholder="password" class="input_box" value="{{ userInformation["password"] }}" />
             </label>
-            <input type="submit" id="close_button"/>
+            <input type="submit" id="submit"/>
         </form>
     </div>
 

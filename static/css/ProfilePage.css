@@ -116,7 +116,7 @@ header{
     float: right;
     background-color: white;
     border: 0;
-    border-radius: 1em 1em 1em 1em;
+    border-radius: 1em 1em;
 }
 
 /* This is the modal that pops up upon the user clicking the edit profile button */
@@ -133,7 +133,35 @@ header{
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 1em 1em;
     z-index: 2;
+}
+.input_box{
+    margin-top: 2em;
+    height: 2em;
+    width: 15em;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#submit{
+    margin-top: 2em;
+    border: none;
+    background-color: var(--darkMaroon);
+    color: white;
+    height: 2em;
+    width: 10em;
+    border-radius: 1em 1em;
+}
+#close{
+    border: none;
+    background-color: var(--darkMaroon);
+    color: white;
+    height: 2em;
+    width: 10em;
+    border-radius: 1em 1em;
 }
 /* This is what blurs the background when the modal is appears*/
 .overlay{
