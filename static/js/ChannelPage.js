@@ -20,7 +20,32 @@ function setChannel(channel){
     loadMessages();
 }
 function loadMessages(){
-
+    var xhr = new XMLHttpRequest();
+        //initalizes new request of type POST and sends it to channel python method on server side
+        xhr.open("POST", "/channel"); // Send POST request to server-side Python script
+        //Indicates that the request body will contain JSON data
+        xhr.setRequestHeader("Content-Type", "application/json");
+        //function that's called when the request completes successfully
+        xhr.onload = function() {
+            //status === 200 means that it worked
+            if (xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                var messages = response.messages;
+                var messageContainer = document.querySelector('.message-container');
+                messageContainer.innerHTML = ''; // Clear previous messages
+                messages.forEach(function(message) {
+                var messageDiv = document.createElement('div');
+                messageDiv.classList.add('message');
+                messageDiv.textContent = message.content;
+                messageContainer.appendChild(messageDiv);
+            });
+                //parses JSON response from server into js object(newChannel)
+            } else {
+                // Error handling
+                console.error("Failed");
+            }
+        };
+        xhr.send(JSON.stringify({loadMessage: "true", current_channel: current_channel }));
 }
 //function to give pop up to user for create channel button
 function createChannel(){
@@ -72,7 +97,6 @@ function handleKeyPress(event) {
         //Here we will set other values such as username, channel, and time. For now it is dummy data while functionality is being worked on
         user_name = "test_user"
         time = "8:56pm"
-        curr_channel = "test_channel"
         // Do something with the submitted message, for example, log it
 
         var xhr = new XMLHttpRequest();
@@ -94,10 +118,10 @@ function handleKeyPress(event) {
                 messageContainer.appendChild(newElement);
             } else {
                 // Error handling
-                console.error("Failed to create channel.");
+                console.error("Failed");
             }
         };
-        xhr.send(JSON.stringify({text: message, user_name: user_name, time: time, curr_channel:curr_channel }));
+        xhr.send(JSON.stringify({text: message, user_name: user_name, time: time, curr_channel:current_channel }));
         // Clear the textarea after user submission
         document.getElementById("message-input-id").value = "";
 
