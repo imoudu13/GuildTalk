@@ -36,7 +36,7 @@ function loadMessages(){
                 messages.forEach(function(message) {
                 var messageDiv = document.createElement('div');
                 messageDiv.classList.add('message');
-                messageDiv.textContent = message.content;
+                messageDiv.textContent = message.sender + "||" + message.content;
                 messageContainer.appendChild(messageDiv);
             });
                 //parses JSON response from server into js object(newChannel)
@@ -97,7 +97,6 @@ function handleKeyPress(event) {
         //Here we will set other values such as username, channel, and time. For now it is dummy data while functionality is being worked on
         user_name = "test_user"
         time = "8:56pm"
-        // Do something with the submitted message, for example, log it
 
         var xhr = new XMLHttpRequest();
         //initalizes new request of type POST and sends it to channel python method on server side
