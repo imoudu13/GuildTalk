@@ -1,3 +1,5 @@
+
+let current_channel = ""
 document.addEventListener('DOMContentLoaded', function() {
     //This is code to reverse the scroll direction of the message board
     const messageContainer = document.querySelector('.message-container');
@@ -11,7 +13,15 @@ document.addEventListener('DOMContentLoaded', function() {
 function redirectToPage(url) {
     window.location.href = url;
 }
+//Function to set current channel and load messages
+function setChannel(channel){
+    current_channel = channel;
+    alert(current_channel)
+    loadMessages();
+}
+function loadMessages(){
 
+}
 //function to give pop up to user for create channel button
 function createChannel(){
     let channelName = prompt("Enter a channel name (1-20 Characters)");
