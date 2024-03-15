@@ -13,7 +13,7 @@
     <!-- Logo -->
     <div class="logo"><img src="../static/images/GuildTalkLogoWithTextClear.png" id="header-logo" alt="GuildTalk logo" ></div>
     <!-- Channel Title -->
-    <div class="channel-title">Channel Title</div>
+    <div class="channel-title">Guild Talk</div>
     <!-- Search bar to find messages in message board -->
     <div class="search-bar">
         <label for="message-search-bar"></label><input type="text" id = "message-search-bar" placeholder="Search messages">
@@ -31,7 +31,7 @@
         <div class="select-channel-container">
         {#This container will be filled by the following for loop.         #}
           {% for channel in channels %}
-                <button class="channel-button">{{ channel}}</button>
+                <button class="channel-button" onclick="setChannel(this.innerText)">{{ channel}}</button>
           {% endfor %}
         </div>
 
@@ -47,7 +47,7 @@
     <div class="column message-board">
         <!--Example messages -->
         <div class="message-container">
-{#            <div class="message">Example message</div>#}
+
         </div>
         <!-- Message input field -->
         <label>
