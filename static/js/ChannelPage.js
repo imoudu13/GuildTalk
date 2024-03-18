@@ -1,4 +1,4 @@
-
+let username = document.currentScript.getAttribute('data-username');
 let current_channel = ""
 document.addEventListener('DOMContentLoaded', function() {
     //
@@ -33,7 +33,7 @@ function loadMessages(){
                 messages.forEach(function(message) {
                 var messageDiv = document.createElement('div');
                 messageDiv.classList.add('message');
-                messageDiv.textContent = message.sender + "||" + message.content;
+                messageDiv.textContent = message.sender + " || " + message.content;
                 messageContainer.appendChild(messageDiv);
                 //This is code to reverse the scroll direction of the message board
                 const messageContainer1 = document.querySelector('.message-container');
@@ -113,7 +113,7 @@ function handleKeyPress(event) {
                 var messageContainer = document.querySelector('.message-container');
                 var newElement = document.createElement("div");
                 newElement.classList.add('message');
-                newElement.textContent = message;
+                newElement.textContent = username + " || " + message ;
                 messageContainer.appendChild(newElement);
             } else {
                 // Error handling
