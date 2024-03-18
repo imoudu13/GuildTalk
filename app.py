@@ -18,6 +18,7 @@ def login():  # This is the default page. Below we will have other pages
 
 @app.route('/channel', methods=['GET', 'POST'])
 def channel():  # This is the ChannelPage we will send variabls and stuff here to configure
+    username = "test_user"
     channels = []
     messages = []
     if request.method == 'POST':
@@ -53,7 +54,7 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
     else:
         # on page load get the list of channels the user is in and send it to the channel page, so we can load them
         channels = get_channels('test_user')
-    return render_template("ChannelPage.html", channels=channels, messages=messages)
+    return render_template("ChannelPage.html", channels=channels, messages=messages, username=username)
 
 
 @app.route('/profile')
