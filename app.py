@@ -104,7 +104,7 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
 
 @app.route('/profile')
 def profile():  # This is the profile page we will send variables and stuff here to configure
-    username = 'test_user'
+    username = session.get('username')
 
     user_information = db.retrieve_from_user(username)
 
