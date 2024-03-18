@@ -15,9 +15,8 @@ app.config['SECRET_KEY'] = '1fe076e0a441ec065328b7506f51d7bb'
 
 @app.route('/')
 @app.route('/Home')
-
 @app.route('/login', methods=['GET', 'POST'])
-def login():  
+def login():
     form = LoginForm()
     user = None  # Define user variable here
     if form.validate_on_submit():
@@ -30,18 +29,19 @@ def login():
             flash('Login unsuccessful, please check username and password', 'danger')
     return render_template("login.html", title='Login', form=form, user=user)
 
-@app.route('/register', methods=['GET', 'POST']) # This is the registration page where users can create new accounts
+
+@app.route('/register', methods=['GET', 'POST'])  # This is the registration page where users can create new accounts
 def register():
     form = RegistrationForm()
 
-    #check if the information meets requirements
+    # check if the information meets requirements
     if form.validate_on_submit():
         firstname = form.firstname.data
         lastname = form.lastname.data
         username = form.username.data
         email = form.email.data
         password = form.password.data
-            
+
         # send info to the create user def    
         create_user(firstname, lastname, username, email, password)
 
@@ -50,13 +50,15 @@ def register():
         return redirect(url_for('login'))
     return render_template("register.html", title='Register', form=form)
 
+
 @app.route('/reset', methods=['GET', 'POST'])
 def reset():
     form = ResetForm()
     if form.validate_on_submit():
         flash(f'Your reset email has been sent', 'success')
         return redirect(url_for('login'))
-    return render_template("reset.html", title = 'Reset', form=form)
+    return render_template("reset.html", title='Reset', form=form)
+
 
 @app.route('/channel', methods=['GET', 'POST'])
 def channel():  # This is the ChannelPage we will send variabls and stuff here to configure
