@@ -24,6 +24,7 @@ def login():
         user = db.retrieve_from_user(username)
         if user and user['password'] == form.password.data:
             session['user'] = user
+            session['username'] = username
             return redirect(url_for('channel'))
         else:
             flash('Login unsuccessful, please check username and password', 'danger')
@@ -62,7 +63,7 @@ def reset():
 
 @app.route('/channel', methods=['GET', 'POST'])
 def channel():  # This is the ChannelPage we will send variabls and stuff here to configure
-    username = "test_user"
+    username = session.get('username')
     channels = []
     messages = []
     if request.method == 'POST':
@@ -71,7 +72,7 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
         # Check if it is channel add request
         if 'channelName' in data:
             channel_name = data['channelName']
-            add_channel(channel_name)
+            add_channel(channel_name, username)
             response_data = {'status': 'Channel added successfully'}
             return jsonify(response_data)
 
@@ -79,7 +80,7 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
         elif 'text' in data:
             # get the data from the post request
             text = data['text']
-            username = "test_user"
+            username = username
             time = "12:01pm"
             curr_channel = data["curr_channel"]
             # Here we call our send message function to put the new message in the database
@@ -97,13 +98,13 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
             return jsonify(response_data)
     else:
         # on page load get the list of channels the user is in and send it to the channel page, so we can load them
-        channels = get_channels('test_user')
+        channels = get_channels(username)
     return render_template("ChannelPage.html", channels=channels, messages=messages, username=username)
 
 
 @app.route('/profile')
 def profile():  # This is the profile page we will send variables and stuff here to configure
-    username = 'test_user'
+    username = session.get('username')
 
     user_information = db.retrieve_from_user(username)
 
