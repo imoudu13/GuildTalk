@@ -1,5 +1,4 @@
 import unittest
-from datetime import datetime
 from DatabaseConnections import DatabaseConnect
 
 
@@ -7,6 +6,13 @@ class TestDatabaseConnect(unittest.TestCase):
 
     def setUp(self):
         self.db_connect = DatabaseConnect()
+
+    # This function is to ensure that the there is only one instance of DatabaseConnect
+    def test_singleton(self):
+        db1 = DatabaseConnect()
+        db2 = DatabaseConnect()
+
+        assert db1 is db2
 
     def test_insert_into_user(self):
         user_data = {

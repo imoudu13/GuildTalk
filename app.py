@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify, redirect, flash, url
 from PythonScripts.registerLogin import RegistrationForm, LoginForm, ResetForm, create_user
 from DatabaseConnections import DatabaseConnect
 from PythonScripts.createChannel import get_channels, add_channel
+from PythonScripts.sendMessage import send_message, load_messages
 
 # singleton instantiation of the database
 db = DatabaseConnect()
@@ -59,6 +60,9 @@ def reset():
 
 @app.route('/channel', methods=['GET', 'POST'])
 def channel():  # This is the ChannelPage we will send variabls and stuff here to configure
+    username = "test_user"
+    channels = []
+    messages = []
     if request.method == 'POST':
         # get the data from the json request
         data = request.get_json()
@@ -70,20 +74,29 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
             return jsonify(response_data)
 
             # Check if the request contains data for adding a message
-        elif 'message' in data:
-            message = data['message']
-            # Here we will do something with the messages later
+        elif 'text' in data:
+            # get the data from the post request
+            text = data['text']
+            username = "test_user"
+            time = "12:01pm"
+            curr_channel = data["curr_channel"]
+            # Here we call our send message function to put the new message in the database
+            send_message(text, username, time, curr_channel)
             response_data = {'status': 'Message added successfully'}
             return jsonify(response_data)
 
+        elif 'loadMessage' in data:
+            current_channel = data['current_channel']
+            messages = load_messages(current_channel)
+            return jsonify(messages=messages)
             # If the request is invalid/does not match what we expect
         else:
             response_data = {'status': 'Invalid request'}
             return jsonify(response_data)
     else:
-        # on page load get the list of channels the user is in and send it to the channel page so we can load them
+        # on page load get the list of channels the user is in and send it to the channel page, so we can load them
         channels = get_channels('test_user')
-    return render_template("ChannelPage.html", channels=channels)
+    return render_template("ChannelPage.html", channels=channels, messages=messages, username=username)
 
 
 @app.route('/profile')

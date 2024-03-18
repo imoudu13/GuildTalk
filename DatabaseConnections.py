@@ -1,5 +1,3 @@
-import ssl
-
 from pymongo import MongoClient, errors
 from pymongo.server_api import ServerApi
 
@@ -54,8 +52,14 @@ class DatabaseHandler:
 
 # This is the class that handles the results returned from the database
 class DatabaseConnect:
-    def __init__(self):
-        self.db_handler = DatabaseHandler()
+    _instance = None
+
+    # This is to ensure that only one instance of this class exists
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+            cls._instance.db_handler = DatabaseHandler()
+        return cls._instance
 
     def insert_into_user(self, data):
         collection_name = "User"

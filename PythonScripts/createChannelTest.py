@@ -3,6 +3,7 @@ from unittest.mock import patch
 from flask import Flask, jsonify
 from createChannel import add_channel, get_channels
 
+
 class TestAddChannel(unittest.TestCase):
     @patch('createChannel.app.db')
     def test_add_channel_success(self, mock_db):
@@ -52,6 +53,7 @@ class TestAddChannel(unittest.TestCase):
         expected_channels = []
         actual_channels = get_channels(nonexistent_user)
         self.assertEqual(expected_channels, actual_channels)
+
 
 if __name__ == '__main__':
     unittest.main()

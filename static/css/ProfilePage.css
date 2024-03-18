@@ -116,12 +116,12 @@ header{
     float: right;
     background-color: white;
     border: 0;
-    border-radius: 1em 1em 1em 1em;
+    border-radius: 1em 1em;
 }
 
 /* This is the modal that pops up upon the user clicking the edit profile button */
 #myModal {
-    display: none;
+    display: none;  /* Modal starts of with no display, when the button is clicked js shows it */
     position: fixed;
     top: 50%;
     left: 50%;
@@ -133,19 +133,43 @@ header{
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 2;
+    border-radius: 1em 1em;
+    z-index: 2; /* This ensures that it's given priority over the overlay */
+}
+.input_box{
+    margin-top: 2em;
+    height: 2em;
+    width: 15em;
+}
+/* This is the styling */
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Styling for both the submit and close buttons */
+#submit, #close{
+    border: none;
+    background-color: var(--darkMaroon);
+    color: white;
+    height: 2em;
+    width: 10em;
+    border-radius: 1em 1em;
+}
+#submit{
+    margin-top: 2em;
 }
 /* This is what blurs the background when the modal is appears*/
 .overlay{
-    display: none;
+    display: none;  /* This initially hides the overlay, when the button is clicked in js it show the overlay*/
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    width: 100%;
+    width: 100%;    /* This is to ensure that it covers the entire screen */
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5); /* Make the background black but kinda blurry*/
     backdrop-filter: blur(12px);
     z-index: 1;
 }
