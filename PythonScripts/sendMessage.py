@@ -3,7 +3,7 @@ import app
 
 
 def send_message(text, username, time, curr_channel):
-    username = "test_user"
+    username = username
     time = "12:01pm"
     # Add a new channel to the database
     channel_information1 = app.db.retrieve_from_channel(curr_channel)
