@@ -1,0 +1,31 @@
+body {
+    background-color: #020412; /* Main background color */
+    color: #ffffff; /* White text color */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #1d0515; /* Background color for the header */
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 3px solid #ffffff;
+}
+
+section {
+    background-color: #370617; /* Main background color of channel messages */
+    padding: 20px;
+    border-bottom: 2px solid #6a040f; /* Accent color for section borders */
+}
+
+h2 {
+    margin-top: 0;
+    color: #ffffff; /* White text color for headings */
+}
+
+p {
+    margin-bottom: 0;
+    color: #ffffff; /* White text color for paragraphs */
+}
