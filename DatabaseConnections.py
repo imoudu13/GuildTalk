@@ -86,8 +86,8 @@ class DatabaseConnect:
                 return {
                     "_id": result["_id"],
                     "password": result["password"],
-                    "first": result["firstname"],
-                    "last": result["lastname"],
+                    "first": result["first"],
+                    "last": result["last"],
                     "email": result["email"],
                     "channels": result["channels"]
                 }
