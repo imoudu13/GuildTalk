@@ -5,7 +5,7 @@ from pymongo.server_api import ServerApi
 # This is the class that directly connects to the database
 class DatabaseHandler:
     def __init__(self):
-        self.uri = "mongodb+srv://GuildTalk:cosc310guildtalk@guildtalk.nmclwfs.mongodb.net/?retryWrites=true&w=majority&appName=GuildTalk"
+        self.uri = "mongodb+srv://jumbalaya112:cosc310GuildTalk@guildtalk.nktspge.mongodb.net/?retryWrites=true&w=majority&appName=GuildTalk"
         self.client = None
         self.db = None
 
@@ -86,8 +86,8 @@ class DatabaseConnect:
                 return {
                     "_id": result["_id"],
                     "password": result["password"],
-                    "first": result["firstname"],
-                    "last": result["lastname"],
+                    "first": result["first"],
+                    "last": result["last"],
                     "email": result["email"],
                     "channels": result["channels"]
                 }

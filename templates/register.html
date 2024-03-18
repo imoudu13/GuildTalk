@@ -18,24 +18,61 @@
       />
     </header>
     <div id="register-container">
-      <form
-        method="post"
-        action="http://www.randyconnolly.com/tests/process.php"
-      >
+      <form method="post" action="">
+        {{form.hidden_tag()}}
+        <!--hidden tag for security-->
         <h2>Hello New User!</h2>
         <h3>Create a new account</h3>
         <div id="left-column">
           <p>
-            <input type="text" name="firstname" placeholder="Firstname" />
+            <input type="text" name="firstname" placeholder="Firstname" value="{{ form.firstname.data }}"/>
+            {% if form.firstname.errors%}
+            <div class="invalid-feedback">
+              {% for error in form.firstname.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+              {% endif %}
           </p>
           <p>
-            <input type="text" name="lastname" placeholder="Lastname" />
+            <input type="text" name="lastname" placeholder="Lastname" value="{{ form.lastname.data }}"/>
+            {% if form.lastname.errors%}
+            <div class="invalid-feedback">
+              {% for error in form.lastname.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+              {% endif %}
           </p>
           <p>
-            <input type="email" name="email" placeholder="Email" />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value="{{ form.email.data }}"
+            />
+            {% if form.email.errors%}
+            <div class="invalid-feedback">
+              {% for error in form.email.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+              {% endif %}
           </p>
           <p>
-            <input type="text" name="username" placeholder="Username" />
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              value="{{ form.username.data }}"
+            />
+                {% if form.username.errors%}
+              <div class="invalid-feedback">
+                {% for error in form.username.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+              </div>
+                {% endif %}
           </p>
         </div>
         <div id="right-column">
@@ -45,20 +82,36 @@
               name="password"
               placeholder="Password"
               id="password-input"
+              value="{{ form.password.data }}"
             />
+            {% if form.password.errors%}
+            <div class="invalid-feedback">
+              {% for error in form.password.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+              {% endif %}
           </p>
           <p>
             <input
               type="password"
               name="confirm_password"
               placeholder="Confirm Password"
+              value="{{ form.confirm_password.data }}"
             />
+            {% if form.confirm_password.errors%}
+            <div class="invalid-feedback">
+              {% for error in form.confirm_password.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+              {% endif %}
           </p>
           <p>
             <input type="submit" value="Register" />
           </p>
           <div id="login-button">
-            <a href="login.html">Log in to existing account</a>
+            <a href="{{ url_for('login') }}">Log in to existing account</a>
           </div>
         </div>
       </form>
