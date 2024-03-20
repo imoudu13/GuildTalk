@@ -49,7 +49,7 @@ function loadMessages(){
                 let users = response['users'];
 
                 users.forEach(function (user){
-                    displayInColumn(user, userContainer);
+                    displayInUserOrAdmin(user, userContainer);
                 });
 
                 let adminContainer = document.querySelector('.admin-container');
@@ -57,7 +57,7 @@ function loadMessages(){
                 let admins = response['admins'];
 
                 admins.forEach(function(admin){
-                    displayInColumn(admin, adminContainer);
+                    displayInUserOrAdmin(admin, adminContainer);
                 });
             } else {
                 // Error handling
@@ -66,7 +66,7 @@ function loadMessages(){
         };
         xhr.send(JSON.stringify({loadMessage: "true", current_channel: current_channel }));
 }
-function displayInColumn(username, container){
+function displayInUserOrAdmin(username, container){
     let button = document.createElement('button');
     button.classList.add('member');
 
