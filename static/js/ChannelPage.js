@@ -63,7 +63,9 @@ function loadMessages(){
                     // Append image and username spans to profile container
                     profileContainer.appendChild(profilePicture);
                     profileContainer.appendChild(usernameSpan);
-                    userContainer.appendChild(profileContainer);
+                    userButton.appendChild(profileContainer);
+
+                    userContainer.appendChild(userButton);
                 });
 
                 let adminContainer = document.querySelector('.admin-container');
@@ -89,7 +91,9 @@ function loadMessages(){
                     // Append image and username spans to profile container
                     adminProfileContainer.appendChild(profilePicture);
                     adminProfileContainer.appendChild(usernameSpan);
-                    adminContainer.appendChild(adminProfileContainer);
+                    adminButton.appendChild(adminProfileContainer);
+
+                    adminContainer.appendChild(adminButton);
                 });
             } else {
                 // Error handling
