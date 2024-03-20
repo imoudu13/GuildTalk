@@ -66,6 +66,8 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
     username = session.get('username')
     channels = []
     messages = []
+    users_in_channel = None
+
     if request.method == 'POST':
         # get the data from the json request
         data = request.get_json()
@@ -91,7 +93,8 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
         elif 'loadMessage' in data:
             current_channel = data['current_channel']
             messages = load_messages(current_channel)
-            return jsonify(messages=messages)
+            channel_info = db.retrieve_from_channel(current_channel)
+            return jsonify(messages=messages, users=channel_info['users'], admins=channel_info['admins'])
             # If the request is invalid/does not match what we expect
         else:
             response_data = {'status': 'Invalid request'}
@@ -99,7 +102,7 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
     else:
         # on page load get the list of channels the user is in and send it to the channel page, so we can load them
         channels = get_channels(username)
-    return render_template("ChannelPage.html", channels=channels, messages=messages, username=username)
+    return render_template("ChannelPage.html", channels=channels, messages=messages, username=username, users_in_channel=users_in_channel)
 
 
 @app.route('/profile')
