@@ -41,59 +41,20 @@ function loadMessages(){
                     messageContainer1.scrollTop = messageContainer1.scrollHeight;
                 });
 
-                let userContainer = document.querySelector('.member-container');
-
-                let users = response['users'];
-
-                users.forEach(function (user){
-                    let userButton = document.createElement('button');
-                    userButton.classList.add('member');
-                    let profileContainer = document.createElement("span");
-                    profileContainer.className = "profile-container";
-
-                    // Create image element for profile picture
-                    let profilePicture = document.createElement("img");
-                    profilePicture.src = "../static/images/GuildTalkLogoNoTextClear.png";
-                    profilePicture.alt = "Profile Picture";
-
-                    // Create span element for username
-                    let usernameSpan = document.createElement("span");
-                    usernameSpan.className = "username";
-                    usernameSpan.textContent = user; // Assuming users is a variable holding username
-                    // Append image and username spans to profile container
-                    profileContainer.appendChild(profilePicture);
-                    profileContainer.appendChild(usernameSpan);
-                    userButton.appendChild(profileContainer);
-
-                    userContainer.appendChild(userButton);
-                });
-
                 let adminContainer = document.querySelector('.admin-container');
 
                 let admins = response['admins'];
 
                 admins.forEach(function(admin){
-                    let adminButton = document.createElement('button');
-                    adminButton.classList.add('member');
+                    displayInUserOrAdmin(admin, adminContainer);
+                });
 
-                    let adminProfileContainer = document.createElement("span");
-                    adminProfileContainer.className = "profile-container";
+                let userContainer = document.querySelector('.member-container');
 
-                    // Create image element for profile picture
-                    let profilePicture = document.createElement("img");
-                    profilePicture.src = "../static/images/GuildTalkLogoNoTextClear.png";
-                    profilePicture.alt = "Profile Picture";
+                let users = response['users'];
 
-                    // Create span element for username
-                    let usernameSpan = document.createElement("span");
-                    usernameSpan.className = "username";
-                    usernameSpan.textContent = admin; // Assuming users is a variable holding username
-                    // Append image and username spans to profile container
-                    adminProfileContainer.appendChild(profilePicture);
-                    adminProfileContainer.appendChild(usernameSpan);
-                    adminButton.appendChild(adminProfileContainer);
-
-                    adminContainer.appendChild(adminButton);
+                users.forEach(function (user){
+                    displayInUserOrAdmin(user, userContainer);
                 });
             } else {
                 // Error handling
@@ -140,7 +101,32 @@ function createChannel(){
         alert("Please insert a channel name");
     }
 }
+function displayInUserOrAdmin(thisUserName, container, listOfAdmins){
+    let button = document.createElement('button');
+    button.classList.add('member');
 
+    let profileContainer = document.createElement("span");
+    profileContainer.className = "profile-container";
+
+    // Create image element for profile picture
+    let profilePicture = document.createElement("img");
+    profilePicture.src = "../static/images/GuildTalkLogoNoTextClear.png";
+    profilePicture.alt = "Profile Picture";
+
+    // Create span element for thisUserName
+    let usernameSpan = document.createElement("span");
+    usernameSpan.className = "username";
+    usernameSpan.textContent = thisUserName; // Assuming users is a variable holding thisUserName
+    // Append image and thisUserName spans to profile container
+    profileContainer.appendChild(profilePicture);
+    profileContainer.appendChild(usernameSpan);
+    button.appendChild(profileContainer);
+
+    button.addEventListener('click', function (thisUserName){
+        checkIfAdmin(listOfAdmins, thisUserName);
+    });
+    container.appendChild(button);
+}
 // Function to put a message into html and send it to the controller
 function handleKeyPress(event) {
     // Check if Enter key was pressed (keyCode 13)
@@ -181,6 +167,22 @@ function handleKeyPress(event) {
 
     }
 }
+function checkIfAdmin(listOfAdmin, userToPromote){
+    if(!listOfAdmin.includes(username)){
+        alert("This privilege is reserved for admins only.");
+        return;
+    }
+    if(listOfAdmin.includes(userToPromote)){
+        alert("This user is already an admin.");
+        return
+    }
+    let xhr = new XMLHttpRequest();
+    //initializes new request of type POST and sends it to channel python method on server side
+    xhr.open("POST", "/channel"); // Send POST request to server-side Python script
+    //Indicates that the request body will contain JSON data
+    xhr.setRequestHeader("Content-Type", "application/json");
 
+    xhr.send(JSON.stringify({promote: "true", current_channel: current_channel, newAdmin: userToPromote }));
+}
 
 

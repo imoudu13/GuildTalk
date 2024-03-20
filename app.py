@@ -90,6 +90,15 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
             response_data = {'status': 'Message added successfully'}
             return jsonify(response_data)
 
+        elif 'promote' in data:
+            newadmin = data['newAdmin']
+            channel_name = data['channelName']
+            channel_info = db.retrieve_from_channel(channel_name)
+            channel_info['users'].remove(newadmin)  # gets the list that belongs to the channel and removes the user
+            channel_info['admin'].append(newadmin)  # update the list of admins
+            db.update_from_channel(channel_name, channel_info)  # updates the db
+            return jsonify({'status': 'User is an admin'})
+
         elif 'loadMessage' in data:
             current_channel = data['current_channel']
             messages = load_messages(current_channel)
@@ -102,7 +111,8 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
     else:
         # on page load get the list of channels the user is in and send it to the channel page, so we can load them
         channels = get_channels(username)
-    return render_template("ChannelPage.html", channels=channels, messages=messages, username=username, users_in_channel=users_in_channel)
+    return render_template("ChannelPage.html", channels=channels, messages=messages, username=username,
+                           users_in_channel=users_in_channel)
 
 
 @app.route('/profile')
