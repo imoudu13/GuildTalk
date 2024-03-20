@@ -43,9 +43,9 @@ function loadMessages(){
 
                 let userContainer = document.querySelector('.member-container');
 
-                let users = response['users_in_channel'];
+                let users = response['users'];
 
-                users.forEach(function (users){
+                users.forEach(function (user){
                     let userButton = document.createElement('button');
                     userButton.classList.add('member');
                     let profileContainer = document.createElement("span");
@@ -59,18 +59,38 @@ function loadMessages(){
                     // Create span element for username
                     let usernameSpan = document.createElement("span");
                     usernameSpan.className = "username";
-                    usernameSpan.textContent = users; // Assuming users is a variable holding username
+                    usernameSpan.textContent = user; // Assuming users is a variable holding username
                     // Append image and username spans to profile container
                     profileContainer.appendChild(profilePicture);
                     profileContainer.appendChild(usernameSpan);
                     userContainer.appendChild(profileContainer);
                 });
 
-                //<span class="profile-container">
-                  //          <img src="../static/images/GuildTalkLogoNoTextClear.png" alt="Profile Picture">
-                    //        <span  class="username">{{ users }}</span>
-                      //  </span>
-                //parses JSON response from server into js object(newChannel)
+                let adminContainer = document.querySelector('.admin-container');
+
+                let admins = response['admins'];
+
+                admins.forEach(function(admin){
+                    let adminButton = document.createElement('button');
+                    adminButton.classList.add('member');
+
+                    let adminProfileContainer = document.createElement("span");
+                    adminProfileContainer.className = "profile-container";
+
+                    // Create image element for profile picture
+                    let profilePicture = document.createElement("img");
+                    profilePicture.src = "../static/images/GuildTalkLogoNoTextClear.png";
+                    profilePicture.alt = "Profile Picture";
+
+                    // Create span element for username
+                    let usernameSpan = document.createElement("span");
+                    usernameSpan.className = "username";
+                    usernameSpan.textContent = admin; // Assuming users is a variable holding username
+                    // Append image and username spans to profile container
+                    adminProfileContainer.appendChild(profilePicture);
+                    adminProfileContainer.appendChild(usernameSpan);
+                    adminContainer.appendChild(adminProfileContainer);
+                });
             } else {
                 // Error handling
                 console.error("Failed");

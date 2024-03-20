@@ -93,8 +93,8 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
         elif 'loadMessage' in data:
             current_channel = data['current_channel']
             messages = load_messages(current_channel)
-            users_in_channel = db.retrieve_from_channel(current_channel)['users']
-            return jsonify(messages=messages, users_in_channel=users_in_channel)
+            channel_info = db.retrieve_from_channel(current_channel)
+            return jsonify(messages=messages, users=channel_info['users'], admins=channel_info['admins'])
             # If the request is invalid/does not match what we expect
         else:
             response_data = {'status': 'Invalid request'}
