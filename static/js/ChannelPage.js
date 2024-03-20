@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("message-input-id").addEventListener("keypress", handleKeyPress);
 
 });
+function designateAdmin(){
+
+}
 //function to redirect buttons to pages based on url
 function redirectToPage(url) {
     window.location.href = url;
@@ -46,26 +49,7 @@ function loadMessages(){
                 let users = response['users'];
 
                 users.forEach(function (user){
-                    let userButton = document.createElement('button');
-                    userButton.classList.add('member');
-                    let profileContainer = document.createElement("span");
-                    profileContainer.className = "profile-container";
-
-                    // Create image element for profile picture
-                    let profilePicture = document.createElement("img");
-                    profilePicture.src = "../static/images/GuildTalkLogoNoTextClear.png";
-                    profilePicture.alt = "Profile Picture";
-
-                    // Create span element for username
-                    let usernameSpan = document.createElement("span");
-                    usernameSpan.className = "username";
-                    usernameSpan.textContent = user; // Assuming users is a variable holding username
-                    // Append image and username spans to profile container
-                    profileContainer.appendChild(profilePicture);
-                    profileContainer.appendChild(usernameSpan);
-                    userButton.appendChild(profileContainer);
-
-                    userContainer.appendChild(userButton);
+                    displayInColumn(user, userContainer);
                 });
 
                 let adminContainer = document.querySelector('.admin-container');
@@ -73,27 +57,7 @@ function loadMessages(){
                 let admins = response['admins'];
 
                 admins.forEach(function(admin){
-                    let adminButton = document.createElement('button');
-                    adminButton.classList.add('member');
-
-                    let adminProfileContainer = document.createElement("span");
-                    adminProfileContainer.className = "profile-container";
-
-                    // Create image element for profile picture
-                    let profilePicture = document.createElement("img");
-                    profilePicture.src = "../static/images/GuildTalkLogoNoTextClear.png";
-                    profilePicture.alt = "Profile Picture";
-
-                    // Create span element for username
-                    let usernameSpan = document.createElement("span");
-                    usernameSpan.className = "username";
-                    usernameSpan.textContent = admin; // Assuming users is a variable holding username
-                    // Append image and username spans to profile container
-                    adminProfileContainer.appendChild(profilePicture);
-                    adminProfileContainer.appendChild(usernameSpan);
-                    adminButton.appendChild(adminProfileContainer);
-
-                    adminContainer.appendChild(adminButton);
+                    displayInColumn(admin, adminContainer);
                 });
             } else {
                 // Error handling
@@ -101,6 +65,29 @@ function loadMessages(){
             }
         };
         xhr.send(JSON.stringify({loadMessage: "true", current_channel: current_channel }));
+}
+function displayInColumn(username, container){
+    let button = document.createElement('button');
+    button.classList.add('member');
+
+    let profileContainer = document.createElement("span");
+    profileContainer.className = "profile-container";
+
+    // Create image element for profile picture
+    let profilePicture = document.createElement("img");
+    profilePicture.src = "../static/images/GuildTalkLogoNoTextClear.png";
+    profilePicture.alt = "Profile Picture";
+
+    // Create span element for username
+    let usernameSpan = document.createElement("span");
+    usernameSpan.className = "username";
+    usernameSpan.textContent = username; // Assuming users is a variable holding username
+    // Append image and username spans to profile container
+    profileContainer.appendChild(profilePicture);
+    profileContainer.appendChild(usernameSpan);
+    button.appendChild(profileContainer);
+
+    container.appendChild(button);
 }
 //function to give pop up to user for create channel button
 function createChannel(){
