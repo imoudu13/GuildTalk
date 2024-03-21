@@ -279,12 +279,27 @@ function deleteMessage(message) {
             let index = childrenArray.indexOf(message);
             // Delete the message
             message.remove();
-            // Here you can add code to send a request to your server to delete the message from the database
-            // Example: You can use AJAX to send a request to your server to delete the message
-    }
-    }
-    else{
-        alert("You must be an admin to delete a message");
+            //remove message from database
+                let xhr = new XMLHttpRequest();
+                //initializes new request of type POST and sends it to channel python method on server side
+                xhr.open("POST", "/channel"); // Send POST request to server-side Python script
+                //Indicates that the request body will contain JSON data
+                xhr.setRequestHeader("Content-Type", "application/json");
+                //function that's called when the request completes successfully
+                xhr.onload = function () {
+                    //status === 200 means that it worked
+                    if (xhr.status === 200) {
+                        console.log("Success")
+                    } else {
+                        // Error handling
+                        console.error("Failed");
+                    }
+                };
+                xhr.send(JSON.stringify({deleteMessage:true, messageIndex: index, current_channel: current_channel}));
+         }
+            }
+            else{
+                alert("You must be an admin to delete a message");
     }
 }
 function isAdmin(){

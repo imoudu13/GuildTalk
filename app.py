@@ -3,6 +3,7 @@ from PythonScripts.registerLogin import RegistrationForm, LoginForm, ResetForm, 
 from DatabaseConnections import DatabaseConnect
 from PythonScripts.createChannel import get_channels, add_channel
 from PythonScripts.sendMessage import send_message, load_messages
+from PythonScripts.deleteMessage import deleteMessage
 
 # singleton instantiation of the database
 db = DatabaseConnect()
@@ -117,6 +118,9 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
             channel_info = db.retrieve_from_channel(current_channel)
             return jsonify(messages=messages, users=channel_info['users'], admins=channel_info['admins'])
             # If the request is invalid/does not match what we expect
+        elif 'deleteMessage' in data:
+            deleteMessage(data['messageIndex'], data['current_channel'])
+            return jsonify({'status': 'Message has been removed from channel'})
         else:
             response_data = {'status': 'Invalid request'}
             return jsonify(response_data)
