@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Add an event listener to the textarea for the keypress event
     document.getElementById("message-input-id").addEventListener("keypress", handleKeyPress);
     document.querySelector('.promote-button').addEventListener("click", promote);
-    document.querySelector('.remove-button').addEventListener("click", handleKeyPress);
+    document.querySelector('.remove-button').addEventListener("click", remove);
 });
 
 //function to redirect buttons to pages based on url
@@ -87,6 +87,41 @@ function promote(){
                 body: JSON.stringify({
                     promote: true,
                     newAdmin: userToPromote,
+                    channelName: current_channel  // assuming current_channel is available
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // Log the response from the server
+                // Handle the response as needed
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle errors
+            });
+        } else {
+            // If the user canceled the prompt or entered an empty string, handle it here.
+            console.log("No username entered or prompt canceled.");
+        }
+    }
+}
+function remove(){
+    if(current_channel === ""){
+        alert("Please select a channel first.");
+    }else if(!admins.includes(username)){
+        alert("You are not an admin, you do cannot remove a user.");
+    }else{
+        let userToRemove = window.prompt("Please enter the username for the user that you want to remove.");
+
+        if (userToRemove) {
+            fetch('/channel', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    remove: true,
+                    removedUser: userToRemove,
                     channelName: current_channel  // assuming current_channel is available
                 })
             })
