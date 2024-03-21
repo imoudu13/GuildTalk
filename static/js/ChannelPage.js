@@ -1,10 +1,14 @@
 let username = document.currentScript.getAttribute('data-username');
 let current_channel = ""
+let users = null;
+let admins = null;
+
 document.addEventListener('DOMContentLoaded', function () {
     //
     // Add an event listener to the textarea for the keypress event
     document.getElementById("message-input-id").addEventListener("keypress", handleKeyPress);
-
+    document.querySelector('.promote-button').addEventListener("click", promote);
+    document.querySelector('.remove-button').addEventListener("click", handleKeyPress);
 });
 
 //function to redirect buttons to pages based on url
@@ -46,7 +50,7 @@ function loadMessagesAndMembers() {
 
             let userContainer = document.querySelector('.member-container');
             userContainer.innerHTML = ''; //Clear previous members
-            let users = response['users'];
+            users = response['users'];
 
             users.forEach(function (user) {
                 displayInUserOrAdmin(user, userContainer);
@@ -54,7 +58,7 @@ function loadMessagesAndMembers() {
 
             let adminContainer = document.querySelector('.admin-container');
             adminContainer.innerHTML = '';
-            let admins = response['admins'];
+            admins = response['admins'];
 
             admins.forEach(function (admin) {
                 displayInUserOrAdmin(admin, adminContainer);
@@ -66,7 +70,41 @@ function loadMessagesAndMembers() {
     };
     xhr.send(JSON.stringify({loadMessage: "true", current_channel: current_channel}));
 }
+function promote(){
+    if(current_channel === ""){
+        alert("Please select a channel first.");
+    }else if(!admins.includes(username)){
+        alert("You are not an admin, you do cannot promote a user.");
+    }else{
+        let userToPromote = window.prompt("Please enter the username for the user that you want to promote.");
 
+        if (userToPromote) {
+            fetch('/channel', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    promote: true,
+                    newAdmin: userToPromote,
+                    channelName: current_channel  // assuming current_channel is available
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // Log the response from the server
+                // Handle the response as needed
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle errors
+            });
+        } else {
+            // If the user canceled the prompt or entered an empty string, handle it here.
+            console.log("No username entered or prompt canceled.");
+        }
+    }
+}
 function displayInUserOrAdmin(username, container) {
     let button = document.createElement('button');
     button.classList.add('member');

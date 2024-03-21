@@ -72,7 +72,7 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
         # get the data from the json request
         data = request.get_json()
         # Check if it is channel add request
-        if 'channelName' in data:
+        if 'channelName' in data and 'promote' not in data:
             channel_name = data['channelName']
             add_channel(channel_name, username)
             response_data = {'status': 'Channel added successfully'}
@@ -92,11 +92,12 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
 
         elif 'promote' in data:
             newadmin = data['newAdmin']
+            print(newadmin)
             channel_name = data['channelName']
             channel_info = db.retrieve_from_channel(channel_name)
             channel_info['users'].remove(newadmin)  # gets the list that belongs to the channel and removes the user
-            channel_info['admin'].append(newadmin)  # update the list of admins
-            db.update_from_channel(channel_name, channel_info)  # updates the db
+            channel_info['admins'].append(newadmin)  # update the list of admins
+            db.update_channel(channel_name, channel_info)  # updates the db
             return jsonify({'status': 'User is an admin'})
 
         elif 'loadMessage' in data:
