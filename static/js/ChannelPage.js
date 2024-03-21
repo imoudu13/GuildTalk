@@ -188,7 +188,7 @@ function makeMessage(message,messageContainer, a){
       messageDiv.appendChild(deleteButton);
       //On delete button click call deleteMessage()
         deleteButton.onclick = function() {
-                        deleteMessage();
+                        deleteMessage(this);
                     };
 
       messageContainer.appendChild(messageDiv);
@@ -196,38 +196,39 @@ function makeMessage(message,messageContainer, a){
       const messageContainer1 = document.querySelector('.message-container');
       messageContainer1.scrollTop = messageContainer1.scrollHeight;
 }
-function deleteMessage() {
+function deleteMessage(message) {
     if (isAdmin()) {
-        alert("You are an admin");
+        if (confirm("Do you want to delete this message?")) {
+        // Delete the message
+        message.parentNode.remove();
+        // Here you can add code to send a request to your server to delete the message from the database
+        // Example: You can use AJAX to send a request to your server to delete the message
+    }
     }
     else{
         alert("You must be an admin to delete a message");
     }
 }
 function isAdmin(){
+    let admin = false;
     // get admin container
     let adminContainer = document.querySelector('.admin-container');
 
     // Get all admins
     let memberButtons = adminContainer.querySelectorAll('.member');
 
-    // Our logged-in user
-    let usernameToCompare = username; // Assuming this is the username you want to compare
-
     // Iterate over each admin
     memberButtons.forEach(function(memberButton) {
         // Get the username span element within the member button
         let usernameElement = memberButton.querySelector('.username');
-
         // Get the username text from the username span element
-        let username = usernameElement.textContent.trim();
-
+        let usernameAdmin = usernameElement.textContent;
         // Compare the username with logged-in user. If they are an admin they can delete messages now
-        if (username === usernameToCompare) {
-            return true;
+        if (usernameAdmin === username) {
+            admin = true;
         }
     });
-    return false;
+    return admin;
 }
 
 
