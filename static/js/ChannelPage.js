@@ -17,9 +17,9 @@ function redirectToPage(url) {
 function setChannel(channel){
     current_channel = channel;
     document.querySelector(".channel-title").innerText = current_channel;
-    loadMessages();
+    loadMessagesAndMembers();
 }
-function loadMessages(){
+function loadMessagesAndMembers(){
     let xhr = new XMLHttpRequest();
         //initializes new request of type POST and sends it to channel python method on server side
         xhr.open("POST", "/channel"); // Send POST request to server-side Python script
@@ -45,7 +45,7 @@ function loadMessages(){
                 });
 
                 let userContainer = document.querySelector('.member-container');
-
+                userContainer.innerHTML = ''; //Clear previous members
                 let users = response['users'];
 
                 users.forEach(function (user){
@@ -53,7 +53,7 @@ function loadMessages(){
                 });
 
                 let adminContainer = document.querySelector('.admin-container');
-
+                adminContainer.innerHTML = '';
                 let admins = response['admins'];
 
                 admins.forEach(function(admin){
@@ -111,6 +111,9 @@ function createChannel(){
                 let newElement = document.createElement("button");
                 newElement.classList.add('channel-button');
                 newElement.textContent = channelName;
+                 newElement.onclick = function() {
+                        setChannel(channelName);
+                    };
                 channelContainer.appendChild(newElement);
             } else {
                 // Error handling
