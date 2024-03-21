@@ -72,7 +72,7 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
         # get the data from the json request
         data = request.get_json()
         # Check if it is channel add request
-        if 'channelName' in data:
+        if 'channelName' in data and ('promote' not in data and 'remove' not in data):
             channel_name = data['channelName']
             add_channel(channel_name, username)
             response_data = {'status': 'Channel added successfully'}
@@ -90,6 +90,27 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
             response_data = {'status': 'Message added successfully'}
             return jsonify(response_data)
 
+        elif 'promote' in data:
+            newadmin = data['newAdmin']
+            channel_name = data['channelName']
+            channel_info = db.retrieve_from_channel(channel_name)
+            channel_info['users'].remove(newadmin)  # gets the list that belongs to the channel and removes the user
+            channel_info['admins'].append(newadmin)  # update the list of admins
+            db.update_channel(channel_name, channel_info)  # updates the db
+            return jsonify({'status': 'User is an admin'})
+
+        elif 'remove' in data:
+            removeThisUser = data['removedUser']
+            channel_name = data['channelName']
+            channel_info = db.retrieve_from_channel(channel_name)
+            channel_info['users'].remove(removeThisUser)  # gets the list from the channel and removes the user
+            user_info = db.retrieve_from_user(removeThisUser)
+            db.update_channel(channel_name, channel_info)  # updates the db
+            # update the removed users list
+            user_info['channels'].remove(channel_name)
+            db.update_user(user_info)
+            return jsonify({'status': 'User has been removed from channel'})
+
         elif 'loadMessage' in data:
             current_channel = data['current_channel']
             messages = load_messages(current_channel)
@@ -102,7 +123,8 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
     else:
         # on page load get the list of channels the user is in and send it to the channel page, so we can load them
         channels = get_channels(username)
-    return render_template("ChannelPage.html", channels=channels, messages=messages, username=username, users_in_channel=users_in_channel)
+    return render_template("ChannelPage.html", channels=channels, messages=messages, username=username,
+                           users_in_channel=users_in_channel)
 
 
 @app.route('/profile')
