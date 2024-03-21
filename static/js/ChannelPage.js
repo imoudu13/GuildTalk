@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("message-input-id").addEventListener("keypress", handleKeyPress);
 
 });
+function designateAdmin(){
+
+}
 //function to redirect buttons to pages based on url
 function redirectToPage(url) {
     window.location.href = url;
@@ -14,9 +17,9 @@ function redirectToPage(url) {
 function setChannel(channel){
     current_channel = channel;
     document.querySelector(".channel-title").innerText = current_channel;
-    loadMessages();
+    loadMessagesAndMembers();
 }
-function loadMessages(){
+function loadMessagesAndMembers(){
     let xhr = new XMLHttpRequest();
         //initializes new request of type POST and sends it to channel python method on server side
         xhr.open("POST", "/channel"); // Send POST request to server-side Python script
@@ -41,20 +44,20 @@ function loadMessages(){
                     messageContainer1.scrollTop = messageContainer1.scrollHeight;
                 });
 
-                let adminContainer = document.querySelector('.admin-container');
-
-                let admins = response['admins'];
-
-                admins.forEach(function(admin){
-                    displayInUserOrAdmin(admin, adminContainer);
-                });
-
                 let userContainer = document.querySelector('.member-container');
-
+                userContainer.innerHTML = ''; //Clear previous members
                 let users = response['users'];
 
                 users.forEach(function (user){
                     displayInUserOrAdmin(user, userContainer);
+                });
+
+                let adminContainer = document.querySelector('.admin-container');
+                adminContainer.innerHTML = '';
+                let admins = response['admins'];
+
+                admins.forEach(function(admin){
+                    displayInUserOrAdmin(admin, adminContainer);
                 });
             } else {
                 // Error handling
@@ -62,6 +65,29 @@ function loadMessages(){
             }
         };
         xhr.send(JSON.stringify({loadMessage: "true", current_channel: current_channel }));
+}
+function displayInUserOrAdmin(username, container){
+    let button = document.createElement('button');
+    button.classList.add('member');
+
+    let profileContainer = document.createElement("span");
+    profileContainer.className = "profile-container";
+
+    // Create image element for profile picture
+    let profilePicture = document.createElement("img");
+    profilePicture.src = "../static/images/GuildTalkLogoNoTextClear.png";
+    profilePicture.alt = "Profile Picture";
+
+    // Create span element for username
+    let usernameSpan = document.createElement("span");
+    usernameSpan.className = "username";
+    usernameSpan.textContent = username; // Assuming users is a variable holding username
+    // Append image and username spans to profile container
+    profileContainer.appendChild(profilePicture);
+    profileContainer.appendChild(usernameSpan);
+    button.appendChild(profileContainer);
+
+    container.appendChild(button);
 }
 //function to give pop up to user for create channel button
 function createChannel(){
@@ -85,6 +111,9 @@ function createChannel(){
                 let newElement = document.createElement("button");
                 newElement.classList.add('channel-button');
                 newElement.textContent = channelName;
+                 newElement.onclick = function() {
+                        setChannel(channelName);
+                    };
                 channelContainer.appendChild(newElement);
             } else {
                 // Error handling
@@ -101,32 +130,7 @@ function createChannel(){
         alert("Please insert a channel name");
     }
 }
-function displayInUserOrAdmin(thisUserName, container, listOfAdmins){
-    let button = document.createElement('button');
-    button.classList.add('member');
 
-    let profileContainer = document.createElement("span");
-    profileContainer.className = "profile-container";
-
-    // Create image element for profile picture
-    let profilePicture = document.createElement("img");
-    profilePicture.src = "../static/images/GuildTalkLogoNoTextClear.png";
-    profilePicture.alt = "Profile Picture";
-
-    // Create span element for thisUserName
-    let usernameSpan = document.createElement("span");
-    usernameSpan.className = "username";
-    usernameSpan.textContent = thisUserName; // Assuming users is a variable holding thisUserName
-    // Append image and thisUserName spans to profile container
-    profileContainer.appendChild(profilePicture);
-    profileContainer.appendChild(usernameSpan);
-    button.appendChild(profileContainer);
-
-    button.addEventListener('click', function (thisUserName){
-        checkIfAdmin(listOfAdmins, thisUserName);
-    });
-    container.appendChild(button);
-}
 // Function to put a message into html and send it to the controller
 function handleKeyPress(event) {
     // Check if Enter key was pressed (keyCode 13)
@@ -167,22 +171,6 @@ function handleKeyPress(event) {
 
     }
 }
-function checkIfAdmin(listOfAdmin, userToPromote){
-    if(!listOfAdmin.includes(username)){
-        alert("This privilege is reserved for admins only.");
-        return;
-    }
-    if(listOfAdmin.includes(userToPromote)){
-        alert("This user is already an admin.");
-        return
-    }
-    let xhr = new XMLHttpRequest();
-    //initializes new request of type POST and sends it to channel python method on server side
-    xhr.open("POST", "/channel"); // Send POST request to server-side Python script
-    //Indicates that the request body will contain JSON data
-    xhr.setRequestHeader("Content-Type", "application/json");
 
-    xhr.send(JSON.stringify({promote: "true", current_channel: current_channel, newAdmin: userToPromote }));
-}
 
 

@@ -66,7 +66,7 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
     username = session.get('username')
     channels = []
     messages = []
-    users_in_channel = None
+    users_in_channel = []
 
     if request.method == 'POST':
         # get the data from the json request
