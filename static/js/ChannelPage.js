@@ -188,7 +188,7 @@ function makeMessage(message,messageContainer, a){
       messageDiv.appendChild(deleteButton);
       //On delete button click call deleteMessage()
         deleteButton.onclick = function() {
-                        deleteMessage(this);
+                        deleteMessage(this.parentNode);
                     };
 
       messageContainer.appendChild(messageDiv);
@@ -199,10 +199,15 @@ function makeMessage(message,messageContainer, a){
 function deleteMessage(message) {
     if (isAdmin()) {
         if (confirm("Do you want to delete this message?")) {
-        // Delete the message
-        message.parentNode.remove();
-        // Here you can add code to send a request to your server to delete the message from the database
-        // Example: You can use AJAX to send a request to your server to delete the message
+            let parentContainer = message.parentNode;
+            // Convert the collection of child elements to an array
+            let childrenArray = Array.from(parentContainer.children);
+            // Find the index of the message within its parent container
+            let index = childrenArray.indexOf(message);
+            // Delete the message
+            message.remove();
+            // Here you can add code to send a request to your server to delete the message from the database
+            // Example: You can use AJAX to send a request to your server to delete the message
     }
     }
     else{
