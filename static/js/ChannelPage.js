@@ -197,18 +197,24 @@ function makeMessage(message,messageContainer, a){
       messageContainer1.scrollTop = messageContainer1.scrollHeight;
 }
 function deleteMessage() {
-    let isAdmin = false;
-
-    // Select the container element
+    if (isAdmin()) {
+        alert("You are an admin");
+    }
+    else{
+        alert("You must be an admin to delete a message");
+    }
+}
+function isAdmin(){
+    // get admin container
     let adminContainer = document.querySelector('.admin-container');
 
-    // Get all member buttons within the admin container
+    // Get all admins
     let memberButtons = adminContainer.querySelectorAll('.member');
 
-    // Username to compare
+    // Our logged-in user
     let usernameToCompare = username; // Assuming this is the username you want to compare
 
-    // Iterate over each member button
+    // Iterate over each admin
     memberButtons.forEach(function(memberButton) {
         // Get the username span element within the member button
         let usernameElement = memberButton.querySelector('.username');
@@ -216,19 +222,12 @@ function deleteMessage() {
         // Get the username text from the username span element
         let username = usernameElement.textContent.trim();
 
-        // Compare the username with the username to compare
+        // Compare the username with logged-in user. If they are an admin they can delete messages now
         if (username === usernameToCompare) {
-            // Username matches
-            isAdmin = true;
+            return true;
         }
     });
-
-    if (isAdmin) {
-        alert("You are an admin");
-    }
-    else{
-        alert("You must be an admin to delete a message");
-    }
+    return false;
 }
 
 
