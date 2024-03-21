@@ -196,30 +196,38 @@ function makeMessage(message,messageContainer, a){
       const messageContainer1 = document.querySelector('.message-container');
       messageContainer1.scrollTop = messageContainer1.scrollHeight;
 }
-function deleteMessage(){
+function deleteMessage() {
     let isAdmin = false;
+
     // Select the container element
     let adminContainer = document.querySelector('.admin-container');
 
-    // Get all admins
-    let elements = adminContainer.querySelectorAll('*');
+    // Get all member buttons within the admin container
+    let memberButtons = adminContainer.querySelectorAll('.member');
 
-    // Iterate over admin
-    elements.forEach(function(admin) {
-        // check if the currently logged-in user is in the admin list
+    // Username to compare
+    let usernameToCompare = username; // Assuming this is the username you want to compare
+
+    // Iterate over each member button
+    memberButtons.forEach(function(memberButton) {
         // Get the username span element within the member button
-        let profileContainer = admin.querySelector('.profile-container');
-        let usernameElement = profileContainer.querySelector('.username');
+        let usernameElement = memberButton.querySelector('.username');
+
         // Get the username text from the username span element
-        let usernameInAdminList = usernameElement.textContent.trim();
-        // Compare the username with the logged-in username
-        if (username === usernameInAdminList) {
-             // Username matches
+        let username = usernameElement.textContent.trim();
+
+        // Compare the username with the username to compare
+        if (username === usernameToCompare) {
+            // Username matches
             isAdmin = true;
         }
     });
-    if(isAdmin){
-        alert("You are an admin")
+
+    if (isAdmin) {
+        alert("You are an admin");
+    }
+    else{
+        alert("You must be an admin to delete a message");
     }
 }
 
