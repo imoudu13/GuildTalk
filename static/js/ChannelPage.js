@@ -85,7 +85,42 @@ function createChannel(){
         alert("Please insert a channel name");
     }
 }
-
+//Function to invite other users to channel
+function inviteToChannel(){
+    let inviteUser = prompt("Enter a username");
+    if(inviteUser !== null && inviteUser !== ""){
+        if(inviteUser.length < 20){
+        // Allows us to make http requests from client-side js
+        var xhr = new XMLHttpRequest();
+        //initalizes new request of type POST and sends it to channel python method on server side
+        xhr.open("POST", "/channel"); // Send POST request to server-side Python script
+        //Indicates that the request body will contain JSON data
+        xhr.setRequestHeader("Content-Type", "application/json");
+        //function that's called when the request completes successfully
+        xhr.onload = function() {
+            //status === 200 means that it worked
+            if (xhr.status === 200) {
+                // Here we update the html to include the new channel
+                var userContainer = document.querySelector('.member-container');
+                var newElement = document.createElement("button");
+                newElement.classList.add('member');
+                newElement.textContent = inviteUser;
+                userContainer.appendChild(newElement);
+            } else {
+                // Error handling
+                console.error("Failed to add user");
+            }
+        };
+        xhr.send(JSON.stringify({invite: inviteUser, current_channel:current_channel}));
+        }
+        else{
+            alert("username too long");
+        }
+    }
+    else{
+        alert("Please insert a username");
+    }
+}
 // Function to put a message into html and send it to the controller
 function handleKeyPress(event) {
     // Check if Enter key was pressed (keyCode 13)

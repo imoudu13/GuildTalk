@@ -3,6 +3,7 @@ from PythonScripts.registerLogin import RegistrationForm, LoginForm, ResetForm, 
 from DatabaseConnections import DatabaseConnect
 from PythonScripts.createChannel import get_channels, add_channel
 from PythonScripts.sendMessage import send_message, load_messages
+from PythonScripts.inviteToChannel import addUserToChannel
 
 # singleton instantiation of the database
 db = DatabaseConnect()
@@ -92,7 +93,16 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
             current_channel = data['current_channel']
             messages = load_messages(current_channel)
             return jsonify(messages=messages)
-            # If the request is invalid/does not match what we expect
+            
+        elif 'invite' in data:
+            current_channel = data['current_channel']
+            inviteUser = data['invite']
+            addUserToChannel(current_channel,inviteUser);
+            response_data = {'status': 'User added'}
+            return jsonify(response_data)
+        
+        
+        # If the request is invalid/does not match what we expect
         else:
             response_data = {'status': 'Invalid request'}
             return jsonify(response_data)
