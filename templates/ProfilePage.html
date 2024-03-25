@@ -1,62 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="../static/css/ProfilePage.css">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Account</title>
+    <link rel="stylesheet" href="../static/css/ProfilePage.css" />
     <script src="../static/js/ProfilePage.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div id="exit_div"> <!-- This div holds the image for the escape button in the top left corner of the screen -->
-            <p>Hit Esc to go back</p>
-            <img src="../static/images/exit_button.png" alt="escape">
-        </div>
+      <div id="exit_div">
+        <!-- This div holds the image for the escape button in the top left corner of the screen -->
+        <p>Hit Esc to go back</p>
+        <img src="../static/images/exit_button.png" alt="escape" />
+      </div>
     </header>
 
-    <div id="myaccount"> <p>My Account</p> </div>
+    <div id="myaccount"><p>My Account</p></div>
 
     <!-- This is the modal that appears when the user clicks edit profile button -->
     <div id="myModal">
-        <button class="button" id="close"> Close </button>
-        <form method="POST" action="{{ url_for('update') }}">
-            <input type="hidden" name="_id" value="{{ userInformation["_id"] }}">
-            <label>
-                <input type="text" name="first" placeholder="first name"  class="input_box" value="{{ userInformation["first"] }}" />
-            </label>
-            <label>
-                <input type="text" name="last" placeholder="last name" class="input_box" value="{{ userInformation["last"] }}" />
-            </label>
-            <label>
-                <input type="text" name="email" placeholder="email" class="input_box" value="{{ userInformation["email"] }}" />
-            </label>
-            <label>
-                <input type="text" name="password" placeholder="password" class="input_box" value="{{ userInformation["password"] }}" />
-            </label>
-            <input type="submit" id="submit"/>
-        </form>
+      <button class="button" id="close">Close</button>
+      <form method="POST" action="{{ url_for('update') }}">
+        <input type="hidden" name="_id" value="{{ userInformation["_id"] }}">
+        <label>
+          <input type="text" name="first" placeholder="first name"
+          class="input_box" value="{{ userInformation["first"] }}" />
+        </label>
+        <label>
+          <input type="text" name="last" placeholder="last name"
+          class="input_box" value="{{ userInformation["last"] }}" />
+        </label>
+        <label>
+          <input type="text" name="email" placeholder="email" class="input_box"
+          value="{{ userInformation["email"] }}" />
+        </label>
+        <label>
+          <input type="text" name="password" placeholder="password"
+          class="input_box" value="{{ userInformation["password"] }}" />
+        </label>
+        <input type="submit" id="submit" />
+      </form>
     </div>
 
     <main>
-        <div id="information">  <!-- This is the white panel on the bottom that holds some information about user data -->
-            <div id="name">
-                <!-- When the user clicks this button a popup will appear that will contain a form where a user can enter the information they want to change -->
-                <p> {{ userInformation["first"] + " " + userInformation["last"] }} <button type="button" id="edit_profile">Edit Profile</button></p>
-            </div>
-        <!-- This is for showing the actual information-->
-            <div id="more_info">
-                <div class="user_information">
-                    <p><b>DISPLAY NAME AND USERNAME: </b> {{ userInformation["_id"] }} </p>
-                </div>
-                <div class="user_information">
-                    <p><b>EMAIL: </b> {{ userInformation["email"] }} </p>
-                </div>
-                <div class="user_information">
-                    <p><b>PASSWORD: </b> {{ userInformation["password"] }} </p>
-                </div>
-            </div>
+      <div id="information">
+        <!-- This is the white panel on the bottom that holds some information about user data -->
+        <div id="name">
+          <!-- When the user clicks this button a popup will appear that will contain a form where a user can enter the information they want to change -->
+          <p>
+            {{ userInformation["first"] + " " + userInformation["last"] }}
+            <!-- This is a logout button to take the user back to the home login screen -->
+            <button class="button" id="log_out">Logout</button>
+            <button type="button" id="edit_profile">Edit Profile</button>
+          </p>
         </div>
+        <!-- This is for showing the actual information-->
+        <div id="more_info">
+          <div class="user_information">
+            <p>
+              <b>DISPLAY NAME AND USERNAME: </b> {{ userInformation["_id"] }}
+            </p>
+          </div>
+          <div class="user_information">
+            <p><b>EMAIL: </b> {{ userInformation["email"] }}</p>
+          </div>
+          <div class="user_information">
+            <p><b>PASSWORD: </b> {{ userInformation["password"] }}</p>
+          </div>
+        </div>
+      </div>
     </main>
-<div class="overlay"></div>
-</body>
+    <div class="overlay"></div>
+  </body>
 </html>
