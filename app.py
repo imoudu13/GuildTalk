@@ -110,6 +110,14 @@ def profile():  # This is the profile page we will send variables and stuff here
 
     return render_template("ProfilePage.html", userInformation=user_information)
 
+@app.route('/help')
+def help():
+    return render_template("help.html")
+
+@app.route('/faq')
+def faq():
+    return render_template("faq.html")
+
 
 # This function handles
 @app.route('/update', methods=['POST', 'GET'])
