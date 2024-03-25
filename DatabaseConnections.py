@@ -101,7 +101,7 @@ class DatabaseConnect:
         # adds the creator to the list of admins and list of users
         # also add an empty list of messages
         information.setdefault("admins", [information["creator"]])
-        information.setdefault("users", [information["creator"]])
+        information.setdefault("users", [])
         information.setdefault("messages", [])
         with self.db_handler as db:
             try:
