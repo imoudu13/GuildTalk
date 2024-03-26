@@ -212,7 +212,7 @@ function inviteToChannel(){
         xhr.onload = function() {
             //status === 200 means that it worked
             if (xhr.status === 200) {
-                // Here we update the html to include the new channel
+                // Here we update the html to include the user
                 var userContainer = document.querySelector('.member-container');
                 var newElement = document.createElement("button");
                 newElement.classList.add('member');
