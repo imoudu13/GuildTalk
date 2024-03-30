@@ -2,7 +2,9 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from flask import jsonify
-import app
+from DatabaseConnections import DatabaseConnect
+
+db = DatabaseConnect()
 
 
 class RegistrationForm(FlaskForm):
@@ -41,7 +43,7 @@ class ResetForm(FlaskForm):
 
 def get_user(username):
     # Fetch userinfo from username
-    user = app.db.retrieve_from_user(username)
+    user = db.retrieve_document(username, "User")
     if user is None:
         return []
     print(user)
@@ -58,10 +60,5 @@ def create_user(firstname, lastname, username, email, password):
         "email": email,
     }
     # insert user information into the database
-    app.db.insert_into_user(user_info)
+    db.insert_into_user(user_info)
     return jsonify({'success': True})
-
-
-def validate_username(self, field):
-    if User.query.filter_by(username=field.data).first():
-        raise ValidationError('Username already in use.')

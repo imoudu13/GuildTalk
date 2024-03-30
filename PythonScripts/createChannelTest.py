@@ -17,7 +17,7 @@ class TestAddChannel(unittest.TestCase):
         app = Flask(__name__)
         with app.app_context():
             # Call the function with a channel name
-            response = add_channel('channel_name')
+            response = add_channel('channel_name', "test_user")
 
             # Check if the function returns a success response
             self.assertEqual(response.json, {'success': True})
@@ -34,7 +34,7 @@ class TestAddChannel(unittest.TestCase):
         app = Flask(__name__)
         with app.app_context():
             # Call the function with a channel name
-            response = add_channel('channel_name')
+            response = add_channel('channel_name', "test_user")
 
             # Check if the function returns a failure response
             self.assertNotEqual(response.json, {'success': False})
