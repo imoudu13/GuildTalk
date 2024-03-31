@@ -38,7 +38,7 @@ def test_register(mock_db, client):
 @patch('app.db')
 def test_profile(mock_db, client):
     # Mock the retrieve_document method to return user information
-    mock_user = {'first': 'Test', 'last': 'User', 'email': 'test@example.com', 'password': 'password'}
+    mock_user = {'first': 'Test', 'last': 'User', 'email': 'test@example.com', 'password': 'pw'}
     mock_db.retrieve_document.return_value = mock_user
 
     # Test profile page functionality
