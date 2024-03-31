@@ -14,9 +14,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '1fe076e0a441ec065328b7506f51d7bb'
 
 
-@app.route('/')
-@app.route('/Home')
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     user = None  # Define user variable here
@@ -139,9 +137,11 @@ def profile():  # This is the profile page we will send variables and stuff here
 
     return render_template("ProfilePage.html", userInformation=user_information)
 
+
 @app.route('/help')
 def help():
     return render_template("help.html")
+
 
 @app.route('/faq')
 def faq():
