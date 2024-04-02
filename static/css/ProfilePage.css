@@ -1,175 +1,194 @@
-:root{
-    --darkMaroon: #370617;
-    --darkPurple: #1d0515;
+:root {
+  --darkMaroon: #370617;
+  --darkPurple: #1d0515;
 }
-body{
-    margin: 0;
-    padding: 0;
-    background-color: var(--darkMaroon);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #222;
-    position: relative;
-    min-height: 100vh;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--darkMaroon);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #222;
+  position: relative;
+  min-height: 100vh;
 }
-main{
-    margin-top: 2em;
-    height: 100%;
-    width: 100%;
+main {
+  margin-top: 2em;
+  height: 100%;
+  width: 100%;
 }
-header{
-    width: 100%;
-    height: 5em;
+header {
+  width: 100%;
+  height: 5em;
 }
 /*This is for the stuff in the header*/
 #myaccount {
-    position: relative;
-    text-align: center;
-    margin: 0 auto 0 auto;
-    width: 10em;
-    font-size: 3em;
-    color: white;
+  position: relative;
+  text-align: center;
+  margin: 0 auto 0 auto;
+  width: 10em;
+  font-size: 3em;
+  color: white;
 }
-#exit_div{
-    position: relative;
-    float: left;
-    left: 2em;
-    top: 2em;
-    width: 12em;
+#exit_div {
+  position: relative;
+  float: left;
+  left: 2em;
+  top: 2em;
+  width: 12em;
 }
-#exit_div img{
-    width: 4em;
-    height: 4em;
-    margin: auto;
+#exit_div img {
+  width: 4em;
+  height: 4em;
+  margin: auto;
 }
-#exit_div p{
-    color: white;
-    margin: auto;
+#exit_div p {
+  color: white;
+  margin: auto;
 }
 
-#information{
-    border-top: solid var(--darkMaroon);
-    border-radius: 2em 2em;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 10em;
-    width: 70em;
-    height: 35em;
-    background-color: white;
+#information {
+  border-top: solid var(--darkMaroon);
+  border-radius: 2em 2em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10em;
+  width: 70em;
+  height: 35em;
+  background-color: white;
 }
 /*This is for the users name and button */
-#name{
-    background-color: #ffff;
-    margin: 1em 5em 0 5em;
-    height: 5em;
-    border-bottom-color: var(--darkPurple);
-    border-bottom: solid;
+#name {
+  background-color: #ffff;
+  margin: 1em 5em 0 5em;
+  height: 5em;
+  border-bottom-color: var(--darkPurple);
+  border-bottom: solid;
 }
-#information #name p{
-    position: relative;
-    width: 100%;
-    float: left;
-    font-size: 2em;
+#information #name p {
+  position: relative;
+  width: 100%;
+  float: left;
+  font-size: 2em;
 }
-#edit_profile{
-    position: relative;
-    float: right;
-    height: 3em;
-    width: 8em;
-    background-color: var(--darkMaroon);
-    border: 0;
-    border-radius: 3em 3em 3em 3em;
-    color: white;
+#edit_profile {
+  position: relative;
+  float: right;
+  margin-right: 1em;
+  height: 3em;
+  width: 8em;
+  background-color: var(--darkMaroon);
+  border: 0;
+  border-radius: 3em 3em 3em 3em;
+  color: white;
 }
+
+#log_out {
+  position: relative;
+  float: right;
+  height: 3em;
+  width: 8em;
+  background-color: var(--darkMaroon); /* Background color */
+  border: 0;
+  border-radius: 3em; /* Border radius */
+  color: white; /* Text color */
+}
+
 /* This is for the purple pad in the middle containing the users email, username etc.*/
-#more_info{
-    border-top-color: var(--darkPurple);
-    position: absolute;
-    background-color: var(--darkMaroon);
-    height: 25em;
-    width: 50em;
-    margin: 2em 10em 0 10em;
-    border-radius: 1em 1em 1em 1em;
-    padding-left: 1em;
-    padding-right: 1em;
+#more_info {
+  border-top-color: var(--darkPurple);
+  position: absolute;
+  background-color: var(--darkMaroon);
+  height: 25em;
+  width: 50em;
+  margin: 2em 10em 0 10em;
+  border-radius: 1em 1em 1em 1em;
+  padding-left: 1em;
+  padding-right: 1em;
 }
-.user_information:first-child{
-    margin-top: 3em;
+.user_information:first-child {
+  margin-top: 3em;
 }
-.user_information:last-child{
-    margin-bottom: 3em;
+.user_information:last-child {
+  margin-bottom: 3em;
 }
-.user_information{
-    background-color: var(--darkPurple);
-    height: 3em;
-    padding: .25em 1em;
-    margin-bottom: 2em;
-    border-radius: 1em 1em 1em 1em;
+.user_information {
+  background-color: var(--darkPurple);
+  height: 3em;
+  padding: 0.25em 1em;
+  margin-bottom: 2em;
+  border-radius: 1em 1em 1em 1em;
 }
-.user_information p{
-    color: white;
+.user_information p {
+  color: white;
 }
-.user_information button{
-    width: 4em;
-    height: 1.5em;
-    float: right;
-    background-color: white;
-    border: 0;
-    border-radius: 1em 1em;
+.user_information button {
+  width: 4em;
+  height: 1.5em;
+  float: right;
+  background-color: white;
+  border: 0;
+  border-radius: 1em 1em;
 }
 
 /* This is the modal that pops up upon the user clicking the edit profile button */
 #myModal {
-    display: none;  /* Modal starts of with no display, when the button is clicked js shows it */
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 20em;
-    width: 20em;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    border-radius: 1em 1em;
-    z-index: 2; /* This ensures that it's given priority over the overlay */
+  display: none; /* Modal starts of with no display, when the button is clicked js shows it */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 20em;
+  width: 20em;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 1em 1em;
+  z-index: 2; /* This ensures that it's given priority over the overlay */
 }
-.input_box{
-    margin-top: 2em;
-    height: 2em;
-    width: 15em;
+.input_box {
+  margin-top: 2em;
+  height: 2em;
+  width: 15em;
 }
 /* This is the styling */
-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 /* Styling for both the submit and close buttons */
-#submit, #close{
-    border: none;
-    background-color: var(--darkMaroon);
-    color: white;
-    height: 2em;
-    width: 10em;
-    border-radius: 1em 1em;
+#submit,
+#close {
+  border: none;
+  background-color: var(--darkMaroon);
+  color: white;
+  height: 2em;
+  width: 10em;
+  border-radius: 1em 1em;
 }
-#submit{
-    margin-top: 2em;
+#submit {
+  margin-top: 2em;
 }
 /* This is what blurs the background when the modal is appears*/
-.overlay{
-    display: none;  /* This initially hides the overlay, when the button is clicked in js it show the overlay*/
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;    /* This is to ensure that it covers the entire screen */
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Make the background black but kinda blurry*/
-    backdrop-filter: blur(12px);
-    z-index: 1;
+.overlay {
+  display: none; /* This initially hides the overlay, when the button is clicked in js it show the overlay*/
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%; /* This is to ensure that it covers the entire screen */
+  height: 100%;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Make the background black but kinda blurry*/
+  backdrop-filter: blur(12px);
+  z-index: 1;
 }
