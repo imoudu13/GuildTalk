@@ -283,153 +283,43 @@ function handleKeyPress(event) {
   }
 }
 
-<<<<<<< HEAD
-//function to give pop up to user for create channel button
-function createChannel() {
-    let channelName = prompt("Enter a channel name (1-20 Characters)");
-    if (channelName !== null && channelName !== "") {
-        if (channelName.length < 20) {
-            // Allows us to make http requests from client-side js
-            let xhr = new XMLHttpRequest();
-            //initializes new request of type POST and sends it to channel python method on server side
-            xhr.open("POST", "/channel"); // Send POST request to server-side Python script
-            //Indicates that the request body will contain JSON data
-            xhr.setRequestHeader("Content-Type", "application/json");
-            //function that's called when the request completes successfully
-            xhr.onload = function () {
-                //status === 200 means that it worked
-                if (xhr.status === 200) {
-                    //parses JSON response from server into js object(newChannel)
-                    let newChannel = JSON.parse(xhr.responseText);
-                    // Here we update the html to include the new channel
-                    let channelContainer = document.querySelector('.select-channel-container');
-                    let newElement = document.createElement("button");
-                    newElement.classList.add('channel-button');
-                    newElement.textContent = channelName;
-                    newElement.onclick = function () {
-                        setChannel(channelName);
-                    };
-                    channelContainer.appendChild(newElement);
-                } else {
-                    // Error handling
-                    console.error("Failed to create channel.");
-                }
-            };
-            xhr.send(JSON.stringify({channelName: channelName}));
-        } else {
-            alert("Channel name too long");
-        }
-    } else {
-        alert("Please insert a channel name");
-    }
-}
 //Function to invite other users to channel
-function inviteToChannel(){
-    let inviteUser = prompt("Enter a username");
-    if(inviteUser !== null && inviteUser !== ""){
-        if(inviteUser.length < 20){
-        // Allows us to make http requests from client-side js
-        var xhr = new XMLHttpRequest();
-        //initalizes new request of type POST and sends it to channel python method on server side
-        xhr.open("POST", "/channel"); // Send POST request to server-side Python script
-        //Indicates that the request body will contain JSON data
-        xhr.setRequestHeader("Content-Type", "application/json");
-        //function that's called when the request completes successfully
-        xhr.onload = function() {
-            //status === 200 means that it worked
-            if (xhr.status === 200) {
-                // Here we update the html to include the user
-                var userContainer = document.querySelector('.member-container');
-                var newElement = document.createElement("button");
-                newElement.classList.add('member');
-                newElement.textContent = inviteUser;
-                userContainer.appendChild(newElement);
-            } else {
-                // Error handling
-                console.error("Failed to add user");
-            }
-        };
-        xhr.send(JSON.stringify({invite: inviteUser, current_channel:current_channel}));
+function inviteToChannel() {
+  let inviteUser = prompt("Enter a username");
+  if (inviteUser !== null && inviteUser !== "") {
+    if (inviteUser.length < 20) {
+      // Allows us to make http requests from client-side js
+      var xhr = new XMLHttpRequest();
+      //initalizes new request of type POST and sends it to channel python method on server side
+      xhr.open("POST", "/channel"); // Send POST request to server-side Python script
+      //Indicates that the request body will contain JSON data
+      xhr.setRequestHeader("Content-Type", "application/json");
+      //function that's called when the request completes successfully
+      xhr.onload = function () {
+        //status === 200 means that it worked
+        if (xhr.status === 200) {
+          // Here we update the html to include the user
+          var userContainer = document.querySelector(".member-container");
+          var newElement = document.createElement("button");
+          newElement.classList.add("member");
+          newElement.textContent = inviteUser;
+          userContainer.appendChild(newElement);
+        } else {
+          // Error handling
+          console.error("Failed to add user");
         }
-        else{
-            alert("username too long");
-        }
+      };
+      xhr.send(
+        JSON.stringify({ invite: inviteUser, current_channel: current_channel })
+      );
+    } else {
+      alert("username too long");
     }
-    else{
-        alert("Please insert a username");
-    }
-}
-// Function to put a message into html and send it to the controller
-function handleKeyPress(event) {
-    // Check if Enter key was pressed (keyCode 13)
-    let user_name;
-    if (event.keyCode === 13) {
-        event.preventDefault(); // Prevent the default behavior of the Enter key
-
-        // Access the value of the textarea
-        const message = document.getElementById("message-input-id").value;
-        //Here we will set other values such as username, channel, and time. For now it is dummy data while functionality is being worked on
-        user_name = username
-        time = "8:56pm"
-
-        let xhr = new XMLHttpRequest();
-        //initializes new request of type POST and sends it to channel python method on server side
-        xhr.open("POST", "/channel"); // Send POST request to server-side Python script
-        //Indicates that the request body will contain JSON data
-        xhr.setRequestHeader("Content-Type", "application/json");
-        //function that's called when the request completes successfully
-        xhr.onload = function () {
-            //status === 200 means that it worked
-            if (xhr.status === 200) {
-                //parses JSON response from server into js object(newChannel)
-                let newChannel = JSON.parse(xhr.responseText);
-                // Here we update the html to include the new channel
-                let messageContainer = document.querySelector('.message-container');
-                makeMessage(message, messageContainer, 1);
-            } else {
-                // Error handling
-                console.error("Failed");
-            }
-        };
-        xhr.send(JSON.stringify({text: message, user_name: user_name, time: time, curr_channel:current_channel }));
-        // Clear the textarea after user submission
-        document.getElementById("message-input-id").value = "";
-
-    }
+  } else {
+    alert("Please insert a username");
+  }
 }
 
-function makeMessage(message,messageContainer, a){
-      let messageDiv = document.createElement('div');
-      messageDiv.classList.add('message');
-      let messageSender;
-      let textContent;
-      if(a === 0){
-            messageSender = message.sender;
-            textContent = message.content;
-      }
-      else if (a === 1){
-           messageSender = username;
-           textContent = message;
-      }
-      //text content
-      messageDiv.textContent = messageSender + " || " + textContent;
-      //delete button
-      let deleteButton = document.createElement('button');
-      deleteButton.classList.add('deleteButton');
-      deleteButton.classList.add('button');
-      deleteButton.textContent = 'X';
-      //add delete button to message div
-      messageDiv.appendChild(deleteButton);
-      //On delete button click call deleteMessage()
-        deleteButton.onclick = function() {
-                        deleteMessage(this.parentNode);
-                    };
-
-      messageContainer.appendChild(messageDiv);
-      //This is code to reverse the scroll direction of the message board
-      const messageContainer1 = document.querySelector('.message-container');
-      messageContainer1.scrollTop = messageContainer1.scrollHeight;
-=======
 function makeMessage(message, messageContainer, a) {
   let messageDiv = document.createElement("div");
   messageDiv.classList.add("message");
@@ -460,7 +350,6 @@ function makeMessage(message, messageContainer, a) {
   //This is code to reverse the scroll direction of the message board
   const messageContainer1 = document.querySelector(".message-container");
   messageContainer1.scrollTop = messageContainer1.scrollHeight;
->>>>>>> main
 }
 function deleteMessage(message) {
   if (isAdmin()) {
