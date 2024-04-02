@@ -283,40 +283,40 @@ function handleKeyPress(event) {
   }
 }
 //Function to invite other users to channel
-function inviteToChannel(){
-    let inviteUser = prompt("Enter a username");
-    if(inviteUser !== null && inviteUser !== ""){
-        if(inviteUser.length < 20){
-        // Allows us to make http requests from client-side js
-        var xhr = new XMLHttpRequest();
-        //initalizes new request of type POST and sends it to channel python method on server side
-        xhr.open("POST", "/channel"); // Send POST request to server-side Python script
-        //Indicates that the request body will contain JSON data
-        xhr.setRequestHeader("Content-Type", "application/json");
-        //function that's called when the request completes successfully
-        xhr.onload = function() {
-            //status === 200 means that it worked
-            if (xhr.status === 200) {
-                // Here we update the html to include the user
-                let userContainer = document.querySelector('.member-container');
-                let newElement = document.createElement("button");
-                newElement.classList.add('member');
-                newElement.textContent = inviteUser;
-                userContainer.appendChild(newElement);
-            } else {
-                // Error handling
-                console.error("Failed to add user");
-            }
-        };
-        xhr.send(JSON.stringify({invite: inviteUser, current_channel:current_channel}));
+function inviteToChannel() {
+  let inviteUser = prompt("Enter a username");
+  if (inviteUser !== null && inviteUser !== "") {
+    if (inviteUser.length < 20) {
+      // Allows us to make http requests from client-side js
+      var xhr = new XMLHttpRequest();
+      //initalizes new request of type POST and sends it to channel python method on server side
+      xhr.open("POST", "/channel"); // Send POST request to server-side Python script
+      //Indicates that the request body will contain JSON data
+      xhr.setRequestHeader("Content-Type", "application/json");
+      //function that's called when the request completes successfully
+      xhr.onload = function () {
+        //status === 200 means that it worked
+        if (xhr.status === 200) {
+          // Here we update the html to include the user
+          let userContainer = document.querySelector(".member-container");
+          let newElement = document.createElement("button");
+          newElement.classList.add("member");
+          newElement.textContent = inviteUser;
+          userContainer.appendChild(newElement);
+        } else {
+          // Error handling
+          console.error("Failed to add user");
         }
-        else{
-            alert("username too long");
-        }
+      };
+      xhr.send(
+        JSON.stringify({ invite: inviteUser, current_channel: current_channel })
+      );
+    } else {
+      alert("username too long");
     }
-    else{
-        alert("Please insert a username");
-    }
+  } else {
+    alert("Please insert a username");
+  }
 }
 // Function to put a message into html and send it to the controller
 function makeMessage(message, messageContainer, a) {
@@ -409,39 +409,3 @@ function isAdmin() {
   });
   return admin;
 }
-
-function testSearchFunctionality() {
-  // Simulate user input in the search bar
-  const searchInput = "Lorem";
-
-  // Set the value of the search bar to the simulated input
-  document.getElementById("message-search-bar").value = searchInput;
-
-  // Trigger the input event on the search bar to simulate user typing
-  const event = new Event("input");
-  document.getElementById("message-search-bar").dispatchEvent(event);
-
-  // Get all message elements after the search operation
-  const messageElements = document.querySelectorAll(".message");
-
-  // Check each message element to ensure correct filtering
-  messageElements.forEach(function (messageElement) {
-    // Get the text content of the message
-    const messageText = messageElement.textContent.toLowerCase();
-
-    // Check if the search query is found in the message text
-    const searchResult = messageText.includes(searchInput.toLowerCase());
-
-    // Log test results
-    if (searchResult && messageElement.style.display !== "none") {
-      console.log("Test passed: Message displayed correctly.");
-    } else if (!searchResult && messageElement.style.display === "none") {
-      console.log("Test passed: Message hidden correctly.");
-    } else {
-      console.error("Test failed: Incorrect message display status.");
-    }
-  });
-}
-
-// Call the test function to execute the test
-testSearchFunctionality();
