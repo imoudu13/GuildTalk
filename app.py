@@ -15,15 +15,13 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '1fe076e0a441ec065328b7506f51d7bb'
 
 
-@app.route('/')
-@app.route('/Home')
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     user = None  # Define user variable here
     if form.validate_on_submit():
         username = form.username.data
-        user = db.retrieve_from_user(username)
+        user = db.retrieve_document(username, "User")
         if user and user['password'] == form.password.data:
             session['user'] = user
             session['username'] = username
@@ -95,28 +93,28 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
         elif 'promote' in data:
             newadmin = data['newAdmin']
             channel_name = data['channelName']
-            channel_info = db.retrieve_from_channel(channel_name)
+            channel_info = db.retrieve_document(channel_name, "Channel")
             channel_info['users'].remove(newadmin)  # gets the list that belongs to the channel and removes the user
             channel_info['admins'].append(newadmin)  # update the list of admins
-            db.update_channel(channel_name, channel_info)  # updates the db
+            db.update(channel_name, channel_info, "Channel")  # updates the db
             return jsonify({'status': 'User is an admin'})
 
         elif 'remove' in data:
             removeThisUser = data['removedUser']
             channel_name = data['channelName']
-            channel_info = db.retrieve_from_channel(channel_name)
+            channel_info = db.retrieve_document(channel_name, "Channel")
             channel_info['users'].remove(removeThisUser)  # gets the list from the channel and removes the user
-            user_info = db.retrieve_from_user(removeThisUser)
-            db.update_channel(channel_name, channel_info)  # updates the db
+            user_info = db.retrieve_document(removeThisUser, "User")
+            db.update(channel_name, channel_info, "Channel")  # updates the db
             # update the removed users list
             user_info['channels'].remove(channel_name)
-            db.update_user(user_info)
+            db.update(removeThisUser, user_info, "User")
             return jsonify({'status': 'User has been removed from channel'})
 
         elif 'loadMessage' in data:
             current_channel = data['current_channel']
             messages = load_messages(current_channel)
-            channel_info = db.retrieve_from_channel(current_channel)
+            channel_info = db.retrieve_document(current_channel, "Channel")
             return jsonify(messages=messages, users=channel_info['users'], admins=channel_info['admins'])
             # If the request is invalid/does not match what we expect
         
@@ -145,13 +143,15 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
 def profile():  # This is the profile page we will send variables and stuff here to configure
     username = session.get('username')
 
-    user_information = db.retrieve_from_user(username)
+    user_information = db.retrieve_document(username, "User")
 
     return render_template("ProfilePage.html", userInformation=user_information)
+
 
 @app.route('/help')
 def help():
     return render_template("help.html")
+
 
 @app.route('/faq')
 def faq():
@@ -165,7 +165,7 @@ def update():
     original_username = request.form["_id"]
 
     # get the users original information
-    user_information = db.retrieve_from_user(original_username)
+    user_information = db.retrieve_document(original_username, "User")
 
     # update the dictionary of the original users information with the new information entered by the user
     user_information["first"] = request.form["first"]
@@ -174,7 +174,7 @@ def update():
     user_information["password"] = request.form["password"]
 
     # use the user_information dict to update the database
-    db.update_user(user_information)
+    db.update(original_username, user_information, "User")
 
     # render the page with the new info
     return render_template("ProfilePage.html", userInformation=user_information)

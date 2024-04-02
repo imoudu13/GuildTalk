@@ -16,7 +16,7 @@ class TestDeleteMessage(unittest.TestCase):
         app_instance = Flask(__name__)
         with app_instance.app_context():
             # Call the function to delete a message
-            response = deleteMessage(1, "test_channel")
+            response = deleteMessage(1, "Bio 123")
 
             # Check if the function returns a success response
             self.assertEqual(response.json, {'success': True})
