@@ -74,27 +74,6 @@ class DatabaseConnect:
                 print(f"Error during insert_into_user: {e}")
                 return False
 
-    def retrieve_from_user(self, username):
-        collection_name = "User"
-        with self.db_handler as db:
-            try:
-                result = db.fetch_one(collection_name, {"_id": username})
-
-                if result is None:
-                    return None
-
-                return {
-                    "_id": result["_id"],
-                    "password": result["password"],
-                    "first": result["first"],
-                    "last": result["last"],
-                    "email": result["email"],
-                    "channels": result["channels"]
-                }
-            except Exception as e:
-                print(f"Error during retrieve_from_user: {e}")
-                return None
-
     def insert_into_channel(self, information):
         collection_name = "Channel"
 
@@ -110,41 +89,26 @@ class DatabaseConnect:
                 print(f"Error during insert_into_channel: {e}")
                 return False
 
-    def retrieve_from_channel(self, channelName):
-        collection_name = "Channel"
+    # this function is for retrieving a document from a collection
+    def retrieve_document(self, doc_id, collection_name):
         with self.db_handler as db:
             try:
-                result = db.fetch_one(collection_name, {"_id": channelName})
+                result = db.fetch_one(collection_name, {"_id": doc_id})
 
                 if result is None:
                     return None
 
-                return {
-                    "_id": result["_id"],
-                    "admins": result["admins"],
-                    "users": result["users"],
-                    "messages": result["messages"]
-                }
+                return result
             except Exception as e:
                 print(f"Error during retrieve_from_user: {e}")
                 return None
 
-    def update_user(self, update_data):
-        collection_name = "User"
+    # this function is for updating a documents in a collection, it requires the id for the document,
+    # as well as the collection that the document is a part of
+    def update(self, documentid, dictionary, collection):
         with self.db_handler as db:
             try:
-                db.update_one(collection_name, {"_id": update_data["_id"]}, {"$set": update_data})
-                return True
-            except Exception as e:
-                print(f"Error during update_user: {e}")
-                return False
-
-    def update_channel(self, channel_name, update_dict):
-        collection_name = "Channel"
-        with self.db_handler as db:
-            try:
-                # Use the $set operator to update specific fields
-                db.update_one(collection_name, {"_id": channel_name}, {"$set": update_dict})
+                db.update_one(collection, {"_id": documentid}, {"$set": dictionary})
                 return True
             except Exception as e:
                 print(f"Error during update_channel: {e}")

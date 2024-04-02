@@ -1,9 +1,13 @@
 from flask import jsonify
+from DatabaseConnections import DatabaseConnect
 import app
+
+db = DatabaseConnect()
 
 
 def deleteMessage(index, channel):
-    selected_channel = app.db.retrieve_from_channel(channel)
+    selected_channel = db.retrieve_document(channel, "Channel")
+
     if selected_channel is None:
         return jsonify({'success': False, 'error': 'Channel not found'})
 
@@ -13,6 +17,5 @@ def deleteMessage(index, channel):
 
     del messages[index]
     selected_channel["messages"] = messages
-    app.db.update_channel(channel, selected_channel)
+    db.update(channel, selected_channel, "Channel")
     return jsonify({'success': True})
-

@@ -1,12 +1,15 @@
 from flask import jsonify
+from DatabaseConnections import DatabaseConnect
 import app
+
+db = DatabaseConnect()
 
 
 def send_message(text, username, time, curr_channel):
     username = username
     time = "12:01pm"
     # Add a new channel to the database
-    channel_information1 = app.db.retrieve_from_channel(curr_channel)
+    channel_information1 = db.retrieve_document(curr_channel, "Channel")
 
     # Check if channel information is retrieved successfully
     if channel_information1 is None:
@@ -31,13 +34,13 @@ def send_message(text, username, time, curr_channel):
 
     # Then call the update channel function from the database3
     # You'll need to pass the name of the channel in there as well.
-    app.db.update_channel(curr_channel, channel_information1)
+    db.update(curr_channel, channel_information1, "Channel")
     return jsonify({'success': True})  # Return a success response
 
 
 def load_messages(channel):
     # Fetch channels from the database
-    selected_channel = app.db.retrieve_from_channel(channel)
+    selected_channel = db.retrieve_document(channel, "Channel")
     if selected_channel is None:
         return []
     messages = selected_channel["messages"]
