@@ -36,10 +36,6 @@ class DatabaseHandler:
         collection = self.db[collection_name]
         return collection.find_one(parameters)
 
-    def fetch_all(self, collection_name, parameters):
-        collection = self.db[collection_name]
-        return list(collection.find(parameters))
-
     def update_one(self, collection_name, query_params, update_data):
         try:
             collection = self.db[collection_name]
@@ -89,6 +85,7 @@ class DatabaseConnect:
                 print(f"Error during insert_into_channel: {e}")
                 return False
 
+    # The next two functions can be used to insert into any collection in the db provided that you specific the collection name
     # this function is for retrieving a document from a collection
     def retrieve_document(self, doc_id, collection_name):
         with self.db_handler as db:
