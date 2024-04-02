@@ -125,7 +125,7 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
         elif 'invite' in data:
             current_channel = data['current_channel']
             inviteUser = data['invite']
-            addUserToChannel(current_channel,inviteUser);
+            addUserToChannel(current_channel,inviteUser)
             response_data = {'status': 'User added'}
             return jsonify(response_data)
         
