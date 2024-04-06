@@ -318,6 +318,7 @@ function handleKeyPress(event) {
   }
 }
 //Function to invite other users to channel
+
 function inviteToChannel(){
     let inviteUser = prompt("Enter a username");
     if(inviteUser !== null && inviteUser !== ""){
@@ -354,10 +355,16 @@ function inviteToChannel(){
         else{
             alert("username too long");
         }
+      };
+      xhr.send(
+        JSON.stringify({ invite: inviteUser, current_channel: current_channel })
+      );
+    } else {
+      alert("username too long");
     }
-    else{
-        alert("Please insert a username");
-    }
+  } else {
+    alert("Please insert a username");
+  }
 }
 // Function to put a message into html and send it to the controller
 function makeMessage(message, messageContainer, a) {
@@ -450,39 +457,3 @@ function isAdmin() {
   });
   return admin;
 }
-
-function testSearchFunctionality() {
-  // Simulate user input in the search bar
-  const searchInput = "Lorem";
-
-  // Set the value of the search bar to the simulated input
-  document.getElementById("message-search-bar").value = searchInput;
-
-  // Trigger the input event on the search bar to simulate user typing
-  const event = new Event("input");
-  document.getElementById("message-search-bar").dispatchEvent(event);
-
-  // Get all message elements after the search operation
-  const messageElements = document.querySelectorAll(".message");
-
-  // Check each message element to ensure correct filtering
-  messageElements.forEach(function (messageElement) {
-    // Get the text content of the message
-    const messageText = messageElement.textContent.toLowerCase();
-
-    // Check if the search query is found in the message text
-    const searchResult = messageText.includes(searchInput.toLowerCase());
-
-    // Log test results
-    if (searchResult && messageElement.style.display !== "none") {
-      console.log("Test passed: Message displayed correctly.");
-    } else if (!searchResult && messageElement.style.display === "none") {
-      console.log("Test passed: Message hidden correctly.");
-    } else {
-      console.error("Test failed: Incorrect message display status.");
-    }
-  });
-}
-
-// Call the test function to execute the test
-testSearchFunctionality();
