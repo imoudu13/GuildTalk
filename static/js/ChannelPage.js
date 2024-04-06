@@ -18,6 +18,29 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("input", searchMessages);
   //hide invite button when not in channel
   document.querySelector('.invite-button').classList.add('hide');
+
+  //event listener for joke button
+    const fetchJokeBtn = document.getElementById('joke-button-id');
+    const messageInput = document.getElementById('message-input-id');
+
+    fetchJokeBtn.addEventListener('click', async () => {
+        try {
+            const response = await fetch('https://icanhazdadjoke.com/', {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            const data = await response.json();
+
+            // Populate the input with the joke
+            messageInput.value = data.joke;
+
+        } catch (error) {
+            console.error('Error fetching joke:', error);
+            alert('Failed to fetch joke. Please try again.');
+        }
+    });
 });
 
 
