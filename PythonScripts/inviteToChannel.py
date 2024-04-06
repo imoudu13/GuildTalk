@@ -1,20 +1,22 @@
 from flask import jsonify
-import app
+from DatabaseConnections import DatabaseConnect
+
+db = DatabaseConnect()
 
 
 def addUserToChannel(channel_name, username):
     # Retrieve user from the database
-    user = app.db.retrieve_from_user(username)
-    channel_information = app.db.retrieve_from_channel(channel_name)
-    
-    #adds user to channel info
+    user = db.retrieve_document(username, 'User')
+    channel_information = db.retrieve_document(channel_name, 'Channel')
+
+    # adds user to channel info
     if channel_information:
-        users = channel_information.get("users",[])
-        if username not in users:  
+        users = channel_information.get("users", [])
+        if username not in users:
             users.append(username)
             channel_information["users"] = users
-            app.db.update_channel(channel_name,channel_information)
-    
+            db.update(channel_name, channel_information, 'Channel')
+
     if user:
         # Get list of channels for user, or create an empty list if it doesn't exist
         channels = user.get("channels", [])
@@ -23,10 +25,9 @@ def addUserToChannel(channel_name, username):
             channels.append(channel_name)
             # Update user with new list of channels
             user["channels"] = channels
-            app.db.update_user(user)  # Update user with new list
+            db.update(user['_id'], user, 'User')  # Update user with new list
             return jsonify({'success': True})  # Return a success response
         else:
-            return jsonify({'success': False, 'error':'User already in channel'})
+            return jsonify({'success': False, 'error': 'User already in channel'})
     else:
-        print("No channel found")
         return jsonify({'success': False, 'error': 'User not found'})
