@@ -355,17 +355,15 @@ function inviteToChannel(){
         else{
             alert("username too long");
         }
-      };
+
       xhr.send(
         JSON.stringify({ invite: inviteUser, current_channel: current_channel })
       );
-    } else {
-      alert("username too long");
-    }
   } else {
     alert("Please insert a username");
   }
 }
+
 // Function to put a message into html and send it to the controller
 function makeMessage(message, messageContainer, a) {
   let messageDiv = document.createElement("div");
