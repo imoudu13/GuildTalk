@@ -9,14 +9,17 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("message-input-id")
     .addEventListener("keypress", handleKeyPress);
-  document.querySelector(".promote-button").addEventListener("click", promote);
-  document.querySelector(".remove-button").addEventListener("click", remove);
+  // document.querySelector(".promote-button").addEventListener("click", promote);
+  // document.querySelector(".remove-button").addEventListener("click", remove);
 
   // Add an event listener to the search bar
   document
     .getElementById("message-search-bar")
     .addEventListener("input", searchMessages);
+  //hide invite button when not in channel
+  document.querySelector('.invite-button').classList.add('hide');
 });
+
 
 function searchMessages() {
   // Get the search query from the search bar
@@ -50,6 +53,8 @@ function redirectToPage(url) {
 
 //Function to set current channel and load messages
 function setChannel(channel) {
+  //display invite button
+  document.querySelector('.invite-button').classList.remove('hide');
   current_channel = channel;
   document.querySelector(".channel-title").innerText = current_channel;
   loadMessagesAndMembers();
