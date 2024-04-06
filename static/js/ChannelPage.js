@@ -302,12 +302,18 @@ function inviteToChannel(){
         xhr.onload = function() {
             //status === 200 means that it worked
             if (xhr.status === 200) {
-                // Here we update the html to include the user
-                let userContainer = document.querySelector('.member-container');
-                let newElement = document.createElement("button");
-                newElement.classList.add('member');
-                newElement.textContent = inviteUser;
-                userContainer.appendChild(newElement);
+                //parse the json response and act accordingly
+                let response = JSON.parse(xhr.responseText);
+                    // Check the success field
+                    if (response.success) {
+                        // Here we update the html to include the user
+                       let userContainer = document.querySelector(".member-container");
+                        displayInUserOrAdmin(inviteUser, userContainer);
+                    } else {
+                        // Display error message
+                        console.error("Failed to add user:", response.error);
+                        alert(response.error);
+                    }
             } else {
                 // Error handling
                 console.error("Failed to add user");
