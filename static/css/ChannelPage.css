@@ -180,3 +180,25 @@ main {
 .hide{
   display: none;
 }
+#message-input-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.message-input{
+  flex: 1;
+}
+.joke-button{
+  background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0 6px 8px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+.joke-button:hover{
+    background-color: #45a049;
+}
