@@ -32,7 +32,7 @@ class TestDeleteMessage(unittest.TestCase):
         app_instance = Flask(__name__)
         with app_instance.app_context():
             # Call the function to delete a message with an invalid index
-            response = deleteMessage(5, "test_channel")
+            response = deleteMessage(-1, "test_channel")
 
             # Check if the function returns a failure response
             self.assertEqual(response.json, {'success': False, 'error': 'Invalid message index'})

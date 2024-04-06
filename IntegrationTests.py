@@ -49,9 +49,6 @@ def test_profile(mock_db, client):
     assert b'test@example.com' in response.data
 
 
-# Add more test cases for other routes and functionalities as needed
-
-
 @patch('app.db')
 def test_add_channel(mock_db, client):
     mock_db.retrieve_document.return_value = {'users': ['test_user'], 'admins': ['admin']}
@@ -74,4 +71,3 @@ def test_send_message(mock_db, client):
     assert response.status_code == 200
     assert b'Message added successfully' in response.data
 
-# Add more test cases for other functionalities as needed

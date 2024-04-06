@@ -9,14 +9,40 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("message-input-id")
     .addEventListener("keypress", handleKeyPress);
-  document.querySelector(".promote-button").addEventListener("click", promote);
-  document.querySelector(".remove-button").addEventListener("click", remove);
+  // document.querySelector(".promote-button").addEventListener("click", promote);
+  // document.querySelector(".remove-button").addEventListener("click", remove);
 
   // Add an event listener to the search bar
   document
     .getElementById("message-search-bar")
     .addEventListener("input", searchMessages);
+  //hide invite button when not in channel
+  document.querySelector('.invite-button').classList.add('hide');
+
+  //event listener for joke button
+    const fetchJokeBtn = document.getElementById('joke-button-id');
+    const messageInput = document.getElementById('message-input-id');
+
+    fetchJokeBtn.addEventListener('click', async () => {
+        try {
+            const response = await fetch('https://icanhazdadjoke.com/', {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            const data = await response.json();
+
+            // Populate the input with the joke
+            messageInput.value = data.joke;
+
+        } catch (error) {
+            console.error('Error fetching joke:', error);
+            alert('Failed to fetch joke. Please try again.');
+        }
+    });
 });
+
 
 function searchMessages() {
   // Get the search query from the search bar
@@ -50,6 +76,8 @@ function redirectToPage(url) {
 
 //Function to set current channel and load messages
 function setChannel(channel) {
+  //display invite button
+  document.querySelector('.invite-button').classList.remove('hide');
   current_channel = channel;
   document.querySelector(".channel-title").innerText = current_channel;
   loadMessagesAndMembers();
@@ -244,10 +272,17 @@ function handleKeyPress(event) {
   let user_name;
   if (event.keyCode === 13) {
     event.preventDefault(); // Prevent the default behavior of the Enter key
-
+    //if not in a channel alert user
+    if(current_channel === ''){
+      alert("Please select a channel to send a message");
+    }
     // Access the value of the textarea
     const message = document.getElementById("message-input-id").value;
     //Here we will set other values such as username, channel, and time. For now it is dummy data while functionality is being worked on
+    //if message is empty dont send it
+    if (message === ''){
+      return
+    }
     user_name = username;
     time = "8:56pm";
 
@@ -283,29 +318,42 @@ function handleKeyPress(event) {
   }
 }
 //Function to invite other users to channel
-function inviteToChannel() {
-  let inviteUser = prompt("Enter a username");
-  if (inviteUser !== null && inviteUser !== "") {
-    if (inviteUser.length < 20) {
-      // Allows us to make http requests from client-side js
-      var xhr = new XMLHttpRequest();
-      //initalizes new request of type POST and sends it to channel python method on server side
-      xhr.open("POST", "/channel"); // Send POST request to server-side Python script
-      //Indicates that the request body will contain JSON data
-      xhr.setRequestHeader("Content-Type", "application/json");
-      //function that's called when the request completes successfully
-      xhr.onload = function () {
-        //status === 200 means that it worked
-        if (xhr.status === 200) {
-          // Here we update the html to include the user
-          let userContainer = document.querySelector(".member-container");
-          let newElement = document.createElement("button");
-          newElement.classList.add("member");
-          newElement.textContent = inviteUser;
-          userContainer.appendChild(newElement);
-        } else {
-          // Error handling
-          console.error("Failed to add user");
+
+function inviteToChannel(){
+    let inviteUser = prompt("Enter a username");
+    if(inviteUser !== null && inviteUser !== ""){
+        if(inviteUser.length < 20){
+        // Allows us to make http requests from client-side js
+        var xhr = new XMLHttpRequest();
+        //initalizes new request of type POST and sends it to channel python method on server side
+        xhr.open("POST", "/channel"); // Send POST request to server-side Python script
+        //Indicates that the request body will contain JSON data
+        xhr.setRequestHeader("Content-Type", "application/json");
+        //function that's called when the request completes successfully
+        xhr.onload = function() {
+            //status === 200 means that it worked
+            if (xhr.status === 200) {
+                //parse the json response and act accordingly
+                let response = JSON.parse(xhr.responseText);
+                    // Check the success field
+                    if (response.success) {
+                        // Here we update the html to include the user
+                       let userContainer = document.querySelector(".member-container");
+                        displayInUserOrAdmin(inviteUser, userContainer);
+                    } else {
+                        // Display error message
+                        console.error("Failed to add user:", response.error);
+                        alert(response.error);
+                    }
+            } else {
+                // Error handling
+                console.error("Failed to add user");
+            }
+        };
+        xhr.send(JSON.stringify({invite: inviteUser, current_channel:current_channel}));
+        }
+        else{
+            alert("username too long");
         }
       };
       xhr.send(
