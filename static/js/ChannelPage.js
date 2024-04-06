@@ -9,14 +9,17 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("message-input-id")
     .addEventListener("keypress", handleKeyPress);
-  document.querySelector(".promote-button").addEventListener("click", promote);
-  document.querySelector(".remove-button").addEventListener("click", remove);
+  // document.querySelector(".promote-button").addEventListener("click", promote);
+  // document.querySelector(".remove-button").addEventListener("click", remove);
 
   // Add an event listener to the search bar
   document
     .getElementById("message-search-bar")
     .addEventListener("input", searchMessages);
+  //hide invite button when not in channel
+  document.querySelector('.invite-button').classList.add('hide');
 });
+
 
 function searchMessages() {
   // Get the search query from the search bar
@@ -50,6 +53,8 @@ function redirectToPage(url) {
 
 //Function to set current channel and load messages
 function setChannel(channel) {
+  //display invite button
+  document.querySelector('.invite-button').classList.remove('hide');
   current_channel = channel;
   document.querySelector(".channel-title").innerText = current_channel;
   loadMessagesAndMembers();
@@ -297,12 +302,18 @@ function inviteToChannel(){
         xhr.onload = function() {
             //status === 200 means that it worked
             if (xhr.status === 200) {
-                // Here we update the html to include the user
-                let userContainer = document.querySelector('.member-container');
-                let newElement = document.createElement("button");
-                newElement.classList.add('member');
-                newElement.textContent = inviteUser;
-                userContainer.appendChild(newElement);
+                //parse the json response and act accordingly
+                let response = JSON.parse(xhr.responseText);
+                    // Check the success field
+                    if (response.success) {
+                        // Here we update the html to include the user
+                       let userContainer = document.querySelector(".member-container");
+                        displayInUserOrAdmin(inviteUser, userContainer);
+                    } else {
+                        // Display error message
+                        console.error("Failed to add user:", response.error);
+                        alert(response.error);
+                    }
             } else {
                 // Error handling
                 console.error("Failed to add user");

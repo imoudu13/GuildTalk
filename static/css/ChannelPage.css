@@ -59,6 +59,7 @@ main {
 .members-column p {
   margin-bottom: 0.5em;
 }
+
 .member {
   margin-bottom: 0.25em;
   width: 100%;
@@ -175,4 +176,7 @@ main {
 .settings-button {
   background-color: white;
   padding: 5px;
+}
+.hide{
+  display: none;
 }
