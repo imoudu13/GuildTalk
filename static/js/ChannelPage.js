@@ -272,10 +272,17 @@ function handleKeyPress(event) {
   let user_name;
   if (event.keyCode === 13) {
     event.preventDefault(); // Prevent the default behavior of the Enter key
-
+    //if not in a channel alert user
+    if(current_channel === ''){
+      alert("Please select a channel to send a message");
+    }
     // Access the value of the textarea
     const message = document.getElementById("message-input-id").value;
     //Here we will set other values such as username, channel, and time. For now it is dummy data while functionality is being worked on
+    //if message is empty dont send it
+    if (message === ''){
+      return
+    }
     user_name = username;
     time = "8:56pm";
 
