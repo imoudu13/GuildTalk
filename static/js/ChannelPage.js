@@ -512,3 +512,4 @@ function testSearchFunctionality() {
 
 // Call the test function to execute the test
 testSearchFunctionality();
+
