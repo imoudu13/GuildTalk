@@ -5,6 +5,7 @@ from PythonScripts.createChannel import get_channels, add_channel
 from PythonScripts.sendMessage import send_message, load_messages
 from PythonScripts.deleteMessage import deleteMessage
 from PythonScripts.inviteToChannel import addUserToChannel
+from PythonScripts.directMessage import add_channelDirectMessage
 
 # singleton instantiation of the database
 db = DatabaseConnect()
@@ -126,6 +127,10 @@ def channel():  # This is the ChannelPage we will send variabls and stuff here t
             current_channel = data['current_channel']
             inviteUser = data['invite']
             response_data = addUserToChannel(current_channel,inviteUser)
+            return response_data
+        elif 'directMessage' in data:
+            userToMessage = data['directMessage']
+            response_data = add_channelDirectMessage(userToMessage, username)
             return response_data
         
         else:

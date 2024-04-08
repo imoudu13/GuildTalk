@@ -289,6 +289,50 @@ function createChannel() {
         alert("Please insert a channel name");
     }
 }
+function directMessage() {
+    let userToMessage = prompt("Enter the username of who you want to create a chat with");
+    if (userToMessage !== null && userToMessage !== "") {
+            // Allows us to make http requests from client-side js
+            let xhr = new XMLHttpRequest();
+            //initializes new request of type POST and sends it to channel python method on server side
+            xhr.open("POST", "/channel"); // Send POST request to server-side Python script
+            //Indicates that the request body will contain JSON data
+            xhr.setRequestHeader("Content-Type", "application/json");
+            //function that's called when the request completes successfully
+            xhr.onload = function () {
+                //status === 200 means that it worked
+                if (xhr.status === 200) {
+                    //parses JSON response from server into js object(newChannel)
+                    let response = JSON.parse(xhr.responseText);
+                    // Check the success field
+                    if (response.success) {
+                        // Here we update the html to include the user
+                       let channelContainer = document.querySelector(
+                        ".select-channel-container"
+                    );
+                    let newElement = document.createElement("button");
+                    newElement.classList.add("channel-button");
+                    newElement.textContent = userToMessage + " + " + username;
+                    newElement.onclick = function () {
+                        setChannel(userToMessage);
+                    };
+                    channelContainer.appendChild(newElement);
+                    } else {
+                        // Display error message
+                        console.error("User does not exist", response.error);
+                        alert(response.error);
+                    }
+                    // Here we update the html to include the new channel
+                } else {
+                    // Error handling
+                    console.error("Failed to make direct message chat.");
+                }
+            };
+            xhr.send(JSON.stringify({directMessage: userToMessage}));
+    } else {
+        alert("Please insert a username to message");
+    }
+}
 
 // Function to put a message into html and send it to the controller
 function handleKeyPress(event) {
