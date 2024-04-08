@@ -11,12 +11,14 @@
 <body>
 <header>
     <!-- Logo -->
-    <div class="logo"><img src="../static/images/GuildTalkLogoWithTextClear.png" id="header-logo" alt="GuildTalk logo" ></div>
+    <div class="logo"><img src="../static/images/GuildTalkLogoWithTextClear.png" id="header-logo" alt="GuildTalk logo">
+    </div>
     <!-- Channel Title -->
     <div class="channel-title">Guild Talk</div>
     <!-- Search bar to find messages in message board -->
     <div class="search-bar">
-        <label for="message-search-bar"></label><input type="text" id = "message-search-bar" placeholder="Search messages">
+        <label for="message-search-bar"></label><input type="text" id="message-search-bar"
+                                                       placeholder="Search messages">
     </div>
     <!-- Button for help, will redirect to something?? -->
     <div class="help-button">
@@ -28,19 +30,19 @@
 <main>
     <!-- First Column For Channel Selection -->
     <div class="column channel-column">
-        <div class = "create-channel-container">
+        <div class="create-channel-container">
             <button class="create-channel-button" onclick="createChannel()">Create Channel</button>
             <button class="invite-button" onclick="inviteToChannel()">Invite</button>
         </div>
         <div class="select-channel-container">
-        {# This container will be filled by the following for loop. #}
-          {% for channel in channels %}
-                <button class="channel-button" onclick="setChannel(this.innerText)">{{ channel}}</button>
-          {% endfor %}
+            {# This container will be filled by the following for loop. #}
+            {% for channel in channels %}
+                <button class="channel-button" onclick="setChannel(this.innerText)">{{ channel }}</button>
+            {% endfor %}
         </div>
 
         <div class="profile-container">
-            <div class = profile-username-wrapper onclick="redirectToPage('\profile')">
+            <div class=profile-username-wrapper onclick="redirectToPage('\profile')">
                 <img src="../static/images/GuildTalkLogoNoTextClear.png" alt="Profile Picture">
                 <div class="username">Username</div>
             </div>
@@ -62,7 +64,7 @@
     </div>
     <!-- Third Column -->
     <div class="column members-column">
-        <p class = "small-text">Channel Members</p>
+        <p class="small-text">Channel Members</p>
         <!-- The users in this channel will go here -->
         <div class="member-container">
         </div>
@@ -72,6 +74,15 @@
 
         </div>
     </div>
+
+    <!-- This is the modal that appears when an admin clicks on a member button -->
+    <div id="userModal">
+        <p id="user-modal-question"></p>
+        <button class="button" id="removeUser">Remove User</button>
+        <button class="button" id="promoteUser">Promote User</button>
+    </div>
+
+    <div id="overlay"></div>
 </main>
 </body>
 </html>
