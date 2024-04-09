@@ -78,6 +78,7 @@ class DatabaseConnect:
         information.setdefault("admins", [information["creator"]])
         information.setdefault("users", [])
         information.setdefault("messages", [])
+        information.setdefault("isDirectMessageChat", 0)
         with self.db_handler as db:
             try:
                 return db.execute_insert(collection_name, information)

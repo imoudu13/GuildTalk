@@ -90,9 +90,14 @@ function redirectToPage(url) {
 }
 
 //Function to set current channel and load messages
-function setChannel(channel) {
-    //display invite button
-    document.querySelector('.invite-button').classList.remove('hide');
+function setChannel(channel, isDirectMessage) {
+    let isHidden = document.querySelector('.invite-button').classList.contains('hide');
+    if (isDirectMessage === 1 && !isHidden){
+        document.querySelector('.invite-button').classList.add('hide');
+    }
+    else if (isDirectMessage !== 1 && isHidden){
+        document.querySelector('.invite-button').classList.remove('hide');
+    }
     current_channel = channel;
     document.querySelector(".channel-title").innerText = current_channel;
     loadMessagesAndMembers();
@@ -273,7 +278,7 @@ function createChannel() {
                     newElement.classList.add("channel-button");
                     newElement.textContent = channelName;
                     newElement.onclick = function () {
-                        setChannel(channelName);
+                        setChannel(channelName,0);
                     };
                     channelContainer.appendChild(newElement);
                 } else {
@@ -287,6 +292,54 @@ function createChannel() {
         }
     } else {
         alert("Please insert a channel name");
+    }
+}
+function directMessage() {
+    let userToMessage = prompt("Enter the username of who you want to create a chat with");
+    if (userToMessage === username){
+        alert("You cannot create a direct message chat with yourself :( Please find a friend");
+        return;
+    }
+    if (userToMessage !== null && userToMessage !== "") {
+            // Allows us to make http requests from client-side js
+            let xhr = new XMLHttpRequest();
+            //initializes new request of type POST and sends it to channel python method on server side
+            xhr.open("POST", "/channel"); // Send POST request to server-side Python script
+            //Indicates that the request body will contain JSON data
+            xhr.setRequestHeader("Content-Type", "application/json");
+            //function that's called when the request completes successfully
+            xhr.onload = function () {
+                //status === 200 means that it worked
+                if (xhr.status === 200) {
+                    //parses JSON response from server into js object(newChannel)
+                    let response = JSON.parse(xhr.responseText);
+                    // Check the success field
+                    if (response.success) {
+                        // Here we update the html to include the user
+                       let channelContainer = document.querySelector(
+                        ".select-channel-container"
+                    );
+                    let newElement = document.createElement("button");
+                    newElement.classList.add("channel-button");
+                    newElement.textContent = userToMessage + " + " + username;
+                    newElement.onclick = function () {
+                        setChannel(userToMessage + " + " + username, 1);
+                    };
+                    channelContainer.appendChild(newElement);
+                    } else {
+                        // Display error message
+                        console.error("User does not exist", response.error);
+                        alert(response.error);
+                    }
+                    // Here we update the html to include the new channel
+                } else {
+                    // Error handling
+                    console.error("Failed to make direct message chat.");
+                }
+            };
+            xhr.send(JSON.stringify({directMessage: userToMessage}));
+    } else {
+        alert("Please insert a username to message");
     }
 }
 

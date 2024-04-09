@@ -32,13 +32,18 @@
     <div class="column channel-column">
         <div class="create-channel-container">
             <button class="create-channel-button" onclick="createChannel()">Create Channel</button>
+            <button class="direct-message-button" onclick="directMessage()">Direct Message</button>
             <button class="invite-button" onclick="inviteToChannel()">Invite</button>
         </div>
         <div class="select-channel-container">
             {# This container will be filled by the following for loop. #}
-            {% for channel in channels %}
-                <button class="channel-button" onclick="setChannel(this.innerText)">{{ channel }}</button>
-            {% endfor %}
+           {% for channel_name, channel_info in channels.items() %}
+            <button class="channel-button" onclick="setChannel('{{ channel_name }}', {{ channel_info.isDirectMessageChat }})">
+                {{ channel_name }}
+            </button>
+{% endfor %}
+
+
         </div>
 
         <div class="profile-container">
