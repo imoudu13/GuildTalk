@@ -90,9 +90,14 @@ function redirectToPage(url) {
 }
 
 //Function to set current channel and load messages
-function setChannel(channel) {
-    //display invite button
-    document.querySelector('.invite-button').classList.remove('hide');
+function setChannel(channel, isDirectMessage) {
+    let isHidden = document.querySelector('.invite-button').classList.contains('hide');
+    if (isDirectMessage === 1 && !isHidden){
+        document.querySelector('.invite-button').classList.add('hide');
+    }
+    else if (isDirectMessage !== 1 && isHidden){
+        document.querySelector('.invite-button').classList.remove('hide');
+    }
     current_channel = channel;
     document.querySelector(".channel-title").innerText = current_channel;
     loadMessagesAndMembers();
@@ -273,7 +278,7 @@ function createChannel() {
                     newElement.classList.add("channel-button");
                     newElement.textContent = channelName;
                     newElement.onclick = function () {
-                        setChannel(channelName);
+                        setChannel(channelName,0);
                     };
                     channelContainer.appendChild(newElement);
                 } else {
@@ -314,7 +319,7 @@ function directMessage() {
                     newElement.classList.add("channel-button");
                     newElement.textContent = userToMessage + " + " + username;
                     newElement.onclick = function () {
-                        setChannel(userToMessage);
+                        setChannel(userToMessage + " + " + username, 1);
                     };
                     channelContainer.appendChild(newElement);
                     } else {

@@ -9,10 +9,14 @@ def add_channelDirectMessage(userToMessage, username):
     userWeAreMessaging = db.retrieve_document(userToMessage, "User")
     if userWeAreMessaging is None:
         return jsonify({'success': False, 'error': 'User not found'})
+    channelWeWantToCreate = db.retrieve_document(userToMessage + " + " + username, 'Channel')
+    if channelWeWantToCreate:
+        return jsonify({'success': False, 'error': 'Direct message chat already exists, simply select the chat'})
     channel_info = {
         "_id": userToMessage + " + " + username,
         "creator": username,
-        "users": [userToMessage]
+        "users": [userToMessage],
+        "isDirectMessageChat": 1
     }
     # Add a new channel to the database
     db.insert_into_channel(channel_info)

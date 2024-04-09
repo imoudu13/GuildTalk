@@ -14,7 +14,13 @@ def get_channels(username):
     channels = user["channels"]
     if channels is None:
         return []
-    return channels
+
+    channel_dict = {}
+    for channel_name in channels:
+        channel_info = db.retrieve_document(channel_name, 'Channel')
+        if channel_info:
+            channel_dict[channel_name] = channel_info
+    return channel_dict
 
 
 def add_channel(channel_name, username):
