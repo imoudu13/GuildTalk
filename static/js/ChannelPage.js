@@ -296,6 +296,10 @@ function createChannel() {
 }
 function directMessage() {
     let userToMessage = prompt("Enter the username of who you want to create a chat with");
+    if (userToMessage === username){
+        alert("You cannot create a direct message chat with yourself :( Please find a friend");
+        return;
+    }
     if (userToMessage !== null && userToMessage !== "") {
             // Allows us to make http requests from client-side js
             let xhr = new XMLHttpRequest();
