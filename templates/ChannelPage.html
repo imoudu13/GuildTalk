@@ -23,7 +23,7 @@
     <!-- Button for help, will redirect to something?? -->
     <div class="help-button">
         <form action="{{ url_for('help') }}">
-            <button type="submit">Help</button>
+            <button type="submit" style = "color: black">Help</button>
         </form>
     </div>
 </header>
@@ -46,12 +46,11 @@
 
         </div>
 
-        <div class="profile-container">
+        <div class="profile-container user-profile">
             <div class=profile-username-wrapper onclick="redirectToPage('\profile')">
                 <img src="../static/images/GuildTalkLogoNoTextClear.png" alt="Profile Picture">
-                <div class="username">Username</div>
+                <div class="username"></div>
             </div>
-            <button class="settings-button"></button>
         </div>
     </div>
     <!-- Second Column For Messages-->

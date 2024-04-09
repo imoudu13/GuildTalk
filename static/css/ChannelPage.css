@@ -96,6 +96,9 @@ main {
   display: flex;
   align-items: center;
 }
+.username{
+  margin-left: 0.125em;
+}
 .profile-username-wrapper {
   display: flex;
   flex-direction: row;
@@ -123,7 +126,7 @@ main {
   background-color: black;
 }
 .profile-container > * {
-  margin: 0.125em;
+  margin: 0.25em;
 }
 
 #message-search-bar {

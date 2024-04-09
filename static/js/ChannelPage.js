@@ -57,6 +57,9 @@ document.addEventListener("DOMContentLoaded", function () {
             alert('Failed to fetch joke. Please try again.');
         }
     });
+
+    //set username
+    document.querySelector('.username').innerHTML= username;
 });
 
 function searchMessages() {
