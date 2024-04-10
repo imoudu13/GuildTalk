@@ -255,3 +255,8 @@ main {
   backdrop-filter: blur(12px);
   z-index: 1;
 }
+#escape-hint{
+  position: relative;
+  top: 30%;
+  left: 43%;
+}
