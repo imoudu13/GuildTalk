@@ -151,7 +151,6 @@ function loadMessagesAndMembers() {
 }
 
 function promote() {
-    if (selectedUser) {
         fetch("/channel", {
             method: "POST",
             headers: {
@@ -165,21 +164,17 @@ function promote() {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data); // Log the response from the server
-                // Handle the response as needed
+                loadMessagesAndMembers();
             })
             .catch((error) => {
                 console.error("Error:", error);
                 // Handle errors
             });
-    } else {
-        // If the user canceled the prompt or entered an empty string, handle it here.
-        console.log("No username entered or prompt canceled.");
-    }
+
 }
 
 function remove() {
-    if (selectedUser) {
+
         fetch("/channel", {
             method: "POST",
             headers: {
@@ -193,19 +188,13 @@ function remove() {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data); // Log the response from the server
-                // Handle the response as needed
+                loadMessagesAndMembers();
             })
             .catch((error) => {
                 console.error("Error:", error);
                 // Handle errors
             });
-    } else {
-        // If the user canceled the prompt or entered an empty string, handle it here.
-        console.log("No username entered or prompt canceled.");
-    }
 }
-
 function displayInUserOrAdmin(username, container) {
     let button = document.createElement("button");
     button.classList.add("member");
